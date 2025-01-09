@@ -1,3 +1,4 @@
+// Main component for handling the draft interface and logic
 import { View, Text, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
 import { useEffect, useState } from 'react';
 import { useDraft } from '../../context/DraftContext';
@@ -6,23 +7,27 @@ import PlayerCard from '../../components/PlayerCard';
 import { router } from 'expo-router';
 
 export default function DraftScreen() {
+  // Access draft state and dispatch from context
   const { state, dispatch } = useDraft();
+  // Loading state for initial data fetch
   const [isLoading, setIsLoading] = useState(true);
-  const [currentTeam, setCurrentTeam] = useState(null);
 
+  // Initialize draft data when component mounts
   useEffect(() => {
     initializeDraft();
   }, []);
 
+  // Fetch initial draft data and set up draft order
   const initializeDraft = async () => {
     try {
-      // Fetch players and initialize teams
+      // Get player data from NBA service
       const players = await nbaService.getPlayers();
+      // Get team data from NBA service
       const teams = nbaService.getTeams();
-      
-      // Generate draft order (snake draft format)
+      // Generate snake draft order based on number of teams
       const draftOrder = generateSnakeDraftOrder(teams.length);
       
+      // Initialize draft state with fetched data
       dispatch({
         type: 'INITIALIZE_DRAFT',
         players,
@@ -33,94 +38,120 @@ export default function DraftScreen() {
       setIsLoading(false);
     } catch (error) {
       console.error('Error initializing draft:', error);
-      // Add error handling UI here
     }
   };
 
+  // Generate snake draft order where order reverses each round
   const generateSnakeDraftOrder = (numTeams) => {
     const rounds = 5; // Number of draft rounds
     const order = [];
     
     for (let round = 0; round < rounds; round++) {
-      if (round % 2 === 0) {
-        // Forward round
-        for (let team = 1; team <= numTeams; team++) {
-          order.push(team);
-        }
-      } else {
-        // Reverse round (snake)
-        for (let team = numTeams; team >= 1; team--) {
-          order.push(team);
-        }
+      // Create array of team numbers for this round
+      const roundTeams = [...Array(numTeams)].map((_, index) => index + 1);
+      // Reverse order for odd-numbered rounds (snake draft)
+      if (round % 2 === 1) {
+        roundTeams.reverse();
       }
+      order.push(...roundTeams);
     }
     return order;
   };
 
+  // AI logic for selecting players based on team needs
   const makeAIPick = (availablePlayers, team) => {
-    // Simple AI logic - can be expanded later
-    const bestPlayer = availablePlayers.reduce((best, current) => {
-      const bestRating = best.overall_rating;
-      const currentRating = current.overall_rating;
-      return currentRating > bestRating ? current : best;
-    });
+    // Calculate current team needs based on roster
+    const needs = nbaService.calculateTeamNeeds(team.roster);
     
-    return bestPlayer;
+    // Filter available players by team positional needs
+    const neededPlayers = availablePlayers.filter(player => needs[player.position]);
+    
+    // Use all available players if no players match needs
+    const candidatePlayers = neededPlayers.length > 0 ? neededPlayers : availablePlayers;
+    
+    // Sort players by rating with random factor for variety
+    return candidatePlayers.sort((a, b) => {
+      const ratingDiff = b.overall_rating - a.overall_rating;
+      const randomFactor = Math.random() * 10 - 5; // Add randomness of ±5 to rating
+      return ratingDiff + randomFactor;
+    })[0];
   };
 
+  // Handle user selecting a player
   const handlePlayerSelect = (player) => {
     if (!state.isUserTurn) return;
     
-    // Make user's pick
+    // Process user's pick
     dispatch({
       type: 'MAKE_PICK',
       player,
       teamId: state.teams.find(team => team.isUser).id
     });
-    
-    // Process AI picks
-    processAIPicks();
+
+    // Trigger AI picks after user's pick
+    setTimeout(processAIPicks, 0);
   };
 
+  // Process AI team picks
   const processAIPicks = () => {
-    const currentPickIndex = state.currentPick - 1;
-    let nextPick = currentPickIndex;
+    // Get next team in draft order
+    const nextTeamId = state.draftOrder[state.currentPick - 1];
+    const nextTeam = state.teams.find(t => t.id === nextTeamId);
     
-    // Process AI picks until it's user's turn again or draft is over
-    while (nextPick < state.draftOrder.length) {
-      const nextTeamId = state.draftOrder[nextPick];
-      const team = state.teams.find(t => t.id === nextTeamId);
-      
-      if (team.isUser) {
-        dispatch({ type: 'SET_USER_TURN', value: true });
-        break;
-      }
+    // If no next team, draft is complete
+    if (!nextTeam) {
+      router.push('/evaluation');
+      return;
+    }
 
-      // Make AI pick
-      const aiPick = makeAIPick(state.availablePlayers, team);
-      dispatch({
-        type: 'MAKE_PICK',
-        player: aiPick,
-        teamId: team.id
-      });
+    // If next pick is user's turn, set flag and return
+    if (nextTeam.isUser) {
+      dispatch({ type: 'SET_USER_TURN', value: true });
+      return;
+    }
 
-      nextPick++;
+    // Make AI pick for current team
+    const aiPick = makeAIPick(
+      state.availablePlayers,
+      nextTeam
+    );
 
-      // Check if draft is complete
-      if (nextPick >= state.draftOrder.length) {
-        router.push('/evaluation');
-        break;
-      }
+    if (!aiPick) {
+      console.error('No available players for AI to pick');
+      return;
+    }
+
+    // Process the AI pick
+    dispatch({
+      type: 'MAKE_PICK',
+      player: aiPick,
+      teamId: nextTeam.id
+    });
+
+    // Check next team after this pick
+    const pickAfterThis = state.currentPick + 1;
+    const nextNextTeamId = state.draftOrder[pickAfterThis - 1];
+    const nextNextTeam = state.teams.find(t => t.id === nextNextTeamId);
+    
+    // Continue AI picks or set user turn
+    if (nextNextTeam && !nextNextTeam.isUser) {
+      setTimeout(processAIPicks, 500); // Delay for visual feedback
+    } else if (nextNextTeam && nextNextTeam.isUser) {
+      dispatch({ type: 'SET_USER_TURN', value: true });
+    } else {
+      router.push('/evaluation');
     }
   };
 
+  // Get current team's name for display
   const getCurrentTeamName = () => {
-    if (!state.draftOrder.length) return '';
+    if (!state.draftOrder.length || state.currentPick > state.draftOrder.length) return '';
     const currentTeamId = state.draftOrder[state.currentPick - 1];
     const team = state.teams.find(t => t.id === currentTeamId);
     return team ? team.name : '';
   };
 
+  // Loading state UI
   if (isLoading) {
     return (
       <View style={styles.loadingContainer}>
@@ -130,6 +161,7 @@ export default function DraftScreen() {
     );
   }
 
+  // Main draft UI
   return (
     <View style={styles.container}>
       <View style={styles.header}>
