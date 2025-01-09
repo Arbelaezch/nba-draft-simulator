@@ -25,7 +25,7 @@ function draftReducer(state, action) {
       const firstTeamId = action.draftOrder[0];
       const firstTeam = action.teams.find(t => t.id === firstTeamId);
       const initial_player_list = action.players.map(player => player.name);
-      console.log("Players list:", initial_player_list);
+      // console.log("Players list:", initial_player_list);
       console.log("Teams list:", action.teams);
       console.log("Draft order:", action.draftOrder);
       
@@ -47,10 +47,11 @@ function draftReducer(state, action) {
     case 'MAKE_PICK': {
       console.log("\n")
       // const testAction = { type: 'MAKE_PICK', player: { id: 1, name: action.player.name }, teamId: 1 };
-      console.log("MAKE_PICK action received");
-      console.log("player selected:", action.player.name);
-      console.log("teamId:", action.teamId);
       console.log("current pick", state.currentPick);
+      console.log("MAKE_PICK action received");
+      console.log("teamId:", action.teamId);
+      console.log("team needs:", state.teams.find(t => t.id === action.teamId).needs);
+      console.log("player selected:", action.player.name);
       // console.log("Current state:", state);
 
       const updatedPlayers = state.availablePlayers.filter(p => p.id !== action.player.id);
@@ -72,20 +73,24 @@ function draftReducer(state, action) {
       const draftComplete = newPickNumber > state.draftOrder.length;
       
       // Get the next team in the draft order
-      const nextTeamId = state.draftOrder[newPickNumber - 1];
-      const nextTeam = state.teams.find(t => t.id === nextTeamId);
+      // Only try to get next team if draft isn't complete
+      const nextTeamId = !draftComplete ? state.draftOrder[newPickNumber - 1] : null;
+      const nextTeam = !draftComplete ? state.teams.find(t => t.id === nextTeamId) : null;
 
-      const updated_players_list = updatedPlayers.map(player => player.name);
-      console.log("Updated players:", updated_players_list);
+      // const updated_players_list = updatedPlayers.map(player => player.name);
+      // console.log("Updated players:", updated_players_list);
       console.log("nextTeamId:", nextTeamId);
       // console.log("nextTeam:", nextTeam);
       // console.log("updatedTeams:", updatedTeams);
-      let drafted_players_list = state.draftedPlayers.map(player => player.name);
-      drafted_players_list.push(action.player.name);
-      console.log("draftedPlayers:", drafted_players_list);
-      console.log("currentPick at the end of MAKE_PICK:", newPickNumber);
-      console.log("isUserTurn:", nextTeam?.isUser ?? false);
+      // let drafted_players_list = state.draftedPlayers.map(player => player.name);
+      // drafted_players_list.push(action.player.name);
+      // console.log("draftedPlayers:", drafted_players_list);
+      // console.log("currentPick at the end of MAKE_PICK:", newPickNumber);
+      // console.log("isUserTurn:", nextTeam?.isUser ?? false);
 
+      if (draftComplete) {
+        console.log("Draft is complete!");
+      }
       
       return { 
         ...state, 
@@ -93,7 +98,8 @@ function draftReducer(state, action) {
         teams: updatedTeams, 
         draftedPlayers: [...state.draftedPlayers, { ...action.player, teamId: action.teamId }], 
         currentPick: newPickNumber, 
-        isUserTurn: nextTeam?.isUser ?? false, draftComplete 
+        isUserTurn: nextTeam?.isUser ?? false, 
+        draftComplete 
       };
     }
 
@@ -104,8 +110,8 @@ function draftReducer(state, action) {
       };
     
     case 'SET_USER_TURN':
-      console.log("\n")
-      console.log("SET_USER_TURN action received");
+      // console.log("\n")
+      // console.log("SET_USER_TURN action received");
       // Toggle user's turn
       return {
         ...state,

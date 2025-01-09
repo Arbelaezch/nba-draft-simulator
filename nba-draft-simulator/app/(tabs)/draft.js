@@ -52,7 +52,7 @@ export default function DraftScreen() {
           return;
         }
 
-        console.log("AI selected player:", aiPick.name);
+        // console.log("AI selected player:", aiPick.name);
       
         dispatch({
           type: 'MAKE_PICK',
@@ -62,6 +62,12 @@ export default function DraftScreen() {
       }, 1000);
 
       return () => clearTimeout(timer);
+    }
+    
+    if (state.draftComplete) {
+      console.log("No next team - draft complete");
+      router.push('/evaluation');
+      return;
     }
   }, [state.processingAI, state.currentPick, state.isUserTurn]);
 
@@ -114,7 +120,7 @@ export default function DraftScreen() {
   const makeAIPick = (availablePlayers, team) => {
     console.log("\n");
     console.log('Making AI pick for team:', team.name);
-    console.log('Available players:', availablePlayers.length);
+    // console.log('Available players:', availablePlayers.length);
     
     // Calculate current team needs based on roster
     const needs = nbaService.calculateTeamNeeds(team.roster);
