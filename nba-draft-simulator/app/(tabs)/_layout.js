@@ -1,5 +1,5 @@
 import { Stack } from 'expo-router';
-import { DraftProvider } from '../context/DraftContext';
+import { DraftProvider } from '../../context/DraftContext';
 
 export default function RootLayout() {
   return (
