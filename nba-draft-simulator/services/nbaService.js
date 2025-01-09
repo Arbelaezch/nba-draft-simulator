@@ -1,4 +1,5 @@
-import playerData from '../data/nba2k_players.json';
+// import playerData from '../data/nba2k_players.json';
+import playerData from '../data/test_data.json';
 
 export const nbaService = {
   getPlayers: () => {
@@ -69,7 +70,7 @@ export const nbaService = {
     const uniqueTeams = [...new Set(playerData
       .filter(player => player.team)
       .map(player => player.team))]
-      .slice(0, 7); // Limit to 7 AI teams
+      .slice(0, 5); // Limit to 7 AI teams
 
     // Create teams array with user team first
     const teams = [
@@ -100,6 +101,22 @@ export const nbaService = {
         }
       }))
     ];
+
+    // Create test team array that contains each teams id and name
+    const testTeams = [
+      {
+        id: 1,
+        name: "Your Team",
+        roster: [],
+      },
+      ...uniqueTeams.map((team, index) => ({
+        id: index + 2,
+        name: team,
+        roster: [],
+      }))
+    ];
+    // console.log("teams", testTeams); // See team data
+    // console.log("teams", teams); // See team data
 
     return teams;
   },

@@ -1,10 +1,12 @@
 // Main component for handling the draft interface and logic
 import { View, Text, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
 import { useEffect, useState } from 'react';
+import { router } from 'expo-router';
+
 import { useDraft } from '../../context/DraftContext';
 import { nbaService } from '../../services/nbaService';
 import PlayerCard from '../../components/PlayerCard';
-import { router } from 'expo-router';
+
 
 export default function DraftScreen() {
   // Access draft state and dispatch from context
@@ -16,6 +18,54 @@ export default function DraftScreen() {
   useEffect(() => {
     initializeDraft();
   }, []);
+
+  useEffect(() => {
+    if (state.processingAI && !state.isUserTurn && !state.draftComplete) {
+      const timer = setTimeout(() => {
+        console.log("\n");
+        console.log("Process AI Picks called");
+        console.log("Current pick:", state.currentPick);
+        
+        const nextTeamId = state.draftOrder[state.currentPick - 1];
+        const nextTeam = state.teams.find(t => t.id === nextTeamId);
+        
+        // If no next team, draft is complete
+        if (!nextTeam) {
+          console.log("No next team - draft complete");
+          router.push('/evaluation');
+          return;
+        }
+      
+        // If next pick is user's turn, we're already done
+        if (nextTeam.isUser) {
+          console.log("Next team is user - ending AI picks");
+          dispatch({ type: 'SET_PROCESSING_AI', value: false });
+          return;
+        }
+      
+        // Make AI pick...
+        console.log("Making AI pick for team:", nextTeam.name);
+        const aiPick = makeAIPick(state.availablePlayers, nextTeam);
+        
+        if (!aiPick) {
+          console.error('No available players for AI to pick');
+          return;
+        }
+
+        console.log("AI selected player:", aiPick.name);
+      
+        dispatch({
+          type: 'MAKE_PICK',
+          player: aiPick,
+          teamId: nextTeam.id
+        });
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [state.processingAI, state.currentPick, state.isUserTurn]);
+
+  
 
   // Fetch initial draft data and set up draft order
   const initializeDraft = async () => {
@@ -55,30 +105,48 @@ export default function DraftScreen() {
       }
       order.push(...roundTeams);
     }
+    // console.log("order", order);
+    // [1, 2, 3, 4, 5, 6, 6, 5,.. 6]
     return order;
   };
 
   // AI logic for selecting players based on team needs
   const makeAIPick = (availablePlayers, team) => {
+    console.log("\n");
+    console.log('Making AI pick for team:', team.name);
+    console.log('Available players:', availablePlayers.length);
+    
     // Calculate current team needs based on roster
     const needs = nbaService.calculateTeamNeeds(team.roster);
+    console.log('Team needs:', needs);
     
     // Filter available players by team positional needs
     const neededPlayers = availablePlayers.filter(player => needs[player.position]);
+    // console.log('Players matching needs:', neededPlayers.length);
     
     // Use all available players if no players match needs
     const candidatePlayers = neededPlayers.length > 0 ? neededPlayers : availablePlayers;
     
+    if (candidatePlayers.length === 0) {
+      console.error('No candidate players available!');
+      return null;
+    }
+    
     // Sort players by rating with random factor for variety
-    return candidatePlayers.sort((a, b) => {
+    const selectedPlayer = candidatePlayers.sort((a, b) => {
       const ratingDiff = b.overall_rating - a.overall_rating;
       const randomFactor = Math.random() * 10 - 5; // Add randomness of ±5 to rating
       return ratingDiff + randomFactor;
     })[0];
+    
+    console.log('Selected player:', selectedPlayer.name);
+    return selectedPlayer;
   };
 
   // Handle user selecting a player
   const handlePlayerSelect = (player) => {
+    console.log("\n");
+    console.log("handlePlayerSelect called");
     if (!state.isUserTurn) return;
     
     // Process user's pick
@@ -87,60 +155,9 @@ export default function DraftScreen() {
       player,
       teamId: state.teams.find(team => team.isUser).id
     });
-
-    // Trigger AI picks after user's pick
-    setTimeout(processAIPicks, 0);
-  };
-
-  // Process AI team picks
-  const processAIPicks = () => {
-    // Get next team in draft order
-    const nextTeamId = state.draftOrder[state.currentPick - 1];
-    const nextTeam = state.teams.find(t => t.id === nextTeamId);
     
-    // If no next team, draft is complete
-    if (!nextTeam) {
-      router.push('/evaluation');
-      return;
-    }
-
-    // If next pick is user's turn, set flag and return
-    if (nextTeam.isUser) {
-      dispatch({ type: 'SET_USER_TURN', value: true });
-      return;
-    }
-
-    // Make AI pick for current team
-    const aiPick = makeAIPick(
-      state.availablePlayers,
-      nextTeam
-    );
-
-    if (!aiPick) {
-      console.error('No available players for AI to pick');
-      return;
-    }
-
-    // Process the AI pick
-    dispatch({
-      type: 'MAKE_PICK',
-      player: aiPick,
-      teamId: nextTeam.id
-    });
-
-    // Check next team after this pick
-    const pickAfterThis = state.currentPick + 1;
-    const nextNextTeamId = state.draftOrder[pickAfterThis - 1];
-    const nextNextTeam = state.teams.find(t => t.id === nextNextTeamId);
-    
-    // Continue AI picks or set user turn
-    if (nextNextTeam && !nextNextTeam.isUser) {
-      setTimeout(processAIPicks, 500); // Delay for visual feedback
-    } else if (nextNextTeam && nextNextTeam.isUser) {
-      dispatch({ type: 'SET_USER_TURN', value: true });
-    } else {
-      router.push('/evaluation');
-    }
+    // Start AI processing
+    dispatch({ type: 'SET_PROCESSING_AI', value: true });
   };
 
   // Get current team's name for display
