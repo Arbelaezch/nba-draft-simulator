@@ -33,7 +33,7 @@ export default function DraftScreen() {
       setIsLoading(false);
     } catch (error) {
       console.error('Error initializing draft:', error);
-      // You might want to add error handling UI here
+      // Add error handling UI here
     }
   };
 

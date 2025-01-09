@@ -5,7 +5,8 @@ const initialState = {
   teams: [],
   currentPick: 1,
   draftOrder: [],
-  isUserTurn: false,
+  isUserTurn: true,
+  draftComplete: false
 };
 
 function draftReducer(state, action) {
@@ -16,23 +17,35 @@ function draftReducer(state, action) {
         availablePlayers: action.players,
         teams: action.teams,
         draftOrder: action.draftOrder,
+        isUserTurn: action.draftOrder[0] === 1 // Assuming team 1 is user's team
       };
-    case 'MAKE_PICK':
+      
+    case 'MAKE_PICK': {
+      const updatedPlayers = state.availablePlayers.filter(p => p.id !== action.player.id);
+      const updatedTeams = state.teams.map(team => 
+        team.id === action.teamId 
+          ? { ...team, roster: [...team.roster, action.player] }
+          : team
+      );
+      
+      const newPickNumber = state.currentPick + 1;
+      const draftComplete = newPickNumber > state.draftOrder.length;
+      
       return {
         ...state,
-        availablePlayers: state.availablePlayers.filter(p => p.id !== action.player.id),
-        teams: state.teams.map(team => 
-          team.id === action.teamId 
-            ? { ...team, roster: [...team.roster, action.player] }
-            : team
-        ),
+        availablePlayers: updatedPlayers,
+        teams: updatedTeams,
+        currentPick: newPickNumber,
+        draftComplete
       };
-    case 'ADVANCE_TURN':
+    }
+    
+    case 'SET_USER_TURN':
       return {
         ...state,
-        currentPick: state.currentPick + 1,
-        isUserTurn: state.draftOrder[state.currentPick % state.draftOrder.length] === 1,
+        isUserTurn: action.value
       };
+
     default:
       return state;
   }
