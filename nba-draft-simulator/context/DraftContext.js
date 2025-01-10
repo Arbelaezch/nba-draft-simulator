@@ -26,8 +26,8 @@ function draftReducer(state, action) {
       const firstTeam = action.teams.find(t => t.id === firstTeamId);
       const initial_player_list = action.players.map(player => player.name);
       // console.log("Players list:", initial_player_list);
-      console.log("Teams list:", action.teams);
-      console.log("Draft order:", action.draftOrder);
+      // console.log("Teams list:", action.teams);
+      // console.log("Draft order:", action.draftOrder);
       
       return {
         ...state,

@@ -1,5 +1,6 @@
-// import playerData from '../data/nba2k_players.json';
-import playerData from '../data/test_data.json';
+// import playerData from '../data/current-players-jan10-2025.json';
+import playerData from '../data/all-time-players-jan10-2025.json';
+// import playerData from '../data/test_data.json';
 
 export const nbaService = {
   getPlayers: () => {
@@ -7,11 +8,13 @@ export const nbaService = {
     const players = playerData
       .filter(player => player.name && player.overallAttribute) // Filter out any invalid players
       .map((player, index) => ({
-        id: index + 1,
+        id: player.id,
         name: player.name,
         team: player.team,
         height: player.height,
-        position: player.position,
+        primaryPosition: player.primaryPosition,
+        secondaryPosition: player.secondaryPosition,
+        image: player.profilePicture,
         overall_rating: parseInt(player.overallAttribute) || 0,
         inside_scoring: {
           close_shot: player.closeShot,
