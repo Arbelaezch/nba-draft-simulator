@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Image } from 'react-native';
 import { calculateCompositeRating } from '../services/nbaService';
 
 export default function PlayerCard({ player, onSelect, disabled }) {
@@ -14,50 +14,62 @@ export default function PlayerCard({ player, onSelect, disabled }) {
       style={[styles.card, disabled && styles.cardDisabled]}
       onPress={() => !disabled && onSelect(player)}
     >
-      <View style={styles.header}>
-        <Text style={styles.name}>{player.name}</Text>
-        <Text style={[styles.rating, { color: getRatingColor(player.overall_rating) }]}>
-          {player.overall_rating}
-        </Text>
-      </View>
+      <View style={styles.cardContent}>
+        {player.image && (
+          <Image
+            source={{ uri: player.image }}
+            style={styles.playerImage}
+            resizeMode="cover"
+          />
+        )}
+        
+        <View style={styles.infoContainer}>
+          <View style={styles.header}>
+            <Text style={styles.name}>{player.name}</Text>
+            <Text style={[styles.rating, { color: getRatingColor(player.overall_rating) }]}>
+              {player.overall_rating}
+            </Text>
+          </View>
 
-      <Text style={styles.position}>
-        {player.primaryPosition}{player.secondaryPosition ? `/${player.secondaryPosition}` : ''} • {player.height}
-      </Text>
+          <Text style={styles.position}>
+            {player.primaryPosition}{player.secondaryPosition ? `/${player.secondaryPosition}` : ''} • {player.height}
+          </Text>
 
-      <View style={styles.statsGrid}>
-        <View style={styles.statColumn}>
-          <Text style={styles.statLabel}>Inside</Text>
-          <Text style={styles.statValue}>
-            {calculateCompositeRating(player.inside_scoring)}
-          </Text>
-        </View>
-        <View style={styles.statColumn}>
-          <Text style={styles.statLabel}>Shooting</Text>
-          <Text style={styles.statValue}>
-            {calculateCompositeRating(player.shooting)}
-          </Text>
-        </View>
-        <View style={styles.statColumn}>
-          <Text style={styles.statLabel}>Playmaking</Text>
-          <Text style={styles.statValue}>
-            {calculateCompositeRating(player.playmaking)}
-          </Text>
-        </View>
-        <View style={styles.statColumn}>
-          <Text style={styles.statLabel}>Defense</Text>
-          <Text style={styles.statValue}>
-            {calculateCompositeRating(player.defense)}
-          </Text>
-        </View>
-      </View>
+          <View style={styles.statsGrid}>
+            <View style={styles.statColumn}>
+              <Text style={styles.statLabel}>Inside</Text>
+              <Text style={styles.statValue}>
+                {calculateCompositeRating(player.inside_scoring)}
+              </Text>
+            </View>
+            <View style={styles.statColumn}>
+              <Text style={styles.statLabel}>Shooting</Text>
+              <Text style={styles.statValue}>
+                {calculateCompositeRating(player.shooting)}
+              </Text>
+            </View>
+            <View style={styles.statColumn}>
+              <Text style={styles.statLabel}>Playmaking</Text>
+              <Text style={styles.statValue}>
+                {calculateCompositeRating(player.playmaking)}
+              </Text>
+            </View>
+            <View style={styles.statColumn}>
+              <Text style={styles.statLabel}>Defense</Text>
+              <Text style={styles.statValue}>
+                {calculateCompositeRating(player.defense)}
+              </Text>
+            </View>
+          </View>
 
-      <View style={styles.detailedStats}>
-        <Text style={styles.detailText}>3PT: {player.shooting.three_point}</Text>
-        <Text style={styles.detailText}>Speed: {player.athleticism.speed}</Text>
-        <Text style={styles.detailText}>
-          Defense: {Math.round((player.defense.interior + player.defense.perimeter) / 2)}
-        </Text>
+          <View style={styles.detailedStats}>
+            <Text style={styles.detailText}>3PT: {player.shooting.three_point}</Text>
+            <Text style={styles.detailText}>Speed: {player.athleticism.speed}</Text>
+            <Text style={styles.detailText}>
+              Defense: {Math.round((player.defense.interior + player.defense.perimeter) / 2)}
+            </Text>
+          </View>
+        </View>
       </View>
     </Pressable>
   );
@@ -77,6 +89,18 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 3.84,
     elevation: 5,
+  },
+  cardContent: {
+    flexDirection: 'row',
+  },
+  playerImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    marginRight: 12,
+  },
+  infoContainer: {
+    flex: 1,
   },
   cardDisabled: {
     opacity: 0.7,
