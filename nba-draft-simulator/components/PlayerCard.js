@@ -21,7 +21,9 @@ export default function PlayerCard({ player, onSelect, disabled }) {
         </Text>
       </View>
 
-      <Text style={styles.position}>{player.position} • {player.height}</Text>
+      <Text style={styles.position}>
+        {player.primaryPosition}{player.secondaryPosition ? `/${player.secondaryPosition}` : ''} • {player.height}
+      </Text>
 
       <View style={styles.statsGrid}>
         <View style={styles.statColumn}>
