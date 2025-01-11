@@ -28,6 +28,20 @@ export default function RootLayout() {
               headerBackVisible: false 
             }} 
           />
+          <Stack.Screen 
+            name="settings" 
+            options={{ 
+              title: 'Settings',
+              headerShown: false 
+            }} 
+          />
+          <Stack.Screen 
+            name="advanced-setup" 
+            options={{ 
+              title: 'Advanced Setup',
+              headerShown: false 
+            }} 
+          />
         </Stack>
       </DraftProvider>
     </SettingsProvider>
