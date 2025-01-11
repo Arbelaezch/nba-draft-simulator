@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { router } from 'expo-router';
 
 import { useDraft } from '../../context/DraftContext';
-import { evaluateTeam, getFeedbackMessage } from '../../utils/scoringUtils';
+import { calculateEnhancedTeamScore, evaluateTeam, getFeedbackMessage } from '../../utils/scoringUtils';
 
 
 export default function EvaluationScreen() {
@@ -19,9 +19,12 @@ export default function EvaluationScreen() {
     .filter(team => !team.isUser)
     .map(team => ({
       ...team,
-      score: evaluateTeam(team.roster)
+    //   score: evaluateTeam(team.roster)
+      score: calculateEnhancedTeamScore(team.roster)
     }))
     .sort((a, b) => b.score - a.score);
+
+    console.log("aiTeams", aiTeams);
 
   // Handler for team row clicks
   const toggleTeamExpansion = (teamId) => {
