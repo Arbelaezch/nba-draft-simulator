@@ -1,6 +1,7 @@
 // Player pool imports
 import currentPlayers from '../data/current-players-jan10-2025.json';
 import allTimePlayers from '../data/all-time-players-jan10-2025.json';
+import { teamsConfig } from '../data/teamList';
 
 export const nbaService = {
   getPlayers: (poolType = 'current') => {
@@ -83,39 +84,14 @@ export const nbaService = {
       .sort((a, b) => b.overall_rating - a.overall_rating);
   },
 
-  getTeams: (numberOfRounds = 5) => {
-    const uniqueTeams = [...new Set(currentPlayers
-      .filter(player => player.team)
-      .map(player => player.team))]
-      .slice(0, 5);
-
-    const createInitialNeeds = () => ({
-      PG: { current: 0, target: Math.ceil(numberOfRounds * 0.2) },
-      SG: { current: 0, target: Math.ceil(numberOfRounds * 0.2) },
-      SF: { current: 0, target: Math.ceil(numberOfRounds * 0.2) },
-      PF: { current: 0, target: Math.ceil(numberOfRounds * 0.2) },
-      C: { current: 0, target: Math.ceil(numberOfRounds * 0.2) }
-    });
-
+  getTeams: (numberOfRounds = 5, aiTeamCount = 5) => {
+    const aiTeams = teamsConfig.getRandomTeams(aiTeamCount);
+    
     const teams = [
-      {
-        id: 1,
-        name: "Your Team",
-        isUser: true,
-        roster: [],
-        needs: createInitialNeeds(),
-        roundsCompleted: 0,
-        totalRounds: numberOfRounds
-      },
-      ...uniqueTeams.map((team, index) => ({
-        id: index + 2,
-        name: team,
-        isUser: false,
-        roster: [],
-        needs: createInitialNeeds(),
-        roundsCompleted: 0,
-        totalRounds: numberOfRounds
-      }))
+      teamsConfig.createTeamObject("Your Team", 1, true, numberOfRounds),
+      ...aiTeams.map((teamName, index) => 
+        teamsConfig.createTeamObject(teamName, index + 2, false, numberOfRounds)
+      )
     ];
 
     return teams;
