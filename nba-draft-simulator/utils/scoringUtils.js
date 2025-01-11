@@ -1,4 +1,127 @@
-import _ from 'lodash';
+import _ from "lodash";
+
+const calculateBadgeSynergy = (roster) => {
+  // Count complementary badge combinations
+  const playmakingBadges = roster.reduce(
+    (sum, p) => sum + p.badges.playmaking,
+    0
+  );
+  const finishingBadges = roster.reduce(
+    (sum, p) => sum + p.badges.inside_scoring + p.badges.outside_scoring,
+    0
+  );
+
+  // Evaluate badge distribution
+  const defensiveBadges = roster.reduce(
+    (sum, p) => sum + p.badges.defensive + p.badges.rebounding,
+    0
+  );
+
+  // Value higher tier badges more
+  const eliteBadges = roster.reduce(
+    (sum, p) =>
+      sum + p.badges.legendary * 3 + p.badges.purple * 2 + p.badges.gold,
+    0
+  );
+
+  let score = 0;
+  // Good ratio of playmaking to finishing badges
+  score += Math.min(30, (playmakingBadges / finishingBadges) * 30);
+  // Enough defensive badges
+  score += Math.min(40, (defensiveBadges / roster.length) * 10);
+  // Value elite badges
+  score += Math.min(30, (eliteBadges / roster.length) * 5);
+
+  return score;
+};
+
+const calculateClutchCapability = (roster) => {
+  // Identify primary scoring options
+  const clutchScorers = roster.filter(
+    (p) =>
+      (p.shooting.shot_iq >= 85 && p.intangibles.offensive_consistency >= 85) ||
+      (p.inside_scoring.close_shot >= 85 &&
+        p.intangibles.offensive_consistency >= 85)
+  ).length;
+
+  // Free throw reliability in clutch
+  const reliableFTShooters = roster.filter(
+    (p) => p.shooting.free_throw >= 85
+  ).length;
+
+  // Defensive stoppers for clutch situations
+  const clutchDefenders = roster.filter(
+    (p) =>
+      p.defense.perimeter >= 85 ||
+      (p.defense.interior >= 85 && p.intangibles.defensive_consistency >= 85)
+  ).length;
+
+  let score = 0;
+  score += clutchScorers * 30;
+  score += reliableFTShooters * 10;
+  score += clutchDefenders * 20;
+
+  return Math.min(100, score);
+};
+
+const calculateChemistryAndFit = (roster) => {
+  // Spacing assessment - need shooters around slashers
+  const shooters = roster.filter((p) => p.shooting.three_point >= 80).length;
+  const slashers = roster.filter(
+    (p) => p.inside_scoring.driving_dunk >= 80 || p.inside_scoring.layup >= 80
+  ).length;
+
+  // Playmaker-to-finisher ratio
+  const playmakers = roster.filter(
+    (p) => (p.playmaking.pass_vision + p.playmaking.pass_iq) / 2 >= 80
+  ).length;
+  const finishers = roster.filter(
+    (p) => p.inside_scoring.standing_dunk >= 80 || p.shooting.three_point >= 80
+  ).length;
+
+  let score = 0;
+  // Good balance of shooters and slashers
+  if (shooters >= 2 && slashers >= 2) score += 40;
+  // Enough playmakers to feed finishers
+  if (playmakers * 2 >= finishers) score += 30;
+  // Not too many ball-dominant players
+  const ballDominantPlayers = roster.filter(
+    (p) => p.playmaking.ball_handle >= 85
+  ).length;
+  score += Math.min(30, (3 - ballDominantPlayers) * 10);
+
+  return score;
+};
+
+const calculateLineupVersatility = (roster) => {
+  // Can the team play "small ball"?
+  const smallBallViable = roster.some(
+    (p) =>
+      p.primaryPosition === "PF" &&
+      p.defense.perimeter >= 75 &&
+      p.athleticism.speed >= 75
+  );
+
+  // Can the team play "tall ball"?
+  const tallBallViable = roster.some(
+    (p) => p.primaryPosition === "C" && p.shooting.three_point >= 70
+  );
+
+  // Position-less basketball capability
+  const switchableDefenders = roster.filter(
+    (p) =>
+      p.defense.perimeter >= 75 &&
+      p.defense.interior >= 75 &&
+      p.athleticism.agility >= 75
+  ).length;
+
+  let score = 0;
+  if (smallBallViable) score += 30;
+  if (tallBallViable) score += 30;
+  score += (switchableDefenders / roster.length) * 40;
+
+  return score;
+};
 
 // Height calculation utilities
 const convertHeightToInches = (heightStr) => {
@@ -140,6 +263,7 @@ const calculateBadges = (roster) => {
   return Math.min(100, (avgBadges / 20) * 100);
 };
 
+//! New
 const calculateEnhancedTeamScore = (roster) => {
   // Core evaluation categories with weighted sub-components
   const evaluateOffensiveVersatility = (roster) => {
@@ -354,27 +478,11 @@ const calculateEnhancedTeamScore = (roster) => {
     0
   );
 
+  console.log("scores", scores);
+
   return Math.round(finalScore);
 };
-
-// Get feedback message based on final score
-const getFeedbackMessage = (score) => {
-  if (score >= 95)
-    return "Elite Dynasty Material! This team has the perfect blend of talent, chemistry, and balance - reminiscent of the '96 Bulls! 🏆👑";
-  if (score >= 90)
-    return "Championship Caliber! Your team has the depth and versatility of the 2022 Warriors - true title contenders! 🏆";
-  if (score >= 85)
-    return "Title Contender! This roster has excellent balance and could compete with any team in the league! 🌟";
-  if (score >= 80)
-    return "Playoff Ready! Your team shows great potential with strong fundamentals and good chemistry! 💪";
-  if (score >= 75)
-    return "Promising Core! With some development, this team could make some serious noise! 📈";
-  if (score >= 70)
-    return "Solid Foundation! Your team has good pieces but might need more balance to compete at the highest level. 🔄";
-  if (score >= 65)
-    return "Work in Progress! There's talent here, but the roster needs more cohesion and depth. 🛠️";
-  return "Development Mode! Keep drafting - focus on team balance and complementary skillsets! 📚";
-};
+// !end new
 
 // Main evaluation function
 const evaluateTeam = (roster) => {
@@ -419,4 +527,4 @@ const evaluateTeam = (roster) => {
   return Math.round(finalScore);
 };
 
-export { evaluateTeam, getFeedbackMessage, calculateEnhancedTeamScore };
+export { evaluateTeam, calculateEnhancedTeamScore };
