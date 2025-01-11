@@ -1,6 +1,7 @@
 import _ from "lodash";
 
 import { convertHeightToInches } from "./utilities";
+import { LEGENDARY_DUOS, LEGENDARY_TRIOS } from "../data/legendaryCombos";
 
 const calculateBadgeSynergy = (roster) => {
     // Count complementary badge combinations
@@ -324,6 +325,60 @@ const calculateOffensiveRating = (roster) => {
     return Math.min(200, rawScore * 1.5); // Apply scaling factor to get to appropriate range
 };
 
+const calculateLegendaryTeammateScore = (roster) => {
+    let score = 0;
+    let activatedCombos = [];
+    const playerNames = roster.map(player => player.name);
+
+    // Check for legendary trios first (they provide bigger bonuses)
+    LEGENDARY_TRIOS.forEach(trio => {
+        if (trio.players.every(player => playerNames.includes(player))) {
+            score += trio.bonus;
+            activatedCombos.push({
+                players: trio.players,
+                bonus: trio.bonus,
+                description: trio.description
+            });
+        }
+    });
+
+    // Then check for legendary duos
+    // Only count duos that aren't part of an already-counted trio
+    LEGENDARY_DUOS.forEach(duo => {
+        if (duo.players.every(player => playerNames.includes(player))) {
+            // Check if these players weren't already part of a counted trio
+            const alreadyCounted = activatedCombos.some(combo =>
+                duo.players.every(player => combo.players.includes(player))
+            );
+
+            if (!alreadyCounted) {
+                score += duo.bonus;
+                activatedCombos.push({
+                    players: duo.players,
+                    bonus: duo.bonus,
+                    description: duo.description
+                });
+            }
+        }
+    });
+
+    // Log activated combinations for debugging and user feedback
+    // if (activatedCombos.length > 0) {
+    //     console.log("Legendary Teammate Combinations Found:", 
+    //         activatedCombos.map(combo => ({
+    //             players: combo.players.join(" & "),
+    //             bonus: combo.bonus,
+    //             description: combo.description
+    //         }))
+    //     );
+    // }
+
+    return {
+        score: Math.min(200, score), // Cap at 200 to stay within our scale
+        combinations: activatedCombos
+    };
+};
+
 
 // #######################################
 // ## Calculate Team Scoring
@@ -334,7 +389,6 @@ const calculateTeamScore = (roster) => {
     // Core team attributes
     const coreAttributes = {
         badgeSynergy: calculateBadgeSynergy(roster),
-        chemistry: calculateChemistryAndFit(roster), //!Move to teamComposition
         versatility: calculateLineupVersatility(roster),
         clutch: calculateClutchCapability(roster),
     };
@@ -352,12 +406,14 @@ const calculateTeamScore = (roster) => {
         positionBalance: calculatePositionBalance(roster),
         heightBalance: calculateHeightScore(roster),
         // depthQuality: calculateDepthQuality(roster),
+        chemistry: calculateChemistryAndFit(roster),
+        legendaryTeammates: calculateLegendaryTeammateScore(roster).score,
     };
 
     // Calculate weighted scores
-    const coreScore = _.mean(Object.values(coreAttributes)) * 0.4;
+    const coreScore = _.mean(Object.values(coreAttributes)) * 0.25;
     const skillsScore = _.mean(Object.values(fundamentalSkills)) * 0.35;
-    const compositionScore = _.mean(Object.values(teamComposition)) * 0.25;
+    const compositionScore = _.mean(Object.values(teamComposition)) * 0.40;
 
     // Calculate final score (0-200 scale)
     const finalScore = Math.round(coreScore + skillsScore + compositionScore);
