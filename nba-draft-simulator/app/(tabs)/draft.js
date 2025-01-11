@@ -149,27 +149,7 @@ export default function DraftScreen() {
     // Calculate current team needs based on roster
     const needs = nbaService.calculateTeamNeeds(team.roster, state.settings.currentRounds);
     console.log('Team needs:', needs);
-    
-    // // Filter available players by team positional needs
-    // const neededPlayers = availablePlayers.filter(player => needs[player.position]);
-    // // console.log('Players matching needs:', neededPlayers.length);
-    
-    // // Use all available players if no players match needs
-    // const candidatePlayers = neededPlayers.length > 0 ? neededPlayers : availablePlayers;
-    
-    // if (candidatePlayers.length === 0) {
-    //   console.error('No candidate players available!');
-    //   return null;
-    // }
 
-    // // Sort players by rating with random factor for variety
-    // const selectedPlayer = candidatePlayers.sort((a, b) => {
-    //   const ratingDiff = b.overall_rating - a.overall_rating;
-    //   const randomFactor = Math.random() * 10 - 5; // Add randomness of ±5 to rating
-    //   return ratingDiff + randomFactor;
-    // })[0];
-
-    // !new
     // Create priority list based on needs
     const priorities = Object.entries(needs).map(([position, stats]) => ({
       position,
@@ -202,8 +182,6 @@ export default function DraftScreen() {
       const randomFactor = Math.random() * 10 - 5;
       return ratingDiff + randomFactor;
     })[0];
-
-    // !end new
 
     console.log('Selected player:', selectedPlayer.name);
     return selectedPlayer;
