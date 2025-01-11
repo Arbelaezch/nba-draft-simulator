@@ -1,30 +1,10 @@
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { useState } from 'react';
 import { router } from 'expo-router';
+
 import { useDraft } from '../../context/DraftContext';
+import { evaluateTeam, getFeedbackMessage } from '../../utils/scoringUtils';
 
-// Evaluate a team's overall score based on player ratings and positions
-const evaluateTeam = (roster) => {
-  if (!roster || roster.length === 0) return 0;
-  
-  // Basic scoring: average of player ratings with position coverage bonus
-  const positionsCovered = new Set(roster.map(player => player.position));
-  const positionBonus = positionsCovered.size * 2; // +2 points per unique position
-  
-  const averageRating = roster.reduce((sum, player) => 
-    sum + player.overall_rating, 0) / roster.length;
-    
-  return Math.round(averageRating + positionBonus);
-};
-
-// Get feedback message based on score
-const getFeedbackMessage = (score) => {
-  if (score >= 90) return "Outstanding draft! Your team looks championship ready! 🏆";
-  if (score >= 80) return "Great draft! Your team has serious potential! 🌟";
-  if (score >= 70) return "Solid draft! Your team should be competitive. 👍";
-  if (score >= 60) return "Decent draft. There's room for improvement. 🔄";
-  return "Keep practicing! Every draft is a learning experience. 📚";
-};
 
 export default function EvaluationScreen() {
   const { state } = useDraft();
@@ -41,7 +21,7 @@ export default function EvaluationScreen() {
       ...team,
       score: evaluateTeam(team.roster)
     }))
-    .sort((a, b) => b.score - a.score); // Sort by score descending
+    .sort((a, b) => b.score - a.score);
 
   // Handler for team row clicks
   const toggleTeamExpansion = (teamId) => {
@@ -51,8 +31,10 @@ export default function EvaluationScreen() {
   // Render player stats row
   const renderPlayerStats = (player) => (
     <View key={player.id} style={styles.playerRow}>
-      <Text style={styles.playerName}>{player.name}</Text>
-      <Text style={styles.playerPosition}>{player.position}</Text>
+      <Text style={styles.playerName} numberOfLines={1}>{player.name}</Text>
+      <Text style={styles.playerPosition}>
+        {player.primaryPosition}{player.secondaryPosition ? `/${player.secondaryPosition}` : ''}
+      </Text>
       <Text style={styles.playerRating}>{player.overall_rating}</Text>
     </View>
   );
@@ -66,9 +48,9 @@ export default function EvaluationScreen() {
         <Text style={styles.feedbackText}>{getFeedbackMessage(userScore)}</Text>
         
         <View style={styles.rosterHeader}>
-          <Text style={styles.columnHeader}>Player</Text>
-          <Text style={styles.columnHeader}>Pos</Text>
-          <Text style={styles.columnHeader}>OVR</Text>
+          <Text style={[styles.columnHeader, styles.playerName]}>Player</Text>
+          <Text style={[styles.columnHeader, styles.playerPosition]}>Pos</Text>
+          <Text style={[styles.columnHeader, styles.playerRating]}>OVR</Text>
         </View>
         
         {userTeam.roster.map(renderPlayerStats)}
@@ -94,9 +76,9 @@ export default function EvaluationScreen() {
             {expandedTeamId === team.id && (
               <View style={styles.expandedContent}>
                 <View style={styles.rosterHeader}>
-                  <Text style={styles.columnHeader}>Player</Text>
-                  <Text style={styles.columnHeader}>Pos</Text>
-                  <Text style={styles.columnHeader}>OVR</Text>
+                  <Text style={[styles.columnHeader, styles.playerName]}>Player</Text>
+                  <Text style={[styles.columnHeader, styles.playerPosition]}>Pos</Text>
+                  <Text style={[styles.columnHeader, styles.playerRating]}>OVR</Text>
                 </View>
                 {team.roster.map(renderPlayerStats)}
               </View>
@@ -160,30 +142,35 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#e2e8f0',
     marginBottom: 8,
+    paddingHorizontal: 8,
   },
   columnHeader: {
-    flex: 1,
     fontWeight: '600',
     color: '#4a5568',
   },
   playerRow: {
     flexDirection: 'row',
     paddingVertical: 8,
+    paddingHorizontal: 8,
     borderBottomWidth: 1,
     borderBottomColor: '#edf2f7',
+    alignItems: 'center',
   },
   playerName: {
-    flex: 1,
+    flex: 3,
     color: '#2d3748',
+    paddingRight: 8,
   },
   playerPosition: {
     flex: 1,
     color: '#4a5568',
+    textAlign: 'center',
   },
   playerRating: {
-    flex: 1,
+    width: 50,
     color: '#2c5282',
     fontWeight: '500',
+    textAlign: 'right',
   },
   teamRow: {
     flexDirection: 'row',
