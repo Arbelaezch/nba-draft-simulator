@@ -1,7 +1,7 @@
 // Player pool imports
 import currentPlayers from '../data/current-players-jan10-2025.json';
 import allTimePlayers from '../data/all-time-players-jan10-2025.json';
-import { teamsConfig } from '../data/teamList';
+import { teamsConfig } from '../data/teamsList';
 
 export const nbaService = {
   getPlayers: (poolType = 'current') => {
