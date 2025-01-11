@@ -92,7 +92,7 @@ export default function AdvancedSetupScreen() {
         <Text style={styles.label}>Number of Rounds</Text>
         <SelectList
           setSelected={(value) => updateAdvancedSetup('currentRounds', parseInt(value))}
-          data={[5, 7, 10, 12, 15].map(num => ({ 
+          data={[5, 7, 10, 12].map(num => ({ 
             value: num.toString(), 
             label: num.toString() + ' Rounds'
           }))}
