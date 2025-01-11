@@ -123,7 +123,7 @@ export default function DraftScreen() {
     // console.log('Available players:', availablePlayers.length);
     
     // Calculate current team needs based on roster
-    const needs = nbaService.calculateTeamNeeds(team.roster);
+    const needs = nbaService.calculateTeamNeeds(team.roster, team.totalRounds);
     console.log('Team needs:', needs);
     
     // Filter available players by team positional needs
