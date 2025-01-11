@@ -3,7 +3,27 @@ import { useState } from 'react';
 import { router } from 'expo-router';
 
 import { useDraft } from '../../context/DraftContext';
-import { calculateEnhancedTeamScore, evaluateTeam, getFeedbackMessage } from '../../utils/scoringUtils';
+import { calculateEnhancedTeamScore, evaluateTeam } from '../../utils/scoringUtils';
+
+
+// Get feedback message based on final score
+const getFeedbackMessage = (score) => {
+    if (score >= 95)
+      return "Elite Dynasty Material! This team has the perfect blend of talent, chemistry, and balance - reminiscent of the '96 Bulls! 🏆👑";
+    if (score >= 90)
+      return "Championship Caliber! Your team has the depth and versatility of the 2022 Warriors - true title contenders! 🏆";
+    if (score >= 85)
+      return "Title Contender! This roster has excellent balance and could compete with any team in the league! 🌟";
+    if (score >= 80)
+      return "Playoff Ready! Your team shows great potential with strong fundamentals and good chemistry! 💪";
+    if (score >= 75)
+      return "Promising Core! With some development, this team could make some serious noise! 📈";
+    if (score >= 70)
+      return "Solid Foundation! Your team has good pieces but might need more balance to compete at the highest level. 🔄";
+    if (score >= 65)
+      return "Work in Progress! There's talent here, but the roster needs more cohesion and depth. 🛠️";
+    return "Development Mode! Keep drafting - focus on team balance and complementary skillsets! 📚";
+  };
 
 
 export default function EvaluationScreen() {
