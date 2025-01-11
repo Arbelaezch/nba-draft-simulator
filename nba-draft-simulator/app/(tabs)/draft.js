@@ -10,6 +10,7 @@ import { nbaService } from '../../services/nbaService';
 import { settingsService } from '../../services/settingsService';
 import PlayerCard from '../../components/PlayerCard';
 import { NBA_TEAMS_DATA } from '../../data/teamsList';
+import AISelectionDisplay from '../../components/AISelectionDisplay';
 
 
 export default function DraftScreen() {
@@ -18,11 +19,20 @@ export default function DraftScreen() {
   // Loading state for initial data fetch
   const [isLoading, setIsLoading] = useState(true);
   const { settings } = useSettings();
+  const [aiSelection, setAiSelection] = useState(null);
+  const [showAiSelection, setShowAiSelection] = useState(false);
 
   // Initialize draft data when component mounts
   useEffect(() => {
     initializeDraft();
   }, []);
+
+  // Hide AI selection overlay whenever it becomes user's turn
+  useEffect(() => {
+    if (state.isUserTurn) {
+      setShowAiSelection(false);
+    }
+  }, [state.isUserTurn]);
 
   useEffect(() => {
     if (state.processingAI && !state.isUserTurn && !state.draftComplete) {
@@ -45,6 +55,7 @@ export default function DraftScreen() {
         if (nextTeam.isUser) {
           console.log("Next team is user - ending AI picks");
           dispatch({ type: 'SET_PROCESSING_AI', value: false });
+          setShowAiSelection(false);
           return;
         }
       
@@ -58,13 +69,30 @@ export default function DraftScreen() {
         }
 
         // console.log("AI selected player:", aiPick.name);
-      
-        dispatch({
-          type: 'MAKE_PICK',
+        
+        // Update AI selection immediately
+        const teamData = NBA_TEAMS_DATA.find(t => t.name === nextTeam.name);
+        setAiSelection({
           player: aiPick,
-          teamId: nextTeam.id
+          team: {
+            name: nextTeam.name,
+            logo: teamData?.logo
+          }
         });
-      }, 1000);
+        
+        // Show AI selection
+        if (!showAiSelection) {
+          setShowAiSelection(true);
+        }
+      
+        setTimeout(() => {
+          dispatch({
+            type: 'MAKE_PICK',
+            player: aiPick,
+            teamId: nextTeam.id
+          });
+        }, 700);
+      }, 700);
 
       return () => clearTimeout(timer);
     }
@@ -193,6 +221,8 @@ export default function DraftScreen() {
   const handlePlayerSelect = (player) => {
     console.log("\nhandlePlayerSelect called");
     if (!state.isUserTurn) return;
+
+    setShowAiSelection(false);
     
     // Process user's pick
     dispatch({
@@ -238,6 +268,12 @@ export default function DraftScreen() {
   // Main draft UI
   return (
     <View style={styles.container}>
+      <AISelectionDisplay 
+        player={aiSelection?.player}
+        visible={showAiSelection}
+        team={aiSelection?.team}
+      />
+
       <View style={styles.header}>
         <View style={styles.teamInfo}>
           {currentTeam?.logo && (
