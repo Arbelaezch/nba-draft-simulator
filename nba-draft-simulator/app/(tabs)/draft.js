@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 import { router } from 'expo-router';
 
 import { useDraft } from '../../context/DraftContext';
+import { useSettings } from '../../context/SettingsContext';
 import { nbaService } from '../../services/nbaService';
+import { settingsService } from '../../services/settingsService';
 import PlayerCard from '../../components/PlayerCard';
 
 
@@ -13,6 +15,7 @@ export default function DraftScreen() {
   const { state, dispatch } = useDraft();
   // Loading state for initial data fetch
   const [isLoading, setIsLoading] = useState(true);
+  const { settings } = useSettings();
 
   // Initialize draft data when component mounts
   useEffect(() => {
@@ -76,19 +79,41 @@ export default function DraftScreen() {
   // Fetch initial draft data and set up draft order
   const initializeDraft = async () => {
     try {
-      // Get player data from NBA service
-      const players = await nbaService.getPlayers();
-      // Get team data from NBA service
-      const teams = nbaService.getTeams();
-      // Generate snake draft order based on number of teams
-      const draftOrder = generateSnakeDraftOrder(teams.length);
+      // Get draft settings (either from advanced setup or defaults)
+      const draftSettings = {
+        currentRounds: settings.currentRounds || settings.defaultRounds,
+        currentPlayerPool: settings.currentPlayerPool || settings.defaultPlayerPool,
+        aiTeamCount: settings.aiTeamCount || 5,
+        userTeam: settings.userTeam || settings.defaultTeam,
+        draftType: settings.draftType || 'snake',
+        userDraftPosition: settings.userDraftPosition || 'first'
+      };
+
+      // Get players based on selected pool
+      const players = await nbaService.getPlayers(draftSettings.currentPlayerPool);
       
-      // Initialize draft state with fetched data
+      // Get teams with proper count and user team
+      const teams = nbaService.getTeams(draftSettings.currentRounds, draftSettings.aiTeamCount);
+
+      // Update user team name if specified
+      const userTeamIndex = teams.findIndex(t => t.isUser);
+      if (userTeamIndex !== -1) {
+        teams[userTeamIndex].name = draftSettings.userTeam;
+      }
+      
+      // Generate snake draft order based on number of teams
+      // const draftOrder = generateSnakeDraftOrder(teams.length);
+
+      // Generate draft order based on settings
+      const draftOrder = settingsService.generateDraftOrder(draftSettings, teams);
+      
+      // Initialize draft state
       dispatch({
         type: 'INITIALIZE_DRAFT',
         players,
         teams,
         draftOrder,
+        settings: draftSettings
       });
       
       setIsLoading(false);
@@ -118,41 +143,75 @@ export default function DraftScreen() {
 
   // AI logic for selecting players based on team needs
   const makeAIPick = (availablePlayers, team) => {
-    console.log("\n");
-    console.log('Making AI pick for team:', team.name);
+    console.log('\nMaking AI pick for team:', team.name);
     // console.log('Available players:', availablePlayers.length);
     
     // Calculate current team needs based on roster
-    const needs = nbaService.calculateTeamNeeds(team.roster, team.totalRounds);
+    const needs = nbaService.calculateTeamNeeds(team.roster, state.settings.currentRounds);
     console.log('Team needs:', needs);
     
-    // Filter available players by team positional needs
-    const neededPlayers = availablePlayers.filter(player => needs[player.position]);
-    // console.log('Players matching needs:', neededPlayers.length);
+    // // Filter available players by team positional needs
+    // const neededPlayers = availablePlayers.filter(player => needs[player.position]);
+    // // console.log('Players matching needs:', neededPlayers.length);
     
-    // Use all available players if no players match needs
-    const candidatePlayers = neededPlayers.length > 0 ? neededPlayers : availablePlayers;
+    // // Use all available players if no players match needs
+    // const candidatePlayers = neededPlayers.length > 0 ? neededPlayers : availablePlayers;
     
-    if (candidatePlayers.length === 0) {
+    // if (candidatePlayers.length === 0) {
+    //   console.error('No candidate players available!');
+    //   return null;
+    // }
+
+    // // Sort players by rating with random factor for variety
+    // const selectedPlayer = candidatePlayers.sort((a, b) => {
+    //   const ratingDiff = b.overall_rating - a.overall_rating;
+    //   const randomFactor = Math.random() * 10 - 5; // Add randomness of ±5 to rating
+    //   return ratingDiff + randomFactor;
+    // })[0];
+
+    // !new
+    // Create priority list based on needs
+    const priorities = Object.entries(needs).map(([position, stats]) => ({
+      position,
+      priority: (stats.target - stats.current) / stats.target
+    })).sort((a, b) => b.priority - a.priority);
+
+    // Filter players by primary and secondary positions based on priorities
+    const candidatePlayers = availablePlayers.filter(player => {
+      const primaryMatch = priorities.some(p => 
+        p.position === player.primaryPosition && p.priority > 0
+      );
+      const secondaryMatch = priorities.some(p => 
+        p.position === player.secondaryPosition && p.priority > 0
+      );
+      return primaryMatch || secondaryMatch;
+    });
+
+    // If no players match needs, use all available players
+    const selectablePlayers = candidatePlayers.length > 0 ? 
+      candidatePlayers : availablePlayers;
+    
+    if (selectablePlayers.length === 0) {
       console.error('No candidate players available!');
       return null;
     }
-    
-    // Sort players by rating with random factor for variety
-    const selectedPlayer = candidatePlayers.sort((a, b) => {
+
+    // Sort by rating with random factor for variety
+    const selectedPlayer = selectablePlayers.sort((a, b) => {
       const ratingDiff = b.overall_rating - a.overall_rating;
-      const randomFactor = Math.random() * 10 - 5; // Add randomness of ±5 to rating
+      const randomFactor = Math.random() * 10 - 5;
       return ratingDiff + randomFactor;
     })[0];
-    
+
+    // !end new
+
     console.log('Selected player:', selectedPlayer.name);
     return selectedPlayer;
   };
 
   // Handle user selecting a player
   const handlePlayerSelect = (player) => {
-    console.log("\n");
-    console.log("handlePlayerSelect called");
+    console.log("\nhandlePlayerSelect called");
     if (!state.isUserTurn) return;
     
     // Process user's pick
@@ -191,7 +250,9 @@ export default function DraftScreen() {
         <Text style={styles.headerText}>
           {state.isUserTurn ? "Your Pick" : `${getCurrentTeamName()} is picking...`}
         </Text>
-        <Text style={styles.pickNumber}>Pick #{state.currentPick}</Text>
+        <Text style={styles.pickNumber}>
+          Pick #{state.currentPick} of {state.draftOrder.length}
+        </Text>
       </View>
 
       <FlatList

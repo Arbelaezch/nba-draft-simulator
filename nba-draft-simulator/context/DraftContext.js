@@ -1,6 +1,7 @@
 // Context provider for managing draft state
 import { createContext, useContext, useReducer } from 'react';
 import { nbaService } from '../services/nbaService';
+import { settingsService } from '../services/settingsService';
 
 // Initial draft state
 const initialState = {
@@ -11,7 +12,8 @@ const initialState = {
   isUserTurn: true,
   draftComplete: false,
   draftedPlayers: [],
-  processingAI: false
+  processingAI: false,
+  settings: null,
 };
 
 // Reducer for handling draft state updates
@@ -24,7 +26,7 @@ function draftReducer(state, action) {
       // Set up initial draft state with provided data
       const firstTeamId = action.draftOrder[0];
       const firstTeam = action.teams.find(t => t.id === firstTeamId);
-      const initial_player_list = action.players.map(player => player.name);
+      // const initial_player_list = action.players.map(player => player.name);
       // console.log("Players list:", initial_player_list);
       // console.log("Teams list:", action.teams);
       // console.log("Draft order:", action.draftOrder);
@@ -40,7 +42,8 @@ function draftReducer(state, action) {
         isUserTurn: firstTeam.isUser,
         draftedPlayers: [],
         currentPick: 1,
-        draftComplete: false
+        draftComplete: false,
+        settings: action.settings
       };
     }
       
@@ -63,7 +66,7 @@ function draftReducer(state, action) {
             ...team,
             roster: updatedRoster,
             // Recalculate needs based on updated roster
-            needs: nbaService.calculateTeamNeeds(updatedRoster)
+            needs: nbaService.calculateTeamNeeds(updatedRoster, state.settings.currentRounds || state.settings.defaultRounds)
           };
         }
         return team;
@@ -98,8 +101,8 @@ function draftReducer(state, action) {
         teams: updatedTeams, 
         draftedPlayers: [...state.draftedPlayers, { ...action.player, teamId: action.teamId }], 
         currentPick: newPickNumber, 
-        isUserTurn: nextTeam?.isUser ?? false, 
-        draftComplete 
+        isUserTurn: nextTeam?.isUser ?? false,
+        draftComplete,
       };
     }
 
