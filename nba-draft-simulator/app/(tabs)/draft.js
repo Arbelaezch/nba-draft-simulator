@@ -1,5 +1,6 @@
 // Main component for handling the draft interface and logic
 import { View, Text, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
+import { SvgCssUri } from 'react-native-svg/css';
 import { useEffect, useState } from 'react';
 import { router } from 'expo-router';
 
@@ -8,6 +9,7 @@ import { useSettings } from '../../context/SettingsContext';
 import { nbaService } from '../../services/nbaService';
 import { settingsService } from '../../services/settingsService';
 import PlayerCard from '../../components/PlayerCard';
+import { NBA_TEAMS_DATA } from '../../data/teamsList';
 
 
 export default function DraftScreen() {
@@ -203,12 +205,21 @@ export default function DraftScreen() {
     dispatch({ type: 'SET_PROCESSING_AI', value: true });
   };
 
-  // Get current team's name for display
-  const getCurrentTeamName = () => {
-    if (!state.draftOrder.length || state.currentPick > state.draftOrder.length) return '';
+  // Get current team's info
+  const getCurrentTeamInfo = () => {
+    if (!state.draftOrder.length || state.currentPick > state.draftOrder.length) return null;
     const currentTeamId = state.draftOrder[state.currentPick - 1];
     const team = state.teams.find(t => t.id === currentTeamId);
-    return team ? team.name : '';
+    if (!team) return null;
+  
+    const teamData = NBA_TEAMS_DATA.find(t => t.name === team.name);
+    // console.log('Found team data:', teamData); // Debug log
+    
+    return {
+      name: team.name,
+      logo: teamData?.logo || null,
+      isUser: team.isUser
+    };
   };
 
   // Loading state UI
@@ -221,13 +232,26 @@ export default function DraftScreen() {
     );
   }
 
+  const currentTeam = getCurrentTeamInfo();
+  // console.log('Current team info:', currentTeam); // Debug log
+
   // Main draft UI
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>
-          {state.isUserTurn ? "Your Pick" : `${getCurrentTeamName()} is picking...`}
-        </Text>
+        <View style={styles.teamInfo}>
+          {currentTeam?.logo && (
+            <SvgCssUri
+              width={32}
+              height={32}
+              uri={currentTeam.logo}
+              style={styles.teamLogo}
+            />
+          )}
+          <Text style={styles.headerText}>
+            {state.isUserTurn ? "Your Pick" : `${currentTeam?.name || ''} is picking...`}
+          </Text>
+        </View>
         <Text style={styles.pickNumber}>
           Pick #{state.currentPick} of {state.draftOrder.length}
         </Text>
@@ -269,6 +293,16 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
     alignItems: 'center',
+  },
+  teamInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  teamLogo: {
+    width: 32,
+    height: 32,
+    marginRight: 12,
   },
   headerText: {
     fontSize: 20,
