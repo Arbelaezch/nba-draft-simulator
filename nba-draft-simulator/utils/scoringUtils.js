@@ -98,7 +98,7 @@ const calculateChemistryAndFit = (roster) => {
 };
 
 const calculateLineupVersatility = (roster) => {
-    // Can the team play "small ball"?
+    // Small ball viability - check for athletic PFs who can defend perimeter
     const smallBallViable = roster.some(
         (p) =>
             p.primaryPosition === "PF" &&
@@ -106,12 +106,12 @@ const calculateLineupVersatility = (roster) => {
             p.athleticism.speed >= 75
     );
 
-    // Can the team play "tall ball"?
+    // Tall ball viability - check for shooting bigs
     const tallBallViable = roster.some(
         (p) => p.primaryPosition === "C" && p.shooting.three_point >= 70
     );
 
-    // Position-less basketball capability
+    // Count switchable defenders (can guard multiple positions)
     const switchableDefenders = roster.filter(
         (p) =>
             p.defense.perimeter >= 75 &&
@@ -119,12 +119,31 @@ const calculateLineupVersatility = (roster) => {
             p.athleticism.agility >= 75
     ).length;
 
+    // Calculate base versatility score
     let score = 0;
-    if (smallBallViable) score += 60;
-    if (tallBallViable) score += 60;
-    score += (switchableDefenders / roster.length) * 80;
 
-    return score;
+    // Small ball capability (0-70)
+    if (smallBallViable) score += 70;
+    
+    // Tall ball capability (0-70)
+    if (tallBallViable) score += 70;
+    
+    // Switchable defenders (0-60)
+    // Scale based on percentage of roster that's switchable
+    const switchableScore = (switchableDefenders / roster.length) * 60;
+    score += switchableScore;
+
+    // Additional bonuses for exceptional versatility
+    if (smallBallViable && tallBallViable) {
+        score += 20; // Bonus for having both small and tall ball options
+    }
+
+    // If more than 40% of roster is switchable, add bonus
+    if (switchableDefenders / roster.length > 0.4) {
+        score += 20;
+    }
+
+    return Math.min(200, score);
 };
 
 // !Improve
