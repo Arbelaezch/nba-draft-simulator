@@ -2,6 +2,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list';
 import { Button } from 'react-native-paper';
 import { router } from 'expo-router';
+
 import { useSettings } from '../../context/SettingsContext';
 import { settingsService } from '../../services/settingsService';
 import { NBA_TEAMS_DATA } from '../../data/teamsList';
@@ -24,6 +25,7 @@ export default function AdvancedSetupScreen() {
   const teamData = NBA_TEAMS_DATA.map(team => ({
     key: team.name,
     value: team.name,
+    label: team.name,
     logo: team.logo
   }));
 
@@ -127,30 +129,49 @@ export default function AdvancedSetupScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: '#f5f5f5',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 24,
-  },
-  section: {
-    marginBottom: 20,
-  },
-  label: {
-    fontSize: 16,
-    marginBottom: 8,
-    fontWeight: '500',
-  },
-  dropdown: {
-    borderColor: '#ddd',
-    backgroundColor: '#fff',
-  },
-  button: {
-    marginTop: 24,
-    paddingVertical: 8,
-  },
+    container: {
+      flex: 1,
+      padding: 16,
+      backgroundColor: '#f5f5f5',
+    },
+    title: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      marginBottom: 24,
+    },
+    section: {
+      marginBottom: 20,
+    },
+    label: {
+      fontSize: 16,
+      marginBottom: 8,
+      fontWeight: '500',
+    },
+    dropdown: {
+      borderColor: '#ddd',
+      backgroundColor: '#fff',
+    },
+    button: {
+      marginTop: 24,
+      paddingVertical: 8,
+    },
+    dropdownItem: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingVertical: 8,
+      paddingHorizontal: 12,
+    },
+    dropdownItemText: {
+      fontSize: 16,
+      marginLeft: 12,
+    },
+    selectedTeam: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingVertical: 4,
+    },
+    selectedTeamText: {
+      fontSize: 16,
+      marginLeft: 12,
+    },
 });

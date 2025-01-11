@@ -1,9 +1,10 @@
 import { View, Text, StyleSheet } from 'react-native';
+import { useEffect, useState } from 'react';
 import { SelectList } from 'react-native-dropdown-select-list';
+
 import { useSettings } from '../../context/SettingsContext';
 import { settingsService } from '../../services/settingsService';
 import { NBA_TEAMS_DATA } from '../../data/teamsList';
-import { useEffect, useState } from 'react';
 
 export default function SettingsScreen() {
   const { settings, dispatch } = useSettings();
