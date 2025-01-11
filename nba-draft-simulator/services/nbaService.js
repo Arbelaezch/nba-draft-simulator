@@ -76,7 +76,22 @@ export const nbaService = {
           defensive_consistency: player.defensiveConsistency,
           help_defense_iq: player.helpDefenseIQ,
           durability: player.overallDurability
-        }
+        },
+        badges: {
+          legendary: player.legendaryBadgeCount || 0,
+          purple: player.purpleBadgeCount || 0,
+          gold: player.goldBadgeCount || 0,
+          silver: player.silverBadgeCount || 0,
+          bronze: player.bronzeBadgeCount || 0,
+          outside_scoring: player.outsideScoringBadgeCount || 0,
+          inside_scoring: player.insideScoringBadgeCount || 0,
+          general_offense: player.generalOffenseBadgeCount || 0,
+          playmaking: player.playmakingBadgeCount || 0,
+          defensive: player.defensiveBadgeCount || 0,
+          rebounding: player.reboundingBadgeCount || 0,
+          all_around: player.allAroundBadgeCount || 0,
+          total: player.badgeCount || 0
+        },
       }));
 
     return players
