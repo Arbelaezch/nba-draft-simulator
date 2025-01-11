@@ -2,6 +2,7 @@ import _ from "lodash";
 
 import { convertHeightToInches } from "./utilities";
 import { LEGENDARY_DUOS, LEGENDARY_TRIOS } from "../data/legendaryCombos";
+import { assignPositionalRoles } from "./assignPositionalRoles";
 
 const calculateBadgeSynergy = (roster) => {
     // Count complementary badge combinations
@@ -70,55 +71,93 @@ const calculateClutchCapability = (roster) => {
 
 //! Might want to break this up into separate functions. Floor spacing should probably be separate.
 const calculateChemistryAndFit = (roster) => {
-    // Spacing assessment - need shooters around slashers
-    const shooters = roster.filter((p) => p.shooting.three_point >= 80).length;
-    const slashers = roster.filter(
+    const { assignments } = assignPositionalRoles(roster);
+    const assignedRoster = Array.from(assignments.entries()).map(([player, position]) => ({
+        ...player,
+        assignedPosition: position
+    }));
+
+    // Spacing assessment based on assigned positions
+    const shooters = assignedRoster.filter((p) => p.shooting.three_point >= 80).length;
+    const slashers = assignedRoster.filter(
         (p) => p.inside_scoring.driving_dunk >= 80 || p.inside_scoring.layup >= 80
     ).length;
 
-    // Playmaker-to-finisher ratio
-    const playmakers = roster.filter(
-        (p) => (p.playmaking.pass_vision + p.playmaking.pass_iq) / 2 >= 80
+    // Playmaker evaluation based on assigned positions
+    const playmakers = assignedRoster.filter(
+        (p) => p.assignedPosition === "PG" || 
+        ((p.playmaking.pass_vision + p.playmaking.pass_iq) / 2 >= 85)
     ).length;
-    const finishers = roster.filter(
+    
+    const finishers = assignedRoster.filter(
         (p) => p.inside_scoring.standing_dunk >= 80 || p.shooting.three_point >= 80
     ).length;
+
+    // Position-specific chemistry evaluation
+    const positionChemistry = assignedRoster.reduce((score, player) => {
+        const positionFit = calculatePositionalScore(player, player.assignedPosition);
+        return score + (positionFit >= 80 ? 20 : positionFit >= 70 ? 10 : 0);
+    }, 0);
 
     let score = 0;
     // Good balance of shooters and slashers (0-80)
     if ((shooters / roster.length >= 0.3) && (slashers / roster.length >= 0.3)) score += 80;
+    
     // Enough playmakers to feed finishers (0-60)
     if (playmakers * 2 >= finishers) score += 60;
+    
     // Not too many ball-dominant players (0-60)
-    const ballDominantPlayers = roster.filter(
-        (p) => p.playmaking.ball_handle >= 85
+    const ballDominantPlayers = assignedRoster.filter(
+        (p) => p.playmaking.ball_handle >= 85 && p.assignedPosition !== "PG"
     ).length;
     score += Math.min(60, (3 - ballDominantPlayers) * 20);
 
-    return score;
+    // Add position chemistry score (0-40)
+    score += Math.min(40, (positionChemistry / roster.length) * 2);
+
+    return Math.min(200, score);
 };
 
 const calculateLineupVersatility = (roster) => {
+    const { assignments } = assignPositionalRoles(roster);
+
     // Small ball viability - check for athletic PFs who can defend perimeter
-    const smallBallViable = roster.some(
-        (p) =>
-            p.primaryPosition === "PF" &&
-            p.defense.perimeter >= 75 &&
-            p.athleticism.speed >= 75
+    const smallBallViable = Array.from(assignments).some(
+        ([player, position]) =>
+            position === "PF" &&
+            player.defense.perimeter >= 70 &&
+            player.athleticism.speed >= 70
     );
 
     // Tall ball viability - check for shooting bigs
-    const tallBallViable = roster.some(
-        (p) => p.primaryPosition === "C" && p.shooting.three_point >= 70
+    const tallBallViable = Array.from(assignments).some(
+        ([player, position]) => 
+            position === "C" && 
+            player.shooting.three_point >= 65
     );
 
     // Count switchable defenders (can guard multiple positions)
-    const switchableDefenders = roster.filter(
-        (p) =>
-            p.defense.perimeter >= 75 &&
-            p.defense.interior >= 75 &&
-            p.athleticism.agility >= 75
+    const switchableDefenders = Array.from(assignments).filter(
+        ([player, _]) =>
+            player.defense.perimeter >= 70 &&
+            player.defense.interior >= 70 &&
+            player.athleticism.agility >= 70
     ).length;
+
+    // Calculate positional flexibility score
+    const flexibilityScore = roster.reduce((score, player) => {
+        if (player.secondaryPosition) {
+            // Higher score if both positions are viable based on attributes
+            const primaryScore = calculatePositionalScore(player, player.primaryPosition);
+            const secondaryScore = calculatePositionalScore(player, player.secondaryPosition);
+            if (primaryScore >= 75 && secondaryScore >= 75) {
+                score += 20;
+            } else if (primaryScore >= 75 || secondaryScore >= 75) {
+                score += 10;
+            }
+        }
+        return score;
+    }, 0);
 
     // Calculate base versatility score
     let score = 0;
@@ -130,9 +169,11 @@ const calculateLineupVersatility = (roster) => {
     if (tallBallViable) score += 70;
     
     // Switchable defenders (0-60)
-    // Scale based on percentage of roster that's switchable
     const switchableScore = (switchableDefenders / roster.length) * 60;
     score += switchableScore;
+
+    // Add flexibility score (0-40)
+    score += Math.min(40, (flexibilityScore / roster.length) * 40);
 
     // Additional bonuses for exceptional versatility
     if (smallBallViable && tallBallViable) {
@@ -203,12 +244,71 @@ const calculateHeightScore = (roster) => {
     return Math.min(200, Math.max(0, finalScore));
 };
 
+const calculatePositionalScore = (player, position) => {
+    switch (position) {
+        case "PG":
+            return (
+                (player.playmaking.pass_vision + 
+                player.playmaking.pass_iq + 
+                player.playmaking.ball_handle) / 3
+            );
+        case "SG":
+            return (
+                (player.shooting.three_point * 0.4 +
+                player.shooting.mid_range * 0.3 +
+                player.playmaking.ball_handle * 0.3)
+            );
+        case "SF":
+            return (
+                (player.shooting.three_point * 0.3 +
+                player.inside_scoring.driving_dunk * 0.3 +
+                player.defense.perimeter * 0.4)
+            );
+        case "PF":
+            return (
+                (player.defense.interior * 0.4 +
+                player.defense.defensive_rebound * 0.3 +
+                player.inside_scoring.post_control * 0.3)
+            );
+        case "C":
+            return (
+                (player.defense.interior * 0.4 +
+                player.defense.defensive_rebound * 0.4 +
+                player.inside_scoring.standing_dunk * 0.2)
+            );
+        default:
+            return 0;
+    }
+};
+
 const calculatePositionBalance = (roster) => {
-    const requiredPositions = ["PG", "SG", "SF", "PF", "C"];
-    const primaryPositions = roster.map((p) => p.primaryPosition);
-    const secondaryPositions = roster.map((p) => p.secondaryPosition).filter(Boolean);
-    const coveredPositions = new Set([...primaryPositions, ...secondaryPositions]);
-    return (coveredPositions.size / requiredPositions.length) * 200;
+    const { assignments, positionPenalty, rolesFilled, assignmentsList } = assignPositionalRoles(roster);
+
+    // Log the simplified assignments
+    console.log("Positional Roles:", assignmentsList);
+    console.log("Position Penalty:", positionPenalty);
+    console.log("Roles Filled:", rolesFilled);
+    
+    // Base score starts at 200
+    let score = 200;
+    
+    // Apply position coverage penalty
+    score -= positionPenalty;
+    
+    // Calculate fit bonus/penalty based on how well players fit their assigned positions
+    let totalFitScore = 0;
+    assignments.forEach((position, player) => {
+        const positionScore = calculatePositionalScore(player, position);
+        totalFitScore += positionScore;
+    });
+    
+    // Average fit score (0-100)
+    const averageFitScore = totalFitScore / assignments.size;
+    
+    // Add fit bonus (up to 50 points)
+    score += (averageFitScore - 70) * 0.5; // Assuming 70 is baseline competency
+    
+    return Math.max(0, Math.min(200, score));
 };
 
 const calculateRebounding = (roster) => {
@@ -388,7 +488,7 @@ const calculateTeamScore = (roster) => {
 
     // Core team attributes
     const coreAttributes = {
-        badgeSynergy: calculateBadgeSynergy(roster),
+        // badgeSynergy: calculateBadgeSynergy(roster),
         versatility: calculateLineupVersatility(roster),
         clutch: calculateClutchCapability(roster),
     };
@@ -420,8 +520,9 @@ const calculateTeamScore = (roster) => {
 
     console.log("Final Score (0-200):", finalScore);
     console.log("Breakdown:", coreAttributes, fundamentalSkills, teamComposition);
+    console.log("\n");
 
     return finalScore;
 };
 
-export { calculateTeamScore };
+export { calculateTeamScore, calculatePositionalScore };

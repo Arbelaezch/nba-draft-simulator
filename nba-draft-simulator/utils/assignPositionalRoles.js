@@ -28,17 +28,28 @@ export const assignPositionalRoles = (roster) => {
         }
     }
     
-    // Step 2: Score remaining players for their possible positions
+    // Step 2: Calculate available positions for remaining players
     const playerScores = unassignedPlayers.map(player => {
-        const possiblePositions = [player.primaryPosition];
+        // Get all possible positions for the player
+        let possiblePositions = [player.primaryPosition];
         if (player.secondaryPosition) possiblePositions.push(player.secondaryPosition);
+        
+        // Remove positions that are already fully filled
+        possiblePositions = possiblePositions.filter(pos => 
+            rolesFilled[pos] < positionsPerRole
+        );
+        
+        // Calculate scores for remaining possible positions
+        const scores = possiblePositions.map(pos => ({
+            position: pos,
+            score: calculatePositionalScore(player, pos)
+        }));
         
         return {
             player,
-            scores: possiblePositions.map(pos => ({
-                position: pos,
-                score: calculatePositionalScore(player, pos)
-            }))
+            scores,
+            // Track original possible positions for penalty calculation
+            originalPositions: possiblePositions
         };
     });
     
@@ -48,12 +59,15 @@ export const assignPositionalRoles = (roster) => {
         let bestScore = -1;
         let playerToAssignIndex = -1;
         
+        // Find best assignment considering reduced position options
         playerScores.forEach((playerScore, index) => {
             playerScore.scores.forEach(({position, score}) => {
                 if (rolesFilled[position] < positionsPerRole) {
                     // Boost score for primary position
                     const positionBonus = position === playerScore.player.primaryPosition ? 10 : 0;
-                    const adjustedScore = score + positionBonus;
+                    // Add penalty if this is player's only remaining position option
+                    const necessityBonus = playerScore.scores.length === 1 ? 20 : 0;
+                    const adjustedScore = score + positionBonus + necessityBonus;
                     
                     if (adjustedScore > bestScore) {
                         bestScore = adjustedScore;
@@ -72,22 +86,49 @@ export const assignPositionalRoles = (roster) => {
             // Remove assigned player
             playerScores.splice(playerToAssignIndex, 1);
             unassignedPlayers.splice(playerToAssignIndex, 1);
+            
+            // Update remaining players' possible positions
+            playerScores.forEach(ps => {
+                // Remove the filled position from possible positions if it's full
+                if (rolesFilled[bestAssignment] >= positionsPerRole) {
+                    ps.scores = ps.scores.filter(score => score.position !== bestAssignment);
+                }
+            });
         } else {
-            // If we can't make a valid assignment, we have a problem
+            // If we can't make a valid assignment, break out
             break;
         }
     }
     
     // Calculate position coverage penalty
     let positionPenalty = 0;
-    positions.forEach(pos => {
-        const missing = Math.max(0, positionsPerRole - rolesFilled[pos]);
-        positionPenalty += missing * 50; // 50 point penalty per missing position
+    const validTeamSizes = [5, 7, 10, 12];
+    
+    // Only apply penalty if the team size is not valid
+    if (!validTeamSizes.includes(roster.length)) {
+        positions.forEach(pos => {
+            const missing = Math.max(0, positionsPerRole - rolesFilled[pos]);
+            positionPenalty += missing * 50; // 50 point penalty per missing position
+        });
+    }
+    
+    // Add penalty for players forced into non-preferred positions
+    playerScores.forEach(ps => {
+        if (ps.originalPositions.length > ps.scores.length) {
+            positionPenalty += 20; // Penalty for each player with reduced position options
+        }
     });
+
+    // Convert assignments Map to array of simple name/position objects
+    const assignmentsList = Array.from(positionAssignments).map(([player, position]) => ({
+        name: player.name,
+        position: position
+    }));
     
     return {
         assignments: positionAssignments,
         positionPenalty,
-        rolesFilled
+        rolesFilled,
+        assignmentsList
     };
 };
