@@ -4,7 +4,7 @@ import { Button } from 'react-native-paper';
 import { router } from 'expo-router';
 import { useSettings } from '../../context/SettingsContext';
 import { settingsService } from '../../services/settingsService';
-import { NBA_TEAMS } from '../../data/teamsList';
+import { NBA_TEAMS_DATA } from '../../data/teamsList';
 
 export default function AdvancedSetupScreen() {
   const { settings, dispatch } = useSettings();
@@ -19,6 +19,13 @@ export default function AdvancedSetupScreen() {
   const startDraft = () => {
     router.push('/draft');
   };
+
+  // Format team data for SelectList
+  const teamData = NBA_TEAMS_DATA.map(team => ({
+    key: team.name,
+    value: team.name,
+    logo: team.logo
+  }));
 
   return (
     <View style={styles.container}>
@@ -45,12 +52,11 @@ export default function AdvancedSetupScreen() {
         <Text style={styles.label}>Your Team</Text>
         <SelectList
           setSelected={(value) => updateAdvancedSetup('userTeam', value)}
-          data={NBA_TEAMS.map(team => ({ value: team, label: team }))}
+          data={teamData}
           save="value"
-          defaultOption={{ 
-            value: settings.userTeam || settings.defaultTeam,
-            label: settings.userTeam || settings.defaultTeam
-          }}
+          defaultOption={teamData.find(team => 
+            team.value === (settings.userTeam || settings.defaultTeam)
+          )}
           search={true}
           boxStyles={styles.dropdown}
         />
