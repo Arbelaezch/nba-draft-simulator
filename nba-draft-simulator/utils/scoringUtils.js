@@ -202,31 +202,31 @@ const calculateOffensiveRating = (roster) => {
     // Core evaluation categories with weighted sub-components
 
     const calculateInsidePresence = (roster) => {
-        return (roster.reduce((score, player) => {
+        return roster.reduce((score, player) => {
             const insideScore = (
                 player.inside_scoring.close_shot * 0.3 +
                 player.inside_scoring.post_control * 0.3 +
                 player.inside_scoring.driving_dunk * 0.2 +
                 player.badges.inside_scoring * 5
-            ) / (100 + 20) * 2;
+            );
             return score + insideScore;
-        }, 0) / roster.length);
+        }, 0) / roster.length;
     };
 
     const calculateOutsideScoring = (roster) => {
-        return (roster.reduce((score, player) => {
+        return roster.reduce((score, player) => {
             const shootingScore = (
                 player.shooting.three_point * 0.4 +
                 player.shooting.mid_range * 0.3 +
                 player.shooting.shot_iq * 0.2 +
                 player.badges.outside_scoring * 5
-            ) / (100 + 20) * 2;
+            );
             return score + shootingScore;
-        }, 0) / roster.length);
+        }, 0) / roster.length;
     };
 
     const calculateOffBallEfficiency = (roster) => {
-        return (roster.reduce((score, player) => {
+        return roster.reduce((score, player) => {
             // Evaluate off-ball movement and scoring potential
             const offBallScore = (
                 player.athleticism.speed * 0.2 +
@@ -234,24 +234,24 @@ const calculateOffensiveRating = (roster) => {
                 player.shooting.shot_iq * 0.3 +
                 player.intangibles.offensive_consistency * 0.2 +
                 (player.badges.outside_scoring + player.badges.inside_scoring) * 2.5
-            ) / (100 + 10) * 2;
+            );
 
             // Additional bonus for players with high shooting ratings (catch-and-shoot potential)
             const shootingBonus = (player.shooting.three_point > 85 || player.shooting.mid_range > 85) ? 20 : 0;
 
-            return score + offBallScore + shootingBonus / 100;
-        }, 0) / roster.length);
+            return score + offBallScore + shootingBonus;
+        }, 0) / roster.length;
     };
 
     const calculateTransitionEfficiency = (roster) => {
-        return (roster.reduce((score, player) => {
+        return roster.reduce((score, player) => {
             const transitionScore = (
                 player.athleticism.speed * 0.25 +
                 player.athleticism.stamina * 0.15 +
                 player.playmaking.speed_with_ball * 0.2 +
                 player.playmaking.pass_vision * 0.2 +
                 player.athleticism.hustle * 0.1
-            ) / 100 * 2;
+            );
 
             // Bonus for finishing ability in transition
             const finishingBonus = (player.inside_scoring.driving_dunk > 85 || player.inside_scoring.layup > 85) ? 20 : 0;
@@ -260,8 +260,8 @@ const calculateOffensiveRating = (roster) => {
             // Calculate leak-out potential (beneficial for transition offense)
             const leakOutPotential = (player.athleticism.speed > 85 && player.athleticism.stamina > 85) ? 10 : 0;
 
-            return score + transitionScore + (finishingBonus + playmakingBonus + leakOutPotential) / 100;
-        }, 0) / roster.length);
+            return score + transitionScore + finishingBonus + playmakingBonus + leakOutPotential;
+        }, 0) / roster.length;
     };
 
     const scores = {
@@ -271,7 +271,9 @@ const calculateOffensiveRating = (roster) => {
         transitionGame: calculateTransitionEfficiency(roster),
     };
 
-    return _.mean(Object.values(scores));
+    // Scale to 0-200 scale
+    const rawScore = _.mean(Object.values(scores));
+    return Math.min(200, rawScore * 1.5); // Apply scaling factor to get to appropriate range
 };
 
 
