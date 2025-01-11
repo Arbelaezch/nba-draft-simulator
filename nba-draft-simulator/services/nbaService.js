@@ -1,19 +1,35 @@
-// import playerData from '../data/current-players-jan10-2025.json';
-import playerData from '../data/all-time-players-jan10-2025.json';
-// import playerData from '../data/test_data.json';
+// Player pool imports
+import currentPlayers from '../data/current-players-jan10-2025.json';
+import allTimePlayers from '../data/all-time-players-jan10-2025.json';
 
 export const nbaService = {
-  getPlayers: () => {
+  getPlayers: (poolType = 'current') => {
+    // Select the appropriate player pool based on type
+    let playerPool;
+    switch (poolType) {
+      case 'current':
+        playerPool = currentPlayers;
+        break;
+      case 'allTime':
+        playerPool = allTimePlayers;
+        break;
+      case 'combined':
+        playerPool = [...currentPlayers, ...allTimePlayers];
+        break;
+      default:
+        playerPool = currentPlayers;
+    }
+
     // Transform the data to match needs and ensure all required fields
-    const players = playerData
-      .filter(player => player.name && player.overallAttribute) // Filter out any invalid players
-      .map((player, index) => ({
+    const players = playerPool
+      .filter(player => player.name && player.overallAttribute)
+      .map((player) => ({
         id: player.id,
         name: player.name,
         team: player.team,
         height: player.height,
         primaryPosition: player.primaryPosition,
-        secondaryPosition: player.secondaryPosition,
+        secondaryPosition: player.secondaryPosition || null,
         image: player.profilePicture,
         overall_rating: parseInt(player.overallAttribute) || 0,
         inside_scoring: {
@@ -62,70 +78,51 @@ export const nbaService = {
         }
       }));
 
-    // Sort players by overall rating and ensure valid ratings
     return players
       .filter(player => !isNaN(player.overall_rating))
       .sort((a, b) => b.overall_rating - a.overall_rating);
   },
 
-  getTeams: () => {
-    // Create array of team names excluding user team
-    const uniqueTeams = [...new Set(playerData
+  getTeams: (numberOfRounds = 5) => {
+    const uniqueTeams = [...new Set(currentPlayers
       .filter(player => player.team)
       .map(player => player.team))]
-      .slice(0, 5); // Limit to 7 AI teams
+      .slice(0, 5);
 
-    // Create teams array with user team first
+    const createInitialNeeds = () => ({
+      PG: { current: 0, target: Math.ceil(numberOfRounds * 0.2) },
+      SG: { current: 0, target: Math.ceil(numberOfRounds * 0.2) },
+      SF: { current: 0, target: Math.ceil(numberOfRounds * 0.2) },
+      PF: { current: 0, target: Math.ceil(numberOfRounds * 0.2) },
+      C: { current: 0, target: Math.ceil(numberOfRounds * 0.2) }
+    });
+
     const teams = [
       {
         id: 1,
         name: "Your Team",
         isUser: true,
         roster: [],
-        needs: { // Add team needs tracking
-          PG: true,
-          SG: true,
-          SF: true,
-          PF: true,
-          C: true
-        }
+        needs: createInitialNeeds(),
+        roundsCompleted: 0,
+        totalRounds: numberOfRounds
       },
       ...uniqueTeams.map((team, index) => ({
         id: index + 2,
         name: team,
         isUser: false,
         roster: [],
-        needs: { // Add team needs tracking for AI teams
-          PG: true,
-          SG: true,
-          SF: true,
-          PF: true,
-          C: true
-        }
+        needs: createInitialNeeds(),
+        roundsCompleted: 0,
+        totalRounds: numberOfRounds
       }))
     ];
-
-    // Create test team array that contains each teams id and name
-    const testTeams = [
-      {
-        id: 1,
-        name: "Your Team",
-        roster: [],
-      },
-      ...uniqueTeams.map((team, index) => ({
-        id: index + 2,
-        name: team,
-        roster: [],
-      }))
-    ];
-    // console.log("teams", testTeams); // See team data
-    // console.log("teams", teams); // See team data
 
     return teams;
   },
 
-  // Helper function to calculate position needs
-  calculateTeamNeeds: (roster) => {
+  // Needs calculation considers both primary and secondary positions
+  calculateTeamNeeds: (roster, totalRounds) => {
     const positionCounts = {
       PG: 0,
       SG: 0,
@@ -134,19 +131,38 @@ export const nbaService = {
       C: 0
     };
 
+    // Count primary positions
     roster.forEach(player => {
-      if (positionCounts.hasOwnProperty(player.position)) {
-        positionCounts[player.position]++;
+      if (positionCounts.hasOwnProperty(player.primaryPosition)) {
+        positionCounts[player.primaryPosition]++;
+      }
+      // Add 0.5 count for secondary positions
+      if (player.secondaryPosition && positionCounts.hasOwnProperty(player.secondaryPosition)) {
+        positionCounts[player.secondaryPosition] += 0.5;
       }
     });
 
+    // Calculate target number for each position based on total rounds
+    const targetPerPosition = Math.ceil(totalRounds * 0.2); // 20% of total rounds per position
+
+    // Return object with current count and target for each position
     return {
-      PG: positionCounts.PG < 2,
-      SG: positionCounts.SG < 2,
-      SF: positionCounts.SF < 2,
-      PF: positionCounts.PF < 2,
-      C: positionCounts.C < 2
+      PG: { current: positionCounts.PG, target: targetPerPosition },
+      SG: { current: positionCounts.SG, target: targetPerPosition },
+      SF: { current: positionCounts.SF, target: targetPerPosition },
+      PF: { current: positionCounts.PF, target: targetPerPosition },
+      C: { current: positionCounts.C, target: targetPerPosition }
     };
+  },
+
+  // Helper function to determine position priority for AI drafting
+  getPositionPriority: (needs) => {
+    const priorities = Object.entries(needs).map(([position, stats]) => ({
+      position,
+      priority: (stats.target - stats.current) / stats.target
+    }));
+
+    return priorities.sort((a, b) => b.priority - a.priority);
   },
 
   // Helper function to calculate composite ratings
@@ -155,9 +171,7 @@ export const nbaService = {
       typeof val === 'number' && !isNaN(val)
     );
     
-    if (validRatings.length === 0) return 0;
-    
-    return Math.round(
+    return validRatings.length === 0 ? 0 : Math.round(
       validRatings.reduce((sum, val) => sum + val, 0) / validRatings.length
     );
   }
