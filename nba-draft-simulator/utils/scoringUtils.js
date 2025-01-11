@@ -146,31 +146,60 @@ const calculateLineupVersatility = (roster) => {
     return Math.min(200, score);
 };
 
-// !Improve
 const calculateHeightScore = (roster) => {
     const heightsInInches = roster.map((p) => convertHeightToInches(p.height));
     const avgHeightInches = heightsInInches.reduce((sum, h) => sum + h, 0) / roster.length;
 
-    const minHeight = 72; // 6'0"
-    const idealMinHeight = 78; // 6'6"
-    const idealMaxHeight = 81; // 6'9"
-    const maxHeight = 84; // 7'0"
+    // Count number of 7-footers (84 inches or taller)
+    const sevenFooters = heightsInInches.filter(height => height >= 84).length;
+    
+    // Position-specific height evaluation
+    const positionHeightScores = roster.map(player => {
+        const playerHeight = convertHeightToInches(player.height);
+        switch (player.primaryPosition) {
+            case "PG":
+                return playerHeight >= 73 && playerHeight <= 78 ? 100 : // 6'1" to 6'6" ideal
+                    Math.max(0, 100 - Math.abs(playerHeight - 75.5) * 15); // 6'3.5" optimal
+            case "SG":
+                return playerHeight >= 75 && playerHeight <= 79 ? 100 : // 6'3" to 6'7" ideal
+                    Math.max(0, 100 - Math.abs(playerHeight - 77) * 15); // 6'5" optimal
+            case "SF":
+                return playerHeight >= 77 && playerHeight <= 81 ? 100 : // 6'5" to 6'9" ideal
+                    Math.max(0, 100 - Math.abs(playerHeight - 79) * 15); // 6'7" optimal
+            case "PF":
+                return playerHeight >= 79 && playerHeight <= 84 ? 100 : // 6'7" to 7'0" ideal
+                    Math.max(0, 100 - Math.abs(playerHeight - 81.5) * 15); // 6'9.5" optimal
+            case "C":
+                return playerHeight >= 81 && playerHeight <= 87 ? 100 : // 6'9" to 7'3" ideal
+                    Math.max(0, 100 - Math.abs(playerHeight - 84) * 15); // 7'0" optimal
+            default:
+                return 0;
+        }
+    });
 
-    let heightScore;
-    if (avgHeightInches < minHeight) {
-        heightScore = 0;
-    } else if (avgHeightInches >= idealMinHeight && avgHeightInches <= idealMaxHeight) {
-        heightScore = 200;
-    } else if (avgHeightInches < idealMinHeight) {
-        heightScore = ((avgHeightInches - minHeight) / (idealMinHeight - minHeight)) * 200;
-    } else {
-        heightScore = Math.max(
-            0,
-            200 - ((avgHeightInches - idealMaxHeight) / (maxHeight - idealMaxHeight)) * 200
-        );
-    }
+    // Average of position-specific height scores (0-100 scale)
+    const positionHeightScore = positionHeightScores.reduce((sum, score) => sum + score, 0) / roster.length;
 
-    return Math.min(200, Math.max(0, heightScore));
+    // Calculate seven footer ratio score
+    const expectedSevenFooters = Math.ceil(roster.length / 5); // One 7-footer per 5 players
+    const sevenFooterScore = sevenFooters >= expectedSevenFooters ? 100 :
+        Math.max(0, (sevenFooters / expectedSevenFooters) * 100);
+
+    // Overall team average height baseline (expecting 6'6" to 6'8" average)
+    const avgHeightScore = avgHeightInches >= 78 && avgHeightInches <= 80 ? 100 :
+        Math.max(0, 100 - Math.abs(avgHeightInches - 79) * 10);
+
+    // Combine scores:
+    // 50% position-specific height
+    // 30% seven-footer ratio
+    // 20% team average height
+    const finalScore = (
+        positionHeightScore * 0.5 +
+        sevenFooterScore * 0.3 +
+        avgHeightScore * 0.2
+    ) * 2; // Scale to 0-200
+
+    return Math.min(200, Math.max(0, finalScore));
 };
 
 const calculatePositionBalance = (roster) => {
