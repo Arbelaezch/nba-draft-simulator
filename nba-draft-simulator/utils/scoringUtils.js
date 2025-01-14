@@ -527,6 +527,12 @@ const calculateTeamScore = (roster) => {
     console.log("Breakdown:", coreAttributes, fundamentalSkills, teamComposition);
     console.log("\n");
 
+    const breakdown = {
+        coreAttributes,
+        fundamentalSkills,
+        teamComposition
+    };
+
     return {
         score: finalScore,
         breakdown,
