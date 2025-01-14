@@ -18,7 +18,7 @@ export const nbaService = {
         playerPool = [...currentPlayers, ...allTimePlayers];
         break;
       default:
-        playerPool = currentPlayers;
+        playerPool = allTimePlayers;
     }
 
     // Transform the data to match needs and ensure all required fields
