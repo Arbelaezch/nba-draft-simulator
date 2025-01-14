@@ -1,9 +1,12 @@
 const getTeamWeakness = (breakdown) => {
-    // Extract all numeric values from the nested objects
+    // Extract all numeric values from the nested objects, excluding legendaryTeammates
     const metrics = {
         ...breakdown.coreAttributes,
         ...breakdown.fundamentalSkills,
-        ...breakdown.teamComposition
+        ...Object.fromEntries(
+            Object.entries(breakdown.teamComposition)
+                .filter(([key]) => key !== 'legendaryTeammates')
+        )
     };
 
     // Find the lowest scoring metric
