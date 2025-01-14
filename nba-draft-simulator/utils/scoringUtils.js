@@ -492,6 +492,7 @@ const calculateTeamScore = (roster) => {
 
     // Core team attributes
     const coreAttributes = {
+        // badgeSynergy: calculateBadgeSynergy(roster),
         versatility: calculateLineupVersatility(roster),
         clutch: calculateClutchCapability(roster),
     };
@@ -509,6 +510,7 @@ const calculateTeamScore = (roster) => {
     const teamComposition = {
         positionBalance: calculatePositionBalance(roster),
         heightBalance: calculateHeightScore(roster),
+        // depthQuality: calculateDepthQuality(roster),
         chemistry: calculateChemistryAndFit(roster),
         legendaryTeammates: legendaryResults.score,
     };
