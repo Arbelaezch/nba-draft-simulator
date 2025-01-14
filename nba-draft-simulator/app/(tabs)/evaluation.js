@@ -4,26 +4,7 @@ import { router } from 'expo-router';
 
 import { useDraft } from '../../context/DraftContext';
 import { calculateTeamScore } from '../../utils/scoringUtils';
-
-
-// Get feedback message based on final score
-const getFeedbackMessage = (score) => {
-    if (score >= 95)
-        return "Elite Dynasty Material! This team has the perfect blend of talent, chemistry, and balance - reminiscent of the '96 Bulls! 🏆👑";
-    if (score >= 90)
-        return "Championship Caliber! Your team has the depth and versatility of the 2022 Warriors - true title contenders! 🏆";
-    if (score >= 85)
-        return "Title Contender! This roster has excellent balance and could compete with any team in the league! 🌟";
-    if (score >= 80)
-        return "Playoff Ready! Your team shows great potential with strong fundamentals and good chemistry! 💪";
-    if (score >= 75)
-        return "Promising Core! With some development, this team could make some serious noise! 📈";
-    if (score >= 70)
-        return "Solid Foundation! Your team has good pieces but might need more balance to compete at the highest level. 🔄";
-    if (score >= 65)
-        return "Work in Progress! There's talent here, but the roster needs more cohesion and depth. 🛠️";
-    return "Development Mode! Keep drafting - focus on team balance and complementary skillsets! 📚";
-};
+import { getFeedbackMessage } from '../../utils/feedbackUtils';
 
 
 export default function EvaluationScreen() {
@@ -32,18 +13,18 @@ export default function EvaluationScreen() {
 
     // Get user team
     const userTeam = state.teams.find(team => team.isUser);
-    const userScore = calculateTeamScore(userTeam.roster);
+    const teamScoreData = calculateTeamScore(userTeam.roster);
 
     // Get AI teams and their scores
     const aiTeams = state.teams
         .filter(team => !team.isUser)
         .map(team => ({
             ...team,
-            score: calculateTeamScore(team.roster)
+            scoreData: calculateTeamScore(team.roster)
         }))
-        .sort((a, b) => b.score - a.score);
+        .sort((a, b) => b.scoreData - a.scoreData);
 
-    console.log("aiTeams", aiTeams);
+    // console.log("aiTeams", aiTeams);
 
     // Handler for team row clicks
     const toggleTeamExpansion = (teamId) => {
@@ -66,8 +47,8 @@ export default function EvaluationScreen() {
             {/* User Team Section */}
             <View style={styles.userSection}>
                 <Text style={styles.headerText}>Your Draft Results</Text>
-                <Text style={styles.scoreText}>Overall Score: {userScore}</Text>
-                <Text style={styles.feedbackText}>{getFeedbackMessage(userScore)}</Text>
+                <Text style={styles.scoreText}>Overall Score: {teamScoreData.score}</Text>
+                <Text style={styles.feedbackText}>{getFeedbackMessage(teamScoreData)}</Text>
 
                 <View style={styles.rosterHeader}>
                     <Text style={[styles.columnHeader, styles.playerName]}>Player</Text>
@@ -89,7 +70,7 @@ export default function EvaluationScreen() {
                             onPress={() => toggleTeamExpansion(team.id)}
                         >
                             <Text style={styles.teamName}>{team.name}</Text>
-                            <Text style={styles.teamScore}>Score: {team.score}</Text>
+                            <Text style={styles.teamScore}>Score: {team.scoreData.score}</Text>
                             <Text style={styles.expandIcon}>
                                 {expandedTeamId === team.id ? '▼' : '▶'}
                             </Text>

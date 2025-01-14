@@ -484,11 +484,14 @@ const calculateLegendaryTeammateScore = (roster) => {
 // ## Calculate Team Scoring
 // #######################################
 const calculateTeamScore = (roster) => {
-    if (!roster || roster.length === 0) return 0;
+    if (!roster || roster.length === 0) return {
+        score: 0,
+        breakdown: null,
+        legendaryResults: null
+    };
 
     // Core team attributes
     const coreAttributes = {
-        // badgeSynergy: calculateBadgeSynergy(roster),
         versatility: calculateLineupVersatility(roster),
         clutch: calculateClutchCapability(roster),
     };
@@ -502,12 +505,12 @@ const calculateTeamScore = (roster) => {
     };
 
     // Team composition
+    const legendaryResults = calculateLegendaryTeammateScore(roster);
     const teamComposition = {
         positionBalance: calculatePositionBalance(roster),
         heightBalance: calculateHeightScore(roster),
-        // depthQuality: calculateDepthQuality(roster),
         chemistry: calculateChemistryAndFit(roster),
-        legendaryTeammates: calculateLegendaryTeammateScore(roster).score,
+        legendaryTeammates: legendaryResults.score,
     };
 
     // Calculate weighted scores
@@ -522,7 +525,11 @@ const calculateTeamScore = (roster) => {
     console.log("Breakdown:", coreAttributes, fundamentalSkills, teamComposition);
     console.log("\n");
 
-    return finalScore;
+    return {
+        score: finalScore,
+        breakdown,
+        legendaryResults
+    };
 };
 
 export { calculateTeamScore, calculatePositionalScore };
