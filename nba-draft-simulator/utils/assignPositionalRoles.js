@@ -1,4 +1,4 @@
-import { calculatePositionalScore } from "./scoringUtils";
+import { calculatePositionalScore } from "./shared-utils";
 
 export const assignPositionalRoles = (roster) => {
     const positions = ["PG", "SG", "SF", "PF", "C"];
