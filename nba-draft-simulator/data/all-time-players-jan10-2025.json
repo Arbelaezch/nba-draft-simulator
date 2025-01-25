@@ -55,7 +55,8 @@
     "passVision": 85,
     "offensiveRebound": 61,
     "defensiveRebound": 84,
-    "id": 1
+    "id": 1,
+    "playerPool": "all-time"
   },
   {
     "name": "Michael Jordan",
@@ -113,7 +114,8 @@
     "passVision": 70,
     "offensiveRebound": 52,
     "defensiveRebound": 63,
-    "id": 2
+    "id": 2,
+    "playerPool": "all-time"
   },
   {
     "name": "LeBron James",
@@ -171,7 +173,8 @@
     "passVision": 96,
     "offensiveRebound": 52,
     "defensiveRebound": 79,
-    "id": 3
+    "id": 3,
+    "playerPool": "all-time"
   },
   {
     "name": "Wilt Chamberlain",
@@ -229,7 +232,8 @@
     "passVision": 74,
     "offensiveRebound": 98,
     "defensiveRebound": 99,
-    "id": 4
+    "id": 4,
+    "playerPool": "all-time"
   },
   {
     "name": "Hakeem Olajuwon",
@@ -287,7 +291,8 @@
     "passVision": 63,
     "offensiveRebound": 95,
     "defensiveRebound": 98,
-    "id": 5
+    "id": 5,
+    "playerPool": "all-time"
   },
   {
     "name": "Kobe Bryant",
@@ -345,7 +350,8 @@
     "passVision": 75,
     "offensiveRebound": 46,
     "defensiveRebound": 54,
-    "id": 6
+    "id": 6,
+    "playerPool": "all-time"
   },
   {
     "name": "Magic Johnson",
@@ -403,7 +409,8 @@
     "passVision": 99,
     "offensiveRebound": 80,
     "defensiveRebound": 84,
-    "id": 7
+    "id": 7,
+    "playerPool": "all-time"
   },
   {
     "name": "Kareem Abdul-Jabbar",
@@ -461,7 +468,8 @@
     "passVision": 58,
     "offensiveRebound": 98,
     "defensiveRebound": 98,
-    "id": 8
+    "id": 8,
+    "playerPool": "all-time"
   },
   {
     "name": "Dirk Nowitzki",
@@ -519,7 +527,8 @@
     "passVision": 70,
     "offensiveRebound": 89,
     "defensiveRebound": 92,
-    "id": 9
+    "id": 9,
+    "playerPool": "all-time"
   },
   {
     "name": "Stephen Curry",
@@ -577,7 +586,8 @@
     "passVision": 88,
     "offensiveRebound": 38,
     "defensiveRebound": 53,
-    "id": 10
+    "id": 10,
+    "playerPool": "all-time"
   },
   {
     "name": "Shaquille O\u2019Neal",
@@ -635,7 +645,8 @@
     "passVision": 51,
     "offensiveRebound": 98,
     "defensiveRebound": 98,
-    "id": 11
+    "id": 11,
+    "playerPool": "all-time"
   },
   {
     "name": "Kevin Garnett",
@@ -693,7 +704,8 @@
     "passVision": 72,
     "offensiveRebound": 93,
     "defensiveRebound": 95,
-    "id": 12
+    "id": 12,
+    "playerPool": "all-time"
   },
   {
     "name": "Tim Duncan",
@@ -751,7 +763,8 @@
     "passVision": 55,
     "offensiveRebound": 94,
     "defensiveRebound": 96,
-    "id": 13
+    "id": 13,
+    "playerPool": "all-time"
   },
   {
     "name": "Julius Erving",
@@ -809,7 +822,8 @@
     "passVision": 80,
     "offensiveRebound": 70,
     "defensiveRebound": 79,
-    "id": 14
+    "id": 14,
+    "playerPool": "all-time"
   },
   {
     "name": "Scottie Pippen",
@@ -867,7 +881,8 @@
     "passVision": 85,
     "offensiveRebound": 88,
     "defensiveRebound": 89,
-    "id": 15
+    "id": 15,
+    "playerPool": "all-time"
   },
   {
     "name": "Nikola Jokic",
@@ -925,7 +940,8 @@
     "passVision": 96,
     "offensiveRebound": 66,
     "defensiveRebound": 93,
-    "id": 16
+    "id": 16,
+    "playerPool": "all-time"
   },
   {
     "name": "Kevin Durant",
@@ -983,7 +999,8 @@
     "passVision": 77,
     "offensiveRebound": 60,
     "defensiveRebound": 79,
-    "id": 17
+    "id": 17,
+    "playerPool": "all-time"
   },
   {
     "name": "Moses Malone",
@@ -1041,7 +1058,8 @@
     "passVision": 32,
     "offensiveRebound": 99,
     "defensiveRebound": 98,
-    "id": 18
+    "id": 18,
+    "playerPool": "all-time"
   },
   {
     "name": "Jerry West",
@@ -1099,7 +1117,8 @@
     "passVision": 95,
     "offensiveRebound": 35,
     "defensiveRebound": 35,
-    "id": 19
+    "id": 19,
+    "playerPool": "all-time"
   },
   {
     "name": "Dwyane Wade",
@@ -1157,7 +1176,8 @@
     "passVision": 89,
     "offensiveRebound": 59,
     "defensiveRebound": 59,
-    "id": 20
+    "id": 20,
+    "playerPool": "all-time"
   },
   {
     "name": "Giannis Antetokounmpo",
@@ -1215,7 +1235,8 @@
     "passVision": 78,
     "offensiveRebound": 61,
     "defensiveRebound": 91,
-    "id": 21
+    "id": 21,
+    "playerPool": "all-time"
   },
   {
     "name": "Chris Paul",
@@ -1273,7 +1294,8 @@
     "passVision": 98,
     "offensiveRebound": 34,
     "defensiveRebound": 55,
-    "id": 22
+    "id": 22,
+    "playerPool": "all-time"
   },
   {
     "name": "Walt Frazier",
@@ -1331,7 +1353,8 @@
     "passVision": 85,
     "offensiveRebound": 41,
     "defensiveRebound": 61,
-    "id": 23
+    "id": 23,
+    "playerPool": "all-time"
   },
   {
     "name": "Oscar Robertson",
@@ -1389,7 +1412,8 @@
     "passVision": 97,
     "offensiveRebound": 82,
     "defensiveRebound": 88,
-    "id": 24
+    "id": 24,
+    "playerPool": "all-time"
   },
   {
     "name": "Karl Malone",
@@ -1447,7 +1471,8 @@
     "passVision": 79,
     "offensiveRebound": 95,
     "defensiveRebound": 96,
-    "id": 25
+    "id": 25,
+    "playerPool": "all-time"
   },
   {
     "name": "John Stockton",
@@ -1505,7 +1530,8 @@
     "passVision": 99,
     "offensiveRebound": 37,
     "defensiveRebound": 45,
-    "id": 26
+    "id": 26,
+    "playerPool": "all-time"
   },
   {
     "name": "Bob Cousy",
@@ -1563,7 +1589,8 @@
     "passVision": 97,
     "offensiveRebound": 70,
     "defensiveRebound": 78,
-    "id": 27
+    "id": 27,
+    "playerPool": "all-time"
   },
   {
     "name": "John Havlicek",
@@ -1621,7 +1648,8 @@
     "passVision": 84,
     "offensiveRebound": 70,
     "defensiveRebound": 80,
-    "id": 28
+    "id": 28,
+    "playerPool": "all-time"
   },
   {
     "name": "Elgin Baylor",
@@ -1679,7 +1707,8 @@
     "passVision": 75,
     "offensiveRebound": 95,
     "defensiveRebound": 95,
-    "id": 29
+    "id": 29,
+    "playerPool": "all-time"
   },
   {
     "name": "Allen Iverson",
@@ -1737,7 +1766,8 @@
     "passVision": 76,
     "offensiveRebound": 34,
     "defensiveRebound": 45,
-    "id": 30
+    "id": 30,
+    "playerPool": "all-time"
   },
   {
     "name": "Steve Nash",
@@ -1795,7 +1825,8 @@
     "passVision": 98,
     "offensiveRebound": 59,
     "defensiveRebound": 61,
-    "id": 31
+    "id": 31,
+    "playerPool": "all-time"
   },
   {
     "name": "Clyde Drexler",
@@ -1853,7 +1884,8 @@
     "passVision": 72,
     "offensiveRebound": 77,
     "defensiveRebound": 75,
-    "id": 32
+    "id": 32,
+    "playerPool": "all-time"
   },
   {
     "name": "David Robinson",
@@ -1911,7 +1943,8 @@
     "passVision": 62,
     "offensiveRebound": 86,
     "defensiveRebound": 87,
-    "id": 33
+    "id": 33,
+    "playerPool": "all-time"
   },
   {
     "name": "Kawhi Leonard",
@@ -1969,7 +2002,8 @@
     "passVision": 78,
     "offensiveRebound": 70,
     "defensiveRebound": 72,
-    "id": 34
+    "id": 34,
+    "playerPool": "all-time"
   },
   {
     "name": "Vince Carter",
@@ -2027,7 +2061,8 @@
     "passVision": 70,
     "offensiveRebound": 59,
     "defensiveRebound": 65,
-    "id": 35
+    "id": 35,
+    "playerPool": "all-time"
   },
   {
     "name": "Dominique Wilkins",
@@ -2085,7 +2120,8 @@
     "passVision": 60,
     "offensiveRebound": 77,
     "defensiveRebound": 82,
-    "id": 36
+    "id": 36,
+    "playerPool": "all-time"
   },
   {
     "name": "Bob Pettit",
@@ -2143,7 +2179,8 @@
     "passVision": 70,
     "offensiveRebound": 95,
     "defensiveRebound": 98,
-    "id": 37
+    "id": 37,
+    "playerPool": "all-time"
   },
   {
     "name": "Kevin McHale",
@@ -2201,7 +2238,8 @@
     "passVision": 42,
     "offensiveRebound": 92,
     "defensiveRebound": 95,
-    "id": 38
+    "id": 38,
+    "playerPool": "all-time"
   },
   {
     "name": "Dave Cowens",
@@ -2259,7 +2297,8 @@
     "passVision": 55,
     "offensiveRebound": 96,
     "defensiveRebound": 96,
-    "id": 39
+    "id": 39,
+    "playerPool": "all-time"
   },
   {
     "name": "Jason Kidd",
@@ -2317,7 +2356,8 @@
     "passVision": 98,
     "offensiveRebound": 45,
     "defensiveRebound": 75,
-    "id": 40
+    "id": 40,
+    "playerPool": "all-time"
   },
   {
     "name": "Derrick Rose",
@@ -2375,7 +2415,8 @@
     "passVision": 89,
     "offensiveRebound": 49,
     "defensiveRebound": 55,
-    "id": 41
+    "id": 41,
+    "playerPool": "all-time"
   },
   {
     "name": "David Thompson",
@@ -2433,7 +2474,8 @@
     "passVision": 85,
     "offensiveRebound": 80,
     "defensiveRebound": 78,
-    "id": 42
+    "id": 42,
+    "playerPool": "all-time"
   },
   {
     "name": "Carmelo Anthony",
@@ -2491,7 +2533,8 @@
     "passVision": 81,
     "offensiveRebound": 81,
     "defensiveRebound": 84,
-    "id": 43
+    "id": 43,
+    "playerPool": "all-time"
   },
   {
     "name": "Isiah Thomas",
@@ -2549,7 +2592,8 @@
     "passVision": 97,
     "offensiveRebound": 35,
     "defensiveRebound": 45,
-    "id": 44
+    "id": 44,
+    "playerPool": "all-time"
   },
   {
     "name": "Rick Barry",
@@ -2607,7 +2651,8 @@
     "passVision": 78,
     "offensiveRebound": 84,
     "defensiveRebound": 85,
-    "id": 45
+    "id": 45,
+    "playerPool": "all-time"
   },
   {
     "name": "James Harden",
@@ -2665,7 +2710,8 @@
     "passVision": 86,
     "offensiveRebound": 37,
     "defensiveRebound": 69,
-    "id": 46
+    "id": 46,
+    "playerPool": "all-time"
   },
   {
     "name": "James Worthy",
@@ -2723,7 +2769,8 @@
     "passVision": 77,
     "offensiveRebound": 88,
     "defensiveRebound": 85,
-    "id": 47
+    "id": 47,
+    "playerPool": "all-time"
   },
   {
     "name": "Patrick Ewing",
@@ -2781,7 +2828,8 @@
     "passVision": 57,
     "offensiveRebound": 93,
     "defensiveRebound": 95,
-    "id": 48
+    "id": 48,
+    "playerPool": "all-time"
   },
   {
     "name": "Russell Westbrook",
@@ -2839,7 +2887,8 @@
     "passVision": 98,
     "offensiveRebound": 62,
     "defensiveRebound": 90,
-    "id": 49
+    "id": 49,
+    "playerPool": "all-time"
   },
   {
     "name": "Gary Payton",
@@ -2897,7 +2946,8 @@
     "passVision": 78,
     "offensiveRebound": 45,
     "defensiveRebound": 46,
-    "id": 50
+    "id": 50,
+    "playerPool": "all-time"
   },
   {
     "name": "Tracy McGrady",
@@ -2955,7 +3005,8 @@
     "passVision": 95,
     "offensiveRebound": 35,
     "defensiveRebound": 60,
-    "id": 51
+    "id": 51,
+    "playerPool": "all-time"
   },
   {
     "name": "Joel Embiid",
@@ -3013,7 +3064,8 @@
     "passVision": 71,
     "offensiveRebound": 70,
     "defensiveRebound": 94,
-    "id": 52
+    "id": 52,
+    "playerPool": "all-time"
   },
   {
     "name": "Bill Walton",
@@ -3071,7 +3123,8 @@
     "passVision": 84,
     "offensiveRebound": 97,
     "defensiveRebound": 98,
-    "id": 53
+    "id": 53,
+    "playerPool": "all-time"
   },
   {
     "name": "Jerry Lucas",
@@ -3129,7 +3182,8 @@
     "passVision": 73,
     "offensiveRebound": 97,
     "defensiveRebound": 98,
-    "id": 54
+    "id": 54,
+    "playerPool": "all-time"
   },
   {
     "name": "Tony Parker",
@@ -3187,7 +3241,8 @@
     "passVision": 80,
     "offensiveRebound": 30,
     "defensiveRebound": 47,
-    "id": 55
+    "id": 55,
+    "playerPool": "all-time"
   },
   {
     "name": "Paul Pierce",
@@ -3245,7 +3300,8 @@
     "passVision": 70,
     "offensiveRebound": 72,
     "defensiveRebound": 74,
-    "id": 56
+    "id": 56,
+    "playerPool": "all-time"
   },
   {
     "name": "Jo Jo White",
@@ -3303,7 +3359,8 @@
     "passVision": 95,
     "offensiveRebound": 30,
     "defensiveRebound": 30,
-    "id": 57
+    "id": 57,
+    "playerPool": "all-time"
   },
   {
     "name": "Kyrie Irving",
@@ -3361,7 +3418,8 @@
     "passVision": 80,
     "offensiveRebound": 41,
     "defensiveRebound": 57,
-    "id": 58
+    "id": 58,
+    "playerPool": "all-time"
   },
   {
     "name": "Chris Mullin",
@@ -3419,7 +3477,8 @@
     "passVision": 75,
     "offensiveRebound": 55,
     "defensiveRebound": 59,
-    "id": 59
+    "id": 59,
+    "playerPool": "all-time"
   },
   {
     "name": "Bob McAdoo",
@@ -3477,7 +3536,8 @@
     "passVision": 74,
     "offensiveRebound": 96,
     "defensiveRebound": 98,
-    "id": 60
+    "id": 60,
+    "playerPool": "all-time"
   },
   {
     "name": "George Mikan",
@@ -3535,7 +3595,8 @@
     "passVision": 58,
     "offensiveRebound": 97,
     "defensiveRebound": 97,
-    "id": 61
+    "id": 61,
+    "playerPool": "all-time"
   },
   {
     "name": "Anthony Davis",
@@ -3593,7 +3654,8 @@
     "passVision": 68,
     "offensiveRebound": 84,
     "defensiveRebound": 89,
-    "id": 62
+    "id": 62,
+    "playerPool": "all-time"
   },
   {
     "name": "Alonzo Mourning",
@@ -3651,7 +3713,8 @@
     "passVision": 29,
     "offensiveRebound": 92,
     "defensiveRebound": 96,
-    "id": 63
+    "id": 63,
+    "playerPool": "all-time"
   },
   {
     "name": "Sidney Moncrief",
@@ -3709,7 +3772,8 @@
     "passVision": 79,
     "offensiveRebound": 62,
     "defensiveRebound": 74,
-    "id": 64
+    "id": 64,
+    "playerPool": "all-time"
   },
   {
     "name": "Willis Reed",
@@ -3767,7 +3831,8 @@
     "passVision": 49,
     "offensiveRebound": 97,
     "defensiveRebound": 94,
-    "id": 65
+    "id": 65,
+    "playerPool": "all-time"
   },
   {
     "name": "Ray Allen",
@@ -3825,7 +3890,8 @@
     "passVision": 77,
     "offensiveRebound": 55,
     "defensiveRebound": 59,
-    "id": 66
+    "id": 66,
+    "playerPool": "all-time"
   },
   {
     "name": "Penny Hardaway",
@@ -3883,7 +3949,8 @@
     "passVision": 89,
     "offensiveRebound": 62,
     "defensiveRebound": 68,
-    "id": 67
+    "id": 67,
+    "playerPool": "all-time"
   },
   {
     "name": "Dwight Howard",
@@ -3941,7 +4008,8 @@
     "passVision": 33,
     "offensiveRebound": 97,
     "defensiveRebound": 97,
-    "id": 68
+    "id": 68,
+    "playerPool": "all-time"
   },
   {
     "name": "Dolph Schayes",
@@ -3999,7 +4067,8 @@
     "passVision": 50,
     "offensiveRebound": 95,
     "defensiveRebound": 96,
-    "id": 69
+    "id": 69,
+    "playerPool": "all-time"
   },
   {
     "name": "Dennis Johnson",
@@ -4057,7 +4126,8 @@
     "passVision": 78,
     "offensiveRebound": 47,
     "defensiveRebound": 50,
-    "id": 70
+    "id": 70,
+    "playerPool": "all-time"
   },
   {
     "name": "Damian Lillard",
@@ -4115,7 +4185,8 @@
     "passVision": 88,
     "offensiveRebound": 32,
     "defensiveRebound": 53,
-    "id": 71
+    "id": 71,
+    "playerPool": "all-time"
   },
   {
     "name": "Mitch Richmond",
@@ -4173,7 +4244,8 @@
     "passVision": 67,
     "offensiveRebound": 52,
     "defensiveRebound": 62,
-    "id": 72
+    "id": 72,
+    "playerPool": "all-time"
   },
   {
     "name": "Nate Archibald",
@@ -4231,7 +4303,8 @@
     "passVision": 95,
     "offensiveRebound": 30,
     "defensiveRebound": 30,
-    "id": 73
+    "id": 73,
+    "playerPool": "all-time"
   },
   {
     "name": "George Gervin",
@@ -4289,7 +4362,8 @@
     "passVision": 64,
     "offensiveRebound": 84,
     "defensiveRebound": 87,
-    "id": 74
+    "id": 74,
+    "playerPool": "all-time"
   },
   {
     "name": "Pete Maravich",
@@ -4347,7 +4421,8 @@
     "passVision": 90,
     "offensiveRebound": 55,
     "defensiveRebound": 59,
-    "id": 75
+    "id": 75,
+    "playerPool": "all-time"
   },
   {
     "name": "Elvin Hayes",
@@ -4405,7 +4480,8 @@
     "passVision": 69,
     "offensiveRebound": 97,
     "defensiveRebound": 98,
-    "id": 76
+    "id": 76,
+    "playerPool": "all-time"
   },
   {
     "name": "Wes Unseld",
@@ -4463,7 +4539,8 @@
     "passVision": 85,
     "offensiveRebound": 97,
     "defensiveRebound": 97,
-    "id": 77
+    "id": 77,
+    "playerPool": "all-time"
   },
   {
     "name": "Robert Parish",
@@ -4521,7 +4598,8 @@
     "passVision": 34,
     "offensiveRebound": 95,
     "defensiveRebound": 96,
-    "id": 78
+    "id": 78,
+    "playerPool": "all-time"
   },
   {
     "name": "Dennis Rodman",
@@ -4579,7 +4657,8 @@
     "passVision": 59,
     "offensiveRebound": 99,
     "defensiveRebound": 98,
-    "id": 79
+    "id": 79,
+    "playerPool": "all-time"
   },
   {
     "name": "Artis Gilmore",
@@ -4637,7 +4716,8 @@
     "passVision": 55,
     "offensiveRebound": 95,
     "defensiveRebound": 97,
-    "id": 80
+    "id": 80,
+    "playerPool": "all-time"
   },
   {
     "name": "Mark Price",
@@ -4695,7 +4775,8 @@
     "passVision": 92,
     "offensiveRebound": 38,
     "defensiveRebound": 44,
-    "id": 81
+    "id": 81,
+    "playerPool": "all-time"
   },
   {
     "name": "Luka Doncic",
@@ -4753,7 +4834,8 @@
     "passVision": 91,
     "offensiveRebound": 38,
     "defensiveRebound": 82,
-    "id": 82
+    "id": 82,
+    "playerPool": "all-time"
   },
   {
     "name": "Alex English",
@@ -4811,7 +4893,8 @@
     "passVision": 79,
     "offensiveRebound": 77,
     "defensiveRebound": 79,
-    "id": 83
+    "id": 83,
+    "playerPool": "all-time"
   },
   {
     "name": "Joe Dumars",
@@ -4869,7 +4952,8 @@
     "passVision": 80,
     "offensiveRebound": 50,
     "defensiveRebound": 66,
-    "id": 84
+    "id": 84,
+    "playerPool": "all-time"
   },
   {
     "name": "Chauncey Billups",
@@ -4927,7 +5011,8 @@
     "passVision": 92,
     "offensiveRebound": 32,
     "defensiveRebound": 50,
-    "id": 85
+    "id": 85,
+    "playerPool": "all-time"
   },
   {
     "name": "Bob Lanier",
@@ -4985,7 +5070,8 @@
     "passVision": 66,
     "offensiveRebound": 96,
     "defensiveRebound": 97,
-    "id": 86
+    "id": 86,
+    "playerPool": "all-time"
   },
   {
     "name": "Grant Hill",
@@ -5043,7 +5129,8 @@
     "passVision": 84,
     "offensiveRebound": 62,
     "defensiveRebound": 74,
-    "id": 87
+    "id": 87,
+    "playerPool": "all-time"
   },
   {
     "name": "Paul George",
@@ -5101,7 +5188,8 @@
     "passVision": 66,
     "offensiveRebound": 43,
     "defensiveRebound": 75,
-    "id": 88
+    "id": 88,
+    "playerPool": "all-time"
   },
   {
     "name": "Marc Gasol",
@@ -5159,7 +5247,8 @@
     "passVision": 72,
     "offensiveRebound": 80,
     "defensiveRebound": 89,
-    "id": 89
+    "id": 89,
+    "playerPool": "all-time"
   },
   {
     "name": "Jimmy Butler",
@@ -5217,7 +5306,8 @@
     "passVision": 77,
     "offensiveRebound": 62,
     "defensiveRebound": 59,
-    "id": 90
+    "id": 90,
+    "playerPool": "all-time"
   },
   {
     "name": "Shai Gilgeous-Alexander",
@@ -5275,7 +5365,8 @@
     "passVision": 80,
     "offensiveRebound": 48,
     "defensiveRebound": 68,
-    "id": 91
+    "id": 91,
+    "playerPool": "all-time"
   },
   {
     "name": "Billy Cunningham",
@@ -5333,7 +5424,8 @@
     "passVision": 72,
     "offensiveRebound": 92,
     "defensiveRebound": 95,
-    "id": 92
+    "id": 92,
+    "playerPool": "all-time"
   },
   {
     "name": "Chris Webber",
@@ -5391,7 +5483,8 @@
     "passVision": 65,
     "offensiveRebound": 92,
     "defensiveRebound": 92,
-    "id": 93
+    "id": 93,
+    "playerPool": "all-time"
   },
   {
     "name": "Gilbert Arenas",
@@ -5449,7 +5542,8 @@
     "passVision": 75,
     "offensiveRebound": 54,
     "defensiveRebound": 62,
-    "id": 94
+    "id": 94,
+    "playerPool": "all-time"
   },
   {
     "name": "Dikembe Mutombo",
@@ -5507,7 +5601,8 @@
     "passVision": 32,
     "offensiveRebound": 96,
     "defensiveRebound": 94,
-    "id": 95
+    "id": 95,
+    "playerPool": "all-time"
   },
   {
     "name": "Jayson Tatum",
@@ -5565,7 +5660,8 @@
     "passVision": 70,
     "offensiveRebound": 51,
     "defensiveRebound": 82,
-    "id": 96
+    "id": 96,
+    "playerPool": "all-time"
   },
   {
     "name": "Bill Sharman",
@@ -5623,7 +5719,8 @@
     "passVision": 77,
     "offensiveRebound": 79,
     "defensiveRebound": 80,
-    "id": 97
+    "id": 97,
+    "playerPool": "all-time"
   },
   {
     "name": "Dan Issel",
@@ -5681,7 +5778,8 @@
     "passVision": 69,
     "offensiveRebound": 95,
     "defensiveRebound": 94,
-    "id": 98
+    "id": 98,
+    "playerPool": "all-time"
   },
   {
     "name": "Fat Lever",
@@ -5739,7 +5837,8 @@
     "passVision": 92,
     "offensiveRebound": 62,
     "defensiveRebound": 84,
-    "id": 99
+    "id": 99,
+    "playerPool": "all-time"
   },
   {
     "name": "Nate Thurmond",
@@ -5797,7 +5896,8 @@
     "passVision": 31,
     "offensiveRebound": 91,
     "defensiveRebound": 98,
-    "id": 100
+    "id": 100,
+    "playerPool": "all-time"
   },
   {
     "name": "Mel Daniels",
@@ -5855,7 +5955,8 @@
     "passVision": 52,
     "offensiveRebound": 97,
     "defensiveRebound": 97,
-    "id": 101
+    "id": 101,
+    "playerPool": "all-time"
   },
   {
     "name": "Pau Gasol",
@@ -5913,7 +6014,8 @@
     "passVision": 71,
     "offensiveRebound": 84,
     "defensiveRebound": 88,
-    "id": 102
+    "id": 102,
+    "playerPool": "all-time"
   },
   {
     "name": "Marques Johnson",
@@ -5971,7 +6073,8 @@
     "passVision": 64,
     "offensiveRebound": 68,
     "defensiveRebound": 82,
-    "id": 103
+    "id": 103,
+    "playerPool": "all-time"
   },
   {
     "name": "Baron Davis",
@@ -6029,7 +6132,8 @@
     "passVision": 88,
     "offensiveRebound": 55,
     "defensiveRebound": 62,
-    "id": 104
+    "id": 104,
+    "playerPool": "all-time"
   },
   {
     "name": "Richie Guerin",
@@ -6087,7 +6191,8 @@
     "passVision": 84,
     "offensiveRebound": 79,
     "defensiveRebound": 80,
-    "id": 105
+    "id": 105,
+    "playerPool": "all-time"
   },
   {
     "name": "Dave Debusschere",
@@ -6145,7 +6250,8 @@
     "passVision": 72,
     "offensiveRebound": 89,
     "defensiveRebound": 97,
-    "id": 106
+    "id": 106,
+    "playerPool": "all-time"
   },
   {
     "name": "Devin Booker",
@@ -6203,7 +6309,8 @@
     "passVision": 78,
     "offensiveRebound": 48,
     "defensiveRebound": 55,
-    "id": 107
+    "id": 107,
+    "playerPool": "all-time"
   },
   {
     "name": "Amar\u2019e Stoudemire",
@@ -6261,7 +6368,8 @@
     "passVision": 34,
     "offensiveRebound": 88,
     "defensiveRebound": 89,
-    "id": 108
+    "id": 108,
+    "playerPool": "all-time"
   },
   {
     "name": "Cliff Hagan",
@@ -6319,7 +6427,8 @@
     "passVision": 68,
     "offensiveRebound": 82,
     "defensiveRebound": 84,
-    "id": 109
+    "id": 109,
+    "playerPool": "all-time"
   },
   {
     "name": "Lou Hudson",
@@ -6377,7 +6486,8 @@
     "passVision": 77,
     "offensiveRebound": 46,
     "defensiveRebound": 49,
-    "id": 110
+    "id": 110,
+    "playerPool": "all-time"
   },
   {
     "name": "Jaylen Brown",
@@ -6435,7 +6545,8 @@
     "passVision": 64,
     "offensiveRebound": 45,
     "defensiveRebound": 59,
-    "id": 111
+    "id": 111,
+    "playerPool": "all-time"
   },
   {
     "name": "Paul Arizin",
@@ -6493,7 +6604,8 @@
     "passVision": 50,
     "offensiveRebound": 87,
     "defensiveRebound": 88,
-    "id": 112
+    "id": 112,
+    "playerPool": "all-time"
   },
   {
     "name": "Klay Thompson",
@@ -6551,7 +6663,8 @@
     "passVision": 38,
     "offensiveRebound": 36,
     "defensiveRebound": 47,
-    "id": 113
+    "id": 113,
+    "playerPool": "all-time"
   },
   {
     "name": "Yao Ming",
@@ -6609,7 +6722,8 @@
     "passVision": 43,
     "offensiveRebound": 96,
     "defensiveRebound": 97,
-    "id": 114
+    "id": 114,
+    "playerPool": "all-time"
   },
   {
     "name": "Calvin Murphy",
@@ -6667,7 +6781,8 @@
     "passVision": 80,
     "offensiveRebound": 30,
     "defensiveRebound": 44,
-    "id": 115
+    "id": 115,
+    "playerPool": "all-time"
   },
   {
     "name": "Jermaine O\u2019Neal",
@@ -6725,7 +6840,8 @@
     "passVision": 43,
     "offensiveRebound": 88,
     "defensiveRebound": 89,
-    "id": 116
+    "id": 116,
+    "playerPool": "all-time"
   },
   {
     "name": "Kevin Love",
@@ -6783,7 +6899,8 @@
     "passVision": 76,
     "offensiveRebound": 92,
     "defensiveRebound": 96,
-    "id": 117
+    "id": 117,
+    "playerPool": "all-time"
   },
   {
     "name": "Anthony Edwards",
@@ -6841,7 +6958,8 @@
     "passVision": 72,
     "offensiveRebound": 36,
     "defensiveRebound": 63,
-    "id": 118
+    "id": 118,
+    "playerPool": "all-time"
   },
   {
     "name": "Shawn Marion",
@@ -6899,7 +7017,8 @@
     "passVision": 34,
     "offensiveRebound": 88,
     "defensiveRebound": 90,
-    "id": 119
+    "id": 119,
+    "playerPool": "all-time"
   },
   {
     "name": "Brandon Roy",
@@ -6957,7 +7076,8 @@
     "passVision": 64,
     "offensiveRebound": 47,
     "defensiveRebound": 57,
-    "id": 120
+    "id": 120,
+    "playerPool": "all-time"
   },
   {
     "name": "Adrian Dantley",
@@ -7015,7 +7135,8 @@
     "passVision": 74,
     "offensiveRebound": 72,
     "defensiveRebound": 75,
-    "id": 121
+    "id": 121,
+    "playerPool": "all-time"
   },
   {
     "name": "Rajon Rondo",
@@ -7073,7 +7194,8 @@
     "passVision": 90,
     "offensiveRebound": 46,
     "defensiveRebound": 54,
-    "id": 122
+    "id": 122,
+    "playerPool": "all-time"
   },
   {
     "name": "Drazen Petrovic",
@@ -7131,7 +7253,8 @@
     "passVision": 77,
     "offensiveRebound": 66,
     "defensiveRebound": 69,
-    "id": 123
+    "id": 123,
+    "playerPool": "all-time"
   },
   {
     "name": "Glen Rice",
@@ -7189,7 +7312,8 @@
     "passVision": 61,
     "offensiveRebound": 46,
     "defensiveRebound": 66,
-    "id": 124
+    "id": 124,
+    "playerPool": "all-time"
   },
   {
     "name": "Brad Daugherty",
@@ -7247,7 +7371,8 @@
     "passVision": 68,
     "offensiveRebound": 88,
     "defensiveRebound": 92,
-    "id": 125
+    "id": 125,
+    "playerPool": "all-time"
   },
   {
     "name": "Dave Bing",
@@ -7305,7 +7430,8 @@
     "passVision": 78,
     "offensiveRebound": 50,
     "defensiveRebound": 40,
-    "id": 126
+    "id": 126,
+    "playerPool": "all-time"
   },
   {
     "name": "Tim Hardaway",
@@ -7363,7 +7489,8 @@
     "passVision": 94,
     "offensiveRebound": 40,
     "defensiveRebound": 46,
-    "id": 127
+    "id": 127,
+    "playerPool": "all-time"
   },
   {
     "name": "Elton Brand",
@@ -7421,7 +7548,8 @@
     "passVision": 45,
     "offensiveRebound": 96,
     "defensiveRebound": 96,
-    "id": 128
+    "id": 128,
+    "playerPool": "all-time"
   },
   {
     "name": "Shawn Kemp",
@@ -7479,7 +7607,8 @@
     "passVision": 43,
     "offensiveRebound": 85,
     "defensiveRebound": 88,
-    "id": 129
+    "id": 129,
+    "playerPool": "all-time"
   },
   {
     "name": "Bobby Jones",
@@ -7537,7 +7666,8 @@
     "passVision": 49,
     "offensiveRebound": 50,
     "defensiveRebound": 60,
-    "id": 130
+    "id": 130,
+    "playerPool": "all-time"
   },
   {
     "name": "Walter Davis",
@@ -7595,7 +7725,8 @@
     "passVision": 74,
     "offensiveRebound": 44,
     "defensiveRebound": 57,
-    "id": 131
+    "id": 131,
+    "playerPool": "all-time"
   },
   {
     "name": "Maurice Lucas",
@@ -7653,7 +7784,8 @@
     "passVision": 50,
     "offensiveRebound": 89,
     "defensiveRebound": 90,
-    "id": 132
+    "id": 132,
+    "playerPool": "all-time"
   },
   {
     "name": "DeMarcus Cousins",
@@ -7711,7 +7843,8 @@
     "passVision": 72,
     "offensiveRebound": 70,
     "defensiveRebound": 91,
-    "id": 133
+    "id": 133,
+    "playerPool": "all-time"
   },
   {
     "name": "Wayne Embry",
@@ -7769,7 +7902,8 @@
     "passVision": 43,
     "offensiveRebound": 94,
     "defensiveRebound": 94,
-    "id": 134
+    "id": 134,
+    "playerPool": "all-time"
   },
   {
     "name": "Manu Ginobili",
@@ -7827,7 +7961,8 @@
     "passVision": 82,
     "offensiveRebound": 52,
     "defensiveRebound": 62,
-    "id": 135
+    "id": 135,
+    "playerPool": "all-time"
   },
   {
     "name": "Chris Bosh",
@@ -7885,7 +8020,8 @@
     "passVision": 43,
     "offensiveRebound": 91,
     "defensiveRebound": 94,
-    "id": 136
+    "id": 136,
+    "playerPool": "all-time"
   },
   {
     "name": "Joe Johnson",
@@ -7943,7 +8079,8 @@
     "passVision": 74,
     "offensiveRebound": 46,
     "defensiveRebound": 48,
-    "id": 137
+    "id": 137,
+    "playerPool": "all-time"
   },
   {
     "name": "Tom Heinsohn",
@@ -8001,7 +8138,8 @@
     "passVision": 58,
     "offensiveRebound": 87,
     "defensiveRebound": 88,
-    "id": 138
+    "id": 138,
+    "playerPool": "all-time"
   },
   {
     "name": "Kemba Walker",
@@ -8059,7 +8197,8 @@
     "passVision": 84,
     "offensiveRebound": 34,
     "defensiveRebound": 54,
-    "id": 139
+    "id": 139,
+    "playerPool": "all-time"
   },
   {
     "name": "Eddie Jones",
@@ -8117,7 +8256,8 @@
     "passVision": 70,
     "offensiveRebound": 41,
     "defensiveRebound": 45,
-    "id": 140
+    "id": 140,
+    "playerPool": "all-time"
   },
   {
     "name": "Bob Love",
@@ -8175,7 +8315,8 @@
     "passVision": 35,
     "offensiveRebound": 74,
     "defensiveRebound": 81,
-    "id": 141
+    "id": 141,
+    "playerPool": "all-time"
   },
   {
     "name": "Jerry Sloan",
@@ -8233,7 +8374,8 @@
     "passVision": 72,
     "offensiveRebound": 58,
     "defensiveRebound": 78,
-    "id": 142
+    "id": 142,
+    "playerPool": "all-time"
   },
   {
     "name": "Derek Harper",
@@ -8291,7 +8433,8 @@
     "passVision": 83,
     "offensiveRebound": 32,
     "defensiveRebound": 41,
-    "id": 143
+    "id": 143,
+    "playerPool": "all-time"
   },
   {
     "name": "Mahmoud Abdul-Rauf",
@@ -8349,7 +8492,8 @@
     "passVision": 81,
     "offensiveRebound": 31,
     "defensiveRebound": 39,
-    "id": 144
+    "id": 144,
+    "playerPool": "all-time"
   },
   {
     "name": "Kiki Vandeweghe",
@@ -8407,7 +8551,8 @@
     "passVision": 61,
     "offensiveRebound": 61,
     "defensiveRebound": 66,
-    "id": 145
+    "id": 145,
+    "playerPool": "all-time"
   },
   {
     "name": "Byron Beck",
@@ -8465,7 +8610,8 @@
     "passVision": 59,
     "offensiveRebound": 91,
     "defensiveRebound": 93,
-    "id": 146
+    "id": 146,
+    "playerPool": "all-time"
   },
   {
     "name": "Jerry Stackhouse",
@@ -8523,7 +8669,8 @@
     "passVision": 70,
     "offensiveRebound": 51,
     "defensiveRebound": 41,
-    "id": 147
+    "id": 147,
+    "playerPool": "all-time"
   },
   {
     "name": "Richard Hamilton",
@@ -8581,7 +8728,8 @@
     "passVision": 71,
     "offensiveRebound": 41,
     "defensiveRebound": 45,
-    "id": 148
+    "id": 148,
+    "playerPool": "all-time"
   },
   {
     "name": "Ben Wallace",
@@ -8639,7 +8787,8 @@
     "passVision": 34,
     "offensiveRebound": 82,
     "defensiveRebound": 86,
-    "id": 149
+    "id": 149,
+    "playerPool": "all-time"
   },
   {
     "name": "Draymond Green",
@@ -8697,7 +8846,8 @@
     "passVision": 77,
     "offensiveRebound": 54,
     "defensiveRebound": 85,
-    "id": 150
+    "id": 150,
+    "playerPool": "all-time"
   },
   {
     "name": "Ralph Sampson",
@@ -8755,7 +8905,8 @@
     "passVision": 37,
     "offensiveRebound": 84,
     "defensiveRebound": 86,
-    "id": 151
+    "id": 151,
+    "playerPool": "all-time"
   },
   {
     "name": "Freddie Lewis",
@@ -8813,7 +8964,8 @@
     "passVision": 84,
     "offensiveRebound": 30,
     "defensiveRebound": 30,
-    "id": 152
+    "id": 152,
+    "playerPool": "all-time"
   },
   {
     "name": "George McGinnis",
@@ -8871,7 +9023,8 @@
     "passVision": 65,
     "offensiveRebound": 94,
     "defensiveRebound": 96,
-    "id": 153
+    "id": 153,
+    "playerPool": "all-time"
   },
   {
     "name": "World B. Free",
@@ -8929,7 +9082,8 @@
     "passVision": 84,
     "offensiveRebound": 48,
     "defensiveRebound": 39,
-    "id": 154
+    "id": 154,
+    "playerPool": "all-time"
   },
   {
     "name": "Ron Harper",
@@ -8987,7 +9141,8 @@
     "passVision": 84,
     "offensiveRebound": 52,
     "defensiveRebound": 51,
-    "id": 155
+    "id": 155,
+    "playerPool": "all-time"
   },
   {
     "name": "Gail Goodrich",
@@ -9045,7 +9200,8 @@
     "passVision": 92,
     "offensiveRebound": 55,
     "defensiveRebound": 59,
-    "id": 156
+    "id": 156,
+    "playerPool": "all-time"
   },
   {
     "name": "Ja Morant",
@@ -9103,7 +9259,8 @@
     "passVision": 88,
     "offensiveRebound": 46,
     "defensiveRebound": 61,
-    "id": 157
+    "id": 157,
+    "playerPool": "all-time"
   },
   {
     "name": "Zach Randolph",
@@ -9161,7 +9318,8 @@
     "passVision": 52,
     "offensiveRebound": 88,
     "defensiveRebound": 92,
-    "id": 158
+    "id": 158,
+    "playerPool": "all-time"
   },
   {
     "name": "Karl-Anthony Towns",
@@ -9219,7 +9377,8 @@
     "passVision": 65,
     "offensiveRebound": 82,
     "defensiveRebound": 91,
-    "id": 159
+    "id": 159,
+    "playerPool": "all-time"
   },
   {
     "name": "Jamal Mashburn",
@@ -9277,7 +9436,8 @@
     "passVision": 68,
     "offensiveRebound": 62,
     "defensiveRebound": 64,
-    "id": 160
+    "id": 160,
+    "playerPool": "all-time"
   },
   {
     "name": "Allan Houston",
@@ -9335,7 +9495,8 @@
     "passVision": 62,
     "offensiveRebound": 59,
     "defensiveRebound": 62,
-    "id": 161
+    "id": 161,
+    "playerPool": "all-time"
   },
   {
     "name": "Bernard King",
@@ -9393,7 +9554,8 @@
     "passVision": 68,
     "offensiveRebound": 60,
     "defensiveRebound": 55,
-    "id": 162
+    "id": 162,
+    "playerPool": "all-time"
   },
   {
     "name": "Micheal Ray Richardson",
@@ -9451,7 +9613,8 @@
     "passVision": 94,
     "offensiveRebound": 66,
     "defensiveRebound": 59,
-    "id": 163
+    "id": 163,
+    "playerPool": "all-time"
   },
   {
     "name": "Rashard Lewis",
@@ -9509,7 +9672,8 @@
     "passVision": 60,
     "offensiveRebound": 40,
     "defensiveRebound": 63,
-    "id": 164
+    "id": 164,
+    "playerPool": "all-time"
   },
   {
     "name": "Gus Williams",
@@ -9567,7 +9731,8 @@
     "passVision": 76,
     "offensiveRebound": 34,
     "defensiveRebound": 51,
-    "id": 165
+    "id": 165,
+    "playerPool": "all-time"
   },
   {
     "name": "Spencer Haywood",
@@ -9625,7 +9790,8 @@
     "passVision": 48,
     "offensiveRebound": 96,
     "defensiveRebound": 95,
-    "id": 166
+    "id": 166,
+    "playerPool": "all-time"
   },
   {
     "name": "Jack Sikma",
@@ -9683,7 +9849,8 @@
     "passVision": 69,
     "offensiveRebound": 88,
     "defensiveRebound": 93,
-    "id": 167
+    "id": 167,
+    "playerPool": "all-time"
   },
   {
     "name": "Tyrese Maxey",
@@ -9741,7 +9908,8 @@
     "passVision": 79,
     "offensiveRebound": 32,
     "defensiveRebound": 48,
-    "id": 168
+    "id": 168,
+    "playerPool": "all-time"
   },
   {
     "name": "Kevin Johnson",
@@ -9799,7 +9967,8 @@
     "passVision": 92,
     "offensiveRebound": 53,
     "defensiveRebound": 44,
-    "id": 169
+    "id": 169,
+    "playerPool": "all-time"
   },
   {
     "name": "Charlie Scott",
@@ -9857,7 +10026,8 @@
     "passVision": 79,
     "offensiveRebound": 58,
     "defensiveRebound": 64,
-    "id": 170
+    "id": 170,
+    "playerPool": "all-time"
   },
   {
     "name": "Tom Chambers",
@@ -9915,7 +10085,8 @@
     "passVision": 45,
     "offensiveRebound": 88,
     "defensiveRebound": 90,
-    "id": 171
+    "id": 171,
+    "playerPool": "all-time"
   },
   {
     "name": "LaMarcus Aldridge",
@@ -9973,7 +10144,8 @@
     "passVision": 35,
     "offensiveRebound": 84,
     "defensiveRebound": 92,
-    "id": 172
+    "id": 172,
+    "playerPool": "all-time"
   },
   {
     "name": "Louie Dampier",
@@ -10031,7 +10203,8 @@
     "passVision": 82,
     "offensiveRebound": 54,
     "defensiveRebound": 55,
-    "id": 173
+    "id": 173,
+    "playerPool": "all-time"
   },
   {
     "name": "Kyle Lowry",
@@ -10089,7 +10262,8 @@
     "passVision": 74,
     "offensiveRebound": 36,
     "defensiveRebound": 55,
-    "id": 174
+    "id": 174,
+    "playerPool": "all-time"
   },
   {
     "name": "DeMar DeRozan",
@@ -10147,7 +10321,8 @@
     "passVision": 75,
     "offensiveRebound": 40,
     "defensiveRebound": 60,
-    "id": 175
+    "id": 175,
+    "playerPool": "all-time"
   },
   {
     "name": "Mark Eaton",
@@ -10205,7 +10380,8 @@
     "passVision": 32,
     "offensiveRebound": 94,
     "defensiveRebound": 94,
-    "id": 176
+    "id": 176,
+    "playerPool": "all-time"
   },
   {
     "name": "Andrei Kirilenko",
@@ -10263,7 +10439,8 @@
     "passVision": 62,
     "offensiveRebound": 83,
     "defensiveRebound": 87,
-    "id": 177
+    "id": 177,
+    "playerPool": "all-time"
   },
   {
     "name": "Earl Monroe",
@@ -10321,7 +10498,8 @@
     "passVision": 84,
     "offensiveRebound": 32,
     "defensiveRebound": 38,
-    "id": 178
+    "id": 178,
+    "playerPool": "all-time"
   },
   {
     "name": "Bradley Beal",
@@ -10379,7 +10557,8 @@
     "passVision": 70,
     "offensiveRebound": 42,
     "defensiveRebound": 51,
-    "id": 179
+    "id": 179,
+    "playerPool": "all-time"
   },
   {
     "name": "Trae Young",
@@ -10437,7 +10616,8 @@
     "passVision": 92,
     "offensiveRebound": 34,
     "defensiveRebound": 54,
-    "id": 180
+    "id": 180,
+    "playerPool": "all-time"
   },
   {
     "name": "Joe Caldwell",
@@ -10495,7 +10675,8 @@
     "passVision": 72,
     "offensiveRebound": 49,
     "defensiveRebound": 58,
-    "id": 181
+    "id": 181,
+    "playerPool": "all-time"
   },
   {
     "name": "Buck Williams",
@@ -10553,7 +10734,8 @@
     "passVision": 40,
     "offensiveRebound": 92,
     "defensiveRebound": 94,
-    "id": 182
+    "id": 182,
+    "playerPool": "all-time"
   },
   {
     "name": "Derrick Coleman",
@@ -10611,7 +10793,8 @@
     "passVision": 50,
     "offensiveRebound": 84,
     "defensiveRebound": 90,
-    "id": 183
+    "id": 183,
+    "playerPool": "all-time"
   },
   {
     "name": "Kenny Anderson",
@@ -10669,7 +10852,8 @@
     "passVision": 90,
     "offensiveRebound": 37,
     "defensiveRebound": 34,
-    "id": 184
+    "id": 184,
+    "playerPool": "all-time"
   },
   {
     "name": "Larry Johnson",
@@ -10727,7 +10911,8 @@
     "passVision": 70,
     "offensiveRebound": 85,
     "defensiveRebound": 84,
-    "id": 185
+    "id": 185,
+    "playerPool": "all-time"
   },
   {
     "name": "Zydrunas Ilgauskas",
@@ -10785,7 +10970,8 @@
     "passVision": 40,
     "offensiveRebound": 88,
     "defensiveRebound": 88,
-    "id": 186
+    "id": 186,
+    "playerPool": "all-time"
   },
   {
     "name": "Larry Nance",
@@ -10843,7 +11029,8 @@
     "passVision": 49,
     "offensiveRebound": 87,
     "defensiveRebound": 89,
-    "id": 187
+    "id": 187,
+    "playerPool": "all-time"
   },
   {
     "name": "Mark Aguirre",
@@ -10901,7 +11088,8 @@
     "passVision": 62,
     "offensiveRebound": 68,
     "defensiveRebound": 70,
-    "id": 188
+    "id": 188,
+    "playerPool": "all-time"
   },
   {
     "name": "Michael Finley",
@@ -10959,7 +11147,8 @@
     "passVision": 49,
     "offensiveRebound": 54,
     "defensiveRebound": 68,
-    "id": 189
+    "id": 189,
+    "playerPool": "all-time"
   },
   {
     "name": "Rolando Blackman",
@@ -11017,7 +11206,8 @@
     "passVision": 69,
     "offensiveRebound": 54,
     "defensiveRebound": 52,
-    "id": 190
+    "id": 190,
+    "playerPool": "all-time"
   },
   {
     "name": "Jim Jackson",
@@ -11075,7 +11265,8 @@
     "passVision": 72,
     "offensiveRebound": 57,
     "defensiveRebound": 60,
-    "id": 191
+    "id": 191,
+    "playerPool": "all-time"
   },
   {
     "name": "Antonio McDyess",
@@ -11133,7 +11324,8 @@
     "passVision": 36,
     "offensiveRebound": 88,
     "defensiveRebound": 90,
-    "id": 192
+    "id": 192,
+    "playerPool": "all-time"
   },
   {
     "name": "Bailey Howell",
@@ -11191,7 +11383,8 @@
     "passVision": 54,
     "offensiveRebound": 85,
     "defensiveRebound": 93,
-    "id": 193
+    "id": 193,
+    "playerPool": "all-time"
   },
   {
     "name": "Sleepy Floyd",
@@ -11249,7 +11442,8 @@
     "passVision": 94,
     "offensiveRebound": 31,
     "defensiveRebound": 32,
-    "id": 194
+    "id": 194,
+    "playerPool": "all-time"
   },
   {
     "name": "Rudy Tomjanovich",
@@ -11307,7 +11501,8 @@
     "passVision": 64,
     "offensiveRebound": 84,
     "defensiveRebound": 84,
-    "id": 195
+    "id": 195,
+    "playerPool": "all-time"
   },
   {
     "name": "Steve Francis",
@@ -11365,7 +11560,8 @@
     "passVision": 74,
     "offensiveRebound": 54,
     "defensiveRebound": 59,
-    "id": 196
+    "id": 196,
+    "playerPool": "all-time"
   },
   {
     "name": "Tyrese Haliburton",
@@ -11423,7 +11619,8 @@
     "passVision": 94,
     "offensiveRebound": 34,
     "defensiveRebound": 55,
-    "id": 197
+    "id": 197,
+    "playerPool": "all-time"
   },
   {
     "name": "Danny Granger",
@@ -11481,7 +11678,8 @@
     "passVision": 77,
     "offensiveRebound": 69,
     "defensiveRebound": 70,
-    "id": 198
+    "id": 198,
+    "playerPool": "all-time"
   },
   {
     "name": "Ron Artest",
@@ -11539,7 +11737,8 @@
     "passVision": 59,
     "offensiveRebound": 50,
     "defensiveRebound": 56,
-    "id": 199
+    "id": 199,
+    "playerPool": "all-time"
   },
   {
     "name": "Victor Oladipo",
@@ -11597,7 +11796,8 @@
     "passVision": 79,
     "offensiveRebound": 35,
     "defensiveRebound": 68,
-    "id": 200
+    "id": 200,
+    "playerPool": "all-time"
   },
   {
     "name": "Bob Netolicky",
@@ -11655,7 +11855,8 @@
     "passVision": 52,
     "offensiveRebound": 93,
     "defensiveRebound": 94,
-    "id": 201
+    "id": 201,
+    "playerPool": "all-time"
   },
   {
     "name": "Mike Conley",
@@ -11713,7 +11914,8 @@
     "passVision": 79,
     "offensiveRebound": 32,
     "defensiveRebound": 52,
-    "id": 202
+    "id": 202,
+    "playerPool": "all-time"
   },
   {
     "name": "Bob Dandridge",
@@ -11771,7 +11973,8 @@
     "passVision": 75,
     "offensiveRebound": 72,
     "defensiveRebound": 70,
-    "id": 203
+    "id": 203,
+    "playerPool": "all-time"
   },
   {
     "name": "Michael Redd",
@@ -11829,7 +12032,8 @@
     "passVision": 58,
     "offensiveRebound": 40,
     "defensiveRebound": 43,
-    "id": 204
+    "id": 204,
+    "playerPool": "all-time"
   },
   {
     "name": "Khris Middleton",
@@ -11887,7 +12091,8 @@
     "passVision": 71,
     "offensiveRebound": 37,
     "defensiveRebound": 65,
-    "id": 205
+    "id": 205,
+    "playerPool": "all-time"
   },
   {
     "name": "Tom Gugliotta",
@@ -11945,7 +12150,8 @@
     "passVision": 48,
     "offensiveRebound": 80,
     "defensiveRebound": 82,
-    "id": 206
+    "id": 206,
+    "playerPool": "all-time"
   },
   {
     "name": "Sam Cassell",
@@ -12003,7 +12209,8 @@
     "passVision": 85,
     "offensiveRebound": 34,
     "defensiveRebound": 46,
-    "id": 207
+    "id": 207,
+    "playerPool": "all-time"
   },
   {
     "name": "Zion Williamson",
@@ -12061,7 +12268,8 @@
     "passVision": 69,
     "offensiveRebound": 67,
     "defensiveRebound": 78,
-    "id": 208
+    "id": 208,
+    "playerPool": "all-time"
   },
   {
     "name": "David West",
@@ -12119,7 +12327,8 @@
     "passVision": 69,
     "offensiveRebound": 84,
     "defensiveRebound": 86,
-    "id": 209
+    "id": 209,
+    "playerPool": "all-time"
   },
   {
     "name": "John Starks",
@@ -12177,7 +12386,8 @@
     "passVision": 77,
     "offensiveRebound": 59,
     "defensiveRebound": 59,
-    "id": 210
+    "id": 210,
+    "playerPool": "all-time"
   },
   {
     "name": "Fred Brown",
@@ -12235,7 +12445,8 @@
     "passVision": 77,
     "offensiveRebound": 45,
     "defensiveRebound": 49,
-    "id": 211
+    "id": 211,
+    "playerPool": "all-time"
   },
   {
     "name": "Dale Ellis",
@@ -12293,7 +12504,8 @@
     "passVision": 50,
     "offensiveRebound": 55,
     "defensiveRebound": 60,
-    "id": 212
+    "id": 212,
+    "playerPool": "all-time"
   },
   {
     "name": "Hal Greer",
@@ -12351,7 +12563,8 @@
     "passVision": 84,
     "offensiveRebound": 31,
     "defensiveRebound": 39,
-    "id": 213
+    "id": 213,
+    "playerPool": "all-time"
   },
   {
     "name": "Dick Van Arsdale",
@@ -12409,7 +12622,8 @@
     "passVision": 60,
     "offensiveRebound": 48,
     "defensiveRebound": 66,
-    "id": 214
+    "id": 214,
+    "playerPool": "all-time"
   },
   {
     "name": "Dan Majerle",
@@ -12467,7 +12681,8 @@
     "passVision": 75,
     "offensiveRebound": 59,
     "defensiveRebound": 58,
-    "id": 215
+    "id": 215,
+    "playerPool": "all-time"
   },
   {
     "name": "Paul Westphal",
@@ -12525,7 +12740,8 @@
     "passVision": 79,
     "offensiveRebound": 57,
     "defensiveRebound": 58,
-    "id": 216
+    "id": 216,
+    "playerPool": "all-time"
   },
   {
     "name": "Arvydas Sabonis",
@@ -12583,7 +12799,8 @@
     "passVision": 83,
     "offensiveRebound": 74,
     "defensiveRebound": 89,
-    "id": 217
+    "id": 217,
+    "playerPool": "all-time"
   },
   {
     "name": "Domantas Sabonis",
@@ -12641,7 +12858,8 @@
     "passVision": 85,
     "offensiveRebound": 84,
     "defensiveRebound": 94,
-    "id": 218
+    "id": 218,
+    "playerPool": "all-time"
   },
   {
     "name": "Mike Bibby",
@@ -12699,7 +12917,8 @@
     "passVision": 88,
     "offensiveRebound": 46,
     "defensiveRebound": 44,
-    "id": 219
+    "id": 219,
+    "playerPool": "all-time"
   },
   {
     "name": "Vlade Divac",
@@ -12757,7 +12976,8 @@
     "passVision": 84,
     "offensiveRebound": 94,
     "defensiveRebound": 94,
-    "id": 220
+    "id": 220,
+    "playerPool": "all-time"
   },
   {
     "name": "Peja Stojakovic",
@@ -12815,7 +13035,8 @@
     "passVision": 50,
     "offensiveRebound": 48,
     "defensiveRebound": 62,
-    "id": 221
+    "id": 221,
+    "playerPool": "all-time"
   },
   {
     "name": "Larry Kenon",
@@ -12873,7 +13094,8 @@
     "passVision": 59,
     "offensiveRebound": 88,
     "defensiveRebound": 83,
-    "id": 222
+    "id": 222,
+    "playerPool": "all-time"
   },
   {
     "name": "Gordon Hayward",
@@ -12931,7 +13153,8 @@
     "passVision": 69,
     "offensiveRebound": 77,
     "defensiveRebound": 69,
-    "id": 223
+    "id": 223,
+    "playerPool": "all-time"
   },
   {
     "name": "Carlos Boozer",
@@ -12989,7 +13212,8 @@
     "passVision": 40,
     "offensiveRebound": 90,
     "defensiveRebound": 94,
-    "id": 224
+    "id": 224,
+    "playerPool": "all-time"
   },
   {
     "name": "Rudy Gobert",
@@ -13047,7 +13271,8 @@
     "passVision": 31,
     "offensiveRebound": 81,
     "defensiveRebound": 95,
-    "id": 225
+    "id": 225,
+    "playerPool": "all-time"
   },
   {
     "name": "Donovan Mitchell",
@@ -13105,7 +13330,8 @@
     "passVision": 75,
     "offensiveRebound": 45,
     "defensiveRebound": 51,
-    "id": 226
+    "id": 226,
+    "playerPool": "all-time"
   },
   {
     "name": "Caron Butler",
@@ -13163,7 +13389,8 @@
     "passVision": 72,
     "offensiveRebound": 40,
     "defensiveRebound": 51,
-    "id": 227
+    "id": 227,
+    "playerPool": "all-time"
   },
   {
     "name": "Phil Chenier",
@@ -13221,7 +13448,8 @@
     "passVision": 84,
     "offensiveRebound": 38,
     "defensiveRebound": 55,
-    "id": 228
+    "id": 228,
+    "playerPool": "all-time"
   },
   {
     "name": "Steve Smith",
@@ -13279,7 +13507,8 @@
     "passVision": 59,
     "offensiveRebound": 53,
     "defensiveRebound": 55,
-    "id": 229
+    "id": 229,
+    "playerPool": "all-time"
   },
   {
     "name": "Kevin Willis",
@@ -13337,7 +13566,8 @@
     "passVision": 27,
     "offensiveRebound": 95,
     "defensiveRebound": 95,
-    "id": 230
+    "id": 230,
+    "playerPool": "all-time"
   },
   {
     "name": "Kenyon Martin",
@@ -13395,7 +13625,8 @@
     "passVision": 53,
     "offensiveRebound": 94,
     "defensiveRebound": 93,
-    "id": 231
+    "id": 231,
+    "playerPool": "all-time"
   },
   {
     "name": "Brook Lopez",
@@ -13453,7 +13684,8 @@
     "passVision": 59,
     "offensiveRebound": 82,
     "defensiveRebound": 89,
-    "id": 232
+    "id": 232,
+    "playerPool": "all-time"
   },
   {
     "name": "Richard Jefferson",
@@ -13511,7 +13743,8 @@
     "passVision": 62,
     "offensiveRebound": 31,
     "defensiveRebound": 55,
-    "id": 233
+    "id": 233,
+    "playerPool": "all-time"
   },
   {
     "name": "B.J. Armstrong",
@@ -13569,7 +13802,8 @@
     "passVision": 88,
     "offensiveRebound": 33,
     "defensiveRebound": 45,
-    "id": 234
+    "id": 234,
+    "playerPool": "all-time"
   },
   {
     "name": "Joakim Noah",
@@ -13627,7 +13861,8 @@
     "passVision": 72,
     "offensiveRebound": 95,
     "defensiveRebound": 92,
-    "id": 235
+    "id": 235,
+    "playerPool": "all-time"
   },
   {
     "name": "Terrell Brandon",
@@ -13685,7 +13920,8 @@
     "passVision": 79,
     "offensiveRebound": 51,
     "defensiveRebound": 54,
-    "id": 236
+    "id": 236,
+    "playerPool": "all-time"
   },
   {
     "name": "Jamal Murray",
@@ -13743,7 +13979,8 @@
     "passVision": 76,
     "offensiveRebound": 38,
     "defensiveRebound": 52,
-    "id": 237
+    "id": 237,
+    "playerPool": "all-time"
   },
   {
     "name": "Bill Laimbeer",
@@ -13801,7 +14038,8 @@
     "passVision": 39,
     "offensiveRebound": 82,
     "defensiveRebound": 87,
-    "id": 238
+    "id": 238,
+    "playerPool": "all-time"
   },
   {
     "name": "Jason Richardson",
@@ -13859,7 +14097,8 @@
     "passVision": 73,
     "offensiveRebound": 50,
     "defensiveRebound": 71,
-    "id": 239
+    "id": 239,
+    "playerPool": "all-time"
   },
   {
     "name": "Kenny Smith",
@@ -13917,7 +14156,8 @@
     "passVision": 88,
     "offensiveRebound": 31,
     "defensiveRebound": 38,
-    "id": 240
+    "id": 240,
+    "playerPool": "all-time"
   },
   {
     "name": "Rik Smits",
@@ -13975,7 +14215,8 @@
     "passVision": 50,
     "offensiveRebound": 84,
     "defensiveRebound": 88,
-    "id": 241
+    "id": 241,
+    "playerPool": "all-time"
   },
   {
     "name": "Don Buse",
@@ -14033,7 +14274,8 @@
     "passVision": 89,
     "offensiveRebound": 29,
     "defensiveRebound": 45,
-    "id": 242
+    "id": 242,
+    "playerPool": "all-time"
   },
   {
     "name": "Chuck Person",
@@ -14091,7 +14333,8 @@
     "passVision": 70,
     "offensiveRebound": 62,
     "defensiveRebound": 82,
-    "id": 243
+    "id": 243,
+    "playerPool": "all-time"
   },
   {
     "name": "DeAndre Jordan",
@@ -14149,7 +14392,8 @@
     "passVision": 31,
     "offensiveRebound": 95,
     "defensiveRebound": 97,
-    "id": 244
+    "id": 244,
+    "playerPool": "all-time"
   },
   {
     "name": "Danny Manning",
@@ -14207,7 +14451,8 @@
     "passVision": 45,
     "offensiveRebound": 84,
     "defensiveRebound": 88,
-    "id": 245
+    "id": 245,
+    "playerPool": "all-time"
   },
   {
     "name": "Chris Kaman",
@@ -14265,7 +14510,8 @@
     "passVision": 62,
     "offensiveRebound": 83,
     "defensiveRebound": 85,
-    "id": 246
+    "id": 246,
+    "playerPool": "all-time"
   },
   {
     "name": "Jamaal Wilkes",
@@ -14323,7 +14569,8 @@
     "passVision": 69,
     "offensiveRebound": 65,
     "defensiveRebound": 84,
-    "id": 247
+    "id": 247,
+    "playerPool": "all-time"
   },
   {
     "name": "Vin Baker",
@@ -14381,7 +14628,8 @@
     "passVision": 60,
     "offensiveRebound": 88,
     "defensiveRebound": 84,
-    "id": 248
+    "id": 248,
+    "playerPool": "all-time"
   },
   {
     "name": "Junior Bridgeman",
@@ -14439,7 +14687,8 @@
     "passVision": 62,
     "offensiveRebound": 72,
     "defensiveRebound": 74,
-    "id": 249
+    "id": 249,
+    "playerPool": "all-time"
   },
   {
     "name": "Terry Cummings",
@@ -14497,7 +14746,8 @@
     "passVision": 52,
     "offensiveRebound": 76,
     "defensiveRebound": 79,
-    "id": 250
+    "id": 250,
+    "playerPool": "all-time"
   },
   {
     "name": "Glenn Robinson",
@@ -14555,7 +14805,8 @@
     "passVision": 69,
     "offensiveRebound": 79,
     "defensiveRebound": 79,
-    "id": 251
+    "id": 251,
+    "playerPool": "all-time"
   },
   {
     "name": "Stephon Marbury",
@@ -14613,7 +14864,8 @@
     "passVision": 90,
     "offensiveRebound": 36,
     "defensiveRebound": 47,
-    "id": 252
+    "id": 252,
+    "playerPool": "all-time"
   },
   {
     "name": "Dick Barnett",
@@ -14671,7 +14923,8 @@
     "passVision": 65,
     "offensiveRebound": 48,
     "defensiveRebound": 62,
-    "id": 253
+    "id": 253,
+    "playerPool": "all-time"
   },
   {
     "name": "Detlef Schrempf",
@@ -14729,7 +14982,8 @@
     "passVision": 70,
     "offensiveRebound": 45,
     "defensiveRebound": 58,
-    "id": 254
+    "id": 254,
+    "playerPool": "all-time"
   },
   {
     "name": "Xavier McDaniel",
@@ -14787,7 +15041,8 @@
     "passVision": 49,
     "offensiveRebound": 59,
     "defensiveRebound": 82,
-    "id": 255
+    "id": 255,
+    "playerPool": "all-time"
   },
   {
     "name": "Paolo Banchero",
@@ -14845,7 +15100,8 @@
     "passVision": 72,
     "offensiveRebound": 65,
     "defensiveRebound": 76,
-    "id": 256
+    "id": 256,
+    "playerPool": "all-time"
   },
   {
     "name": "Hersey Hawkins",
@@ -14903,7 +15159,8 @@
     "passVision": 78,
     "offensiveRebound": 43,
     "defensiveRebound": 46,
-    "id": 257
+    "id": 257,
+    "playerPool": "all-time"
   },
   {
     "name": "Doug Collins",
@@ -14961,7 +15218,8 @@
     "passVision": 64,
     "offensiveRebound": 41,
     "defensiveRebound": 37,
-    "id": 258
+    "id": 258,
+    "playerPool": "all-time"
   },
   {
     "name": "Geoff Petrie",
@@ -15019,7 +15277,8 @@
     "passVision": 74,
     "offensiveRebound": 47,
     "defensiveRebound": 56,
-    "id": 259
+    "id": 259,
+    "playerPool": "all-time"
   },
   {
     "name": "Jerome Kersey",
@@ -15077,7 +15336,8 @@
     "passVision": 51,
     "offensiveRebound": 74,
     "defensiveRebound": 80,
-    "id": 260
+    "id": 260,
+    "playerPool": "all-time"
   },
   {
     "name": "Terry Porter",
@@ -15135,7 +15395,8 @@
     "passVision": 89,
     "offensiveRebound": 57,
     "defensiveRebound": 48,
-    "id": 261
+    "id": 261,
+    "playerPool": "all-time"
   },
   {
     "name": "Sidney Wicks",
@@ -15193,7 +15454,8 @@
     "passVision": 45,
     "offensiveRebound": 84,
     "defensiveRebound": 85,
-    "id": 262
+    "id": 262,
+    "playerPool": "all-time"
   },
   {
     "name": "Otis Birdsong",
@@ -15251,7 +15513,8 @@
     "passVision": 81,
     "offensiveRebound": 55,
     "defensiveRebound": 59,
-    "id": 263
+    "id": 263,
+    "playerPool": "all-time"
   },
   {
     "name": "Sean Elliott",
@@ -15309,7 +15572,8 @@
     "passVision": 64,
     "offensiveRebound": 34,
     "defensiveRebound": 53,
-    "id": 264
+    "id": 264,
+    "playerPool": "all-time"
   },
   {
     "name": "Deron Williams",
@@ -15367,7 +15631,8 @@
     "passVision": 94,
     "offensiveRebound": 30,
     "defensiveRebound": 47,
-    "id": 265
+    "id": 265,
+    "playerPool": "all-time"
   },
   {
     "name": "Darrel Griffith",
@@ -15425,7 +15690,8 @@
     "passVision": 79,
     "offensiveRebound": 49,
     "defensiveRebound": 55,
-    "id": 266
+    "id": 266,
+    "playerPool": "all-time"
   },
   {
     "name": "Don Ohl",
@@ -15483,7 +15749,8 @@
     "passVision": 62,
     "offensiveRebound": 50,
     "defensiveRebound": 52,
-    "id": 267
+    "id": 267,
+    "playerPool": "all-time"
   },
   {
     "name": "Jeff Ruland",
@@ -15541,7 +15808,8 @@
     "passVision": 59,
     "offensiveRebound": 77,
     "defensiveRebound": 88,
-    "id": 268
+    "id": 268,
+    "playerPool": "all-time"
   },
   {
     "name": "Antawn Jamison",
@@ -15599,7 +15867,8 @@
     "passVision": 50,
     "offensiveRebound": 80,
     "defensiveRebound": 82,
-    "id": 269
+    "id": 269,
+    "playerPool": "all-time"
   },
   {
     "name": "Doc Rivers",
@@ -15657,7 +15926,8 @@
     "passVision": 94,
     "offensiveRebound": 42,
     "defensiveRebound": 44,
-    "id": 270
+    "id": 270,
+    "playerPool": "all-time"
   },
   {
     "name": "Josh Smith",
@@ -15715,7 +15985,8 @@
     "passVision": 62,
     "offensiveRebound": 82,
     "defensiveRebound": 89,
-    "id": 271
+    "id": 271,
+    "playerPool": "all-time"
   },
   {
     "name": "Keith Van Horn",
@@ -15773,7 +16044,8 @@
     "passVision": 42,
     "offensiveRebound": 74,
     "defensiveRebound": 78,
-    "id": 272
+    "id": 272,
+    "playerPool": "all-time"
   },
   {
     "name": "LaMelo Ball",
@@ -15831,7 +16103,8 @@
     "passVision": 85,
     "offensiveRebound": 46,
     "defensiveRebound": 61,
-    "id": 273
+    "id": 273,
+    "playerPool": "all-time"
   },
   {
     "name": "Reggie Theus",
@@ -15889,7 +16162,8 @@
     "passVision": 92,
     "offensiveRebound": 42,
     "defensiveRebound": 52,
-    "id": 274
+    "id": 274,
+    "playerPool": "all-time"
   },
   {
     "name": "Zach LaVine",
@@ -15947,7 +16221,8 @@
     "passVision": 71,
     "offensiveRebound": 35,
     "defensiveRebound": 60,
-    "id": 275
+    "id": 275,
+    "playerPool": "all-time"
   },
   {
     "name": "Austin Carr",
@@ -16005,7 +16280,8 @@
     "passVision": 52,
     "offensiveRebound": 41,
     "defensiveRebound": 45,
-    "id": 276
+    "id": 276,
+    "playerPool": "all-time"
   },
   {
     "name": "Campy Russell",
@@ -16063,7 +16339,8 @@
     "passVision": 66,
     "offensiveRebound": 36,
     "defensiveRebound": 74,
-    "id": 277
+    "id": 277,
+    "playerPool": "all-time"
   },
   {
     "name": "Jason Terry",
@@ -16121,7 +16398,8 @@
     "passVision": 79,
     "offensiveRebound": 31,
     "defensiveRebound": 39,
-    "id": 278
+    "id": 278,
+    "playerPool": "all-time"
   },
   {
     "name": "Kelly Tripucka",
@@ -16179,7 +16457,8 @@
     "passVision": 73,
     "offensiveRebound": 55,
     "defensiveRebound": 58,
-    "id": 279
+    "id": 279,
+    "playerPool": "all-time"
   },
   {
     "name": "Andre Drummond",
@@ -16237,7 +16516,8 @@
     "passVision": 33,
     "offensiveRebound": 97,
     "defensiveRebound": 98,
-    "id": 280
+    "id": 280,
+    "playerPool": "all-time"
   },
   {
     "name": "Purvis Short",
@@ -16295,7 +16575,8 @@
     "passVision": 64,
     "offensiveRebound": 51,
     "defensiveRebound": 55,
-    "id": 281
+    "id": 281,
+    "playerPool": "all-time"
   },
   {
     "name": "Otis Thorpe",
@@ -16353,7 +16634,8 @@
     "passVision": 39,
     "offensiveRebound": 86,
     "defensiveRebound": 88,
-    "id": 282
+    "id": 282,
+    "playerPool": "all-time"
   },
   {
     "name": "Roy Hibbert",
@@ -16411,7 +16693,8 @@
     "passVision": 35,
     "offensiveRebound": 84,
     "defensiveRebound": 77,
-    "id": 283
+    "id": 283,
+    "playerPool": "all-time"
   },
   {
     "name": "Corey Maggette",
@@ -16469,7 +16752,8 @@
     "passVision": 58,
     "offensiveRebound": 48,
     "defensiveRebound": 56,
-    "id": 284
+    "id": 284,
+    "playerPool": "all-time"
   },
   {
     "name": "Norm Nixon",
@@ -16527,7 +16811,8 @@
     "passVision": 82,
     "offensiveRebound": 32,
     "defensiveRebound": 56,
-    "id": 285
+    "id": 285,
+    "playerPool": "all-time"
   },
   {
     "name": "Michael Cooper",
@@ -16585,7 +16870,8 @@
     "passVision": 71,
     "offensiveRebound": 41,
     "defensiveRebound": 48,
-    "id": 286
+    "id": 286,
+    "playerPool": "all-time"
   },
   {
     "name": "Jaren Jackson Jr.",
@@ -16643,7 +16929,8 @@
     "passVision": 30,
     "offensiveRebound": 57,
     "defensiveRebound": 72,
-    "id": 287
+    "id": 287,
+    "playerPool": "all-time"
   },
   {
     "name": "Shareef Abdur-Rahim",
@@ -16701,7 +16988,8 @@
     "passVision": 60,
     "offensiveRebound": 84,
     "defensiveRebound": 88,
-    "id": 288
+    "id": 288,
+    "playerPool": "all-time"
   },
   {
     "name": "Bam Adebayo",
@@ -16759,7 +17047,8 @@
     "passVision": 73,
     "offensiveRebound": 63,
     "defensiveRebound": 80,
-    "id": 289
+    "id": 289,
+    "playerPool": "all-time"
   },
   {
     "name": "Rony Seikaly",
@@ -16817,7 +17106,8 @@
     "passVision": 59,
     "offensiveRebound": 92,
     "defensiveRebound": 90,
-    "id": 290
+    "id": 290,
+    "playerPool": "all-time"
   },
   {
     "name": "Brian Winters",
@@ -16875,7 +17165,8 @@
     "passVision": 79,
     "offensiveRebound": 59,
     "defensiveRebound": 61,
-    "id": 291
+    "id": 291,
+    "playerPool": "all-time"
   },
   {
     "name": "Jrue Holiday",
@@ -16933,7 +17224,8 @@
     "passVision": 82,
     "offensiveRebound": 41,
     "defensiveRebound": 52,
-    "id": 292
+    "id": 292,
+    "playerPool": "all-time"
   },
   {
     "name": "Julius Randle",
@@ -16991,7 +17283,8 @@
     "passVision": 73,
     "offensiveRebound": 66,
     "defensiveRebound": 85,
-    "id": 293
+    "id": 293,
+    "playerPool": "all-time"
   },
   {
     "name": "Charles Oakley",
@@ -17049,7 +17342,8 @@
     "passVision": 59,
     "offensiveRebound": 92,
     "defensiveRebound": 95,
-    "id": 294
+    "id": 294,
+    "playerPool": "all-time"
   },
   {
     "name": "Hedo Turkoglu",
@@ -17107,7 +17401,8 @@
     "passVision": 80,
     "offensiveRebound": 75,
     "defensiveRebound": 70,
-    "id": 295
+    "id": 295,
+    "playerPool": "all-time"
   },
   {
     "name": "Nikola Vucevic",
@@ -17165,7 +17460,8 @@
     "passVision": 70,
     "offensiveRebound": 76,
     "defensiveRebound": 93,
-    "id": 296
+    "id": 296,
+    "playerPool": "all-time"
   },
   {
     "name": "Ben Simmons",
@@ -17223,7 +17519,8 @@
     "passVision": 82,
     "offensiveRebound": 59,
     "defensiveRebound": 76,
-    "id": 297
+    "id": 297,
+    "playerPool": "all-time"
   },
   {
     "name": "Maurice Cheeks",
@@ -17281,7 +17578,8 @@
     "passVision": 86,
     "offensiveRebound": 36,
     "defensiveRebound": 42,
-    "id": 298
+    "id": 298,
+    "playerPool": "all-time"
   },
   {
     "name": "C.J. McCollum",
@@ -17339,7 +17637,8 @@
     "passVision": 82,
     "offensiveRebound": 50,
     "defensiveRebound": 59,
-    "id": 299
+    "id": 299,
+    "playerPool": "all-time"
   },
   {
     "name": "Kevin Martin",
@@ -17397,7 +17696,8 @@
     "passVision": 80,
     "offensiveRebound": 59,
     "defensiveRebound": 59,
-    "id": 300
+    "id": 300,
+    "playerPool": "all-time"
   },
   {
     "name": "Eddie Johnson",
@@ -17455,7 +17755,8 @@
     "passVision": 69,
     "offensiveRebound": 51,
     "defensiveRebound": 55,
-    "id": 301
+    "id": 301,
+    "playerPool": "all-time"
   },
   {
     "name": "Victor Wembanyama",
@@ -17513,7 +17814,8 @@
     "passVision": 70,
     "offensiveRebound": 69,
     "defensiveRebound": 92,
-    "id": 302
+    "id": 302,
+    "playerPool": "all-time"
   },
   {
     "name": "Bruce Bowen",
@@ -17571,7 +17873,8 @@
     "passVision": 38,
     "offensiveRebound": 36,
     "defensiveRebound": 47,
-    "id": 303
+    "id": 303,
+    "playerPool": "all-time"
   },
   {
     "name": "James Silas",
@@ -17629,7 +17932,8 @@
     "passVision": 87,
     "offensiveRebound": 59,
     "defensiveRebound": 61,
-    "id": 304
+    "id": 304,
+    "playerPool": "all-time"
   },
   {
     "name": "Scottie Barnes",
@@ -17687,7 +17991,8 @@
     "passVision": 72,
     "offensiveRebound": 60,
     "defensiveRebound": 71,
-    "id": 305
+    "id": 305,
+    "playerPool": "all-time"
   },
   {
     "name": "Pascal Siakam",
@@ -17745,7 +18050,8 @@
     "passVision": 58,
     "offensiveRebound": 55,
     "defensiveRebound": 69,
-    "id": 306
+    "id": 306,
+    "playerPool": "all-time"
   },
   {
     "name": "Damon Stoudamire",
@@ -17803,7 +18109,8 @@
     "passVision": 90,
     "offensiveRebound": 41,
     "defensiveRebound": 46,
-    "id": 307
+    "id": 307,
+    "playerPool": "all-time"
   },
   {
     "name": "Truck Robinson",
@@ -17861,7 +18168,8 @@
     "passVision": 52,
     "offensiveRebound": 88,
     "defensiveRebound": 94,
-    "id": 308
+    "id": 308,
+    "playerPool": "all-time"
   },
   {
     "name": "Thurl Bailey",
@@ -17919,7 +18227,8 @@
     "passVision": 67,
     "offensiveRebound": 64,
     "defensiveRebound": 70,
-    "id": 309
+    "id": 309,
+    "playerPool": "all-time"
   },
   {
     "name": "Jeff Malone",
@@ -17977,7 +18286,8 @@
     "passVision": 64,
     "offensiveRebound": 40,
     "defensiveRebound": 60,
-    "id": 310
+    "id": 310,
+    "playerPool": "all-time"
   },
   {
     "name": "Jack Marin",
@@ -18035,7 +18345,8 @@
     "passVision": 70,
     "offensiveRebound": 78,
     "defensiveRebound": 79,
-    "id": 311
+    "id": 311,
+    "playerPool": "all-time"
   },
   {
     "name": "Juwan Howard",
@@ -18093,7 +18404,8 @@
     "passVision": 42,
     "offensiveRebound": 82,
     "defensiveRebound": 84,
-    "id": 312
+    "id": 312,
+    "playerPool": "all-time"
   },
   {
     "name": "Jeff Teague",
@@ -18151,7 +18463,8 @@
     "passVision": 82,
     "offensiveRebound": 32,
     "defensiveRebound": 56,
-    "id": 313
+    "id": 313,
+    "playerPool": "all-time"
   },
   {
     "name": "Al Horford",
@@ -18209,7 +18522,8 @@
     "passVision": 70,
     "offensiveRebound": 57,
     "defensiveRebound": 71,
-    "id": 314
+    "id": 314,
+    "playerPool": "all-time"
   },
   {
     "name": "Kendall Gill",
@@ -18267,7 +18581,8 @@
     "passVision": 65,
     "offensiveRebound": 52,
     "defensiveRebound": 55,
-    "id": 315
+    "id": 315,
+    "playerPool": "all-time"
   },
   {
     "name": "Dell Curry",
@@ -18325,7 +18640,8 @@
     "passVision": 77,
     "offensiveRebound": 50,
     "defensiveRebound": 53,
-    "id": 316
+    "id": 316,
+    "playerPool": "all-time"
   },
   {
     "name": "Muggsy Bogues",
@@ -18383,7 +18699,8 @@
     "passVision": 92,
     "offensiveRebound": 35,
     "defensiveRebound": 47,
-    "id": 317
+    "id": 317,
+    "playerPool": "all-time"
   },
   {
     "name": "Toni Kukoc",
@@ -18441,7 +18758,8 @@
     "passVision": 70,
     "offensiveRebound": 57,
     "defensiveRebound": 53,
-    "id": 318
+    "id": 318,
+    "playerPool": "all-time"
   },
   {
     "name": "Horace Grant",
@@ -18499,7 +18817,8 @@
     "passVision": 40,
     "offensiveRebound": 92,
     "defensiveRebound": 94,
-    "id": 319
+    "id": 319,
+    "playerPool": "all-time"
   },
   {
     "name": "Hot Rod Williams",
@@ -18557,7 +18876,8 @@
     "passVision": 68,
     "offensiveRebound": 81,
     "defensiveRebound": 82,
-    "id": 320
+    "id": 320,
+    "playerPool": "all-time"
   },
   {
     "name": "James Donaldson",
@@ -18615,7 +18935,8 @@
     "passVision": 50,
     "offensiveRebound": 87,
     "defensiveRebound": 89,
-    "id": 321
+    "id": 321,
+    "playerPool": "all-time"
   },
   {
     "name": "Marcus Camby",
@@ -18673,7 +18994,8 @@
     "passVision": 26,
     "offensiveRebound": 83,
     "defensiveRebound": 95,
-    "id": 322
+    "id": 322,
+    "playerPool": "all-time"
   },
   {
     "name": "Shane Battier",
@@ -18731,7 +19053,8 @@
     "passVision": 60,
     "offensiveRebound": 57,
     "defensiveRebound": 56,
-    "id": 323
+    "id": 323,
+    "playerPool": "all-time"
   },
   {
     "name": "Tony Allen",
@@ -18789,7 +19112,8 @@
     "passVision": 36,
     "offensiveRebound": 68,
     "defensiveRebound": 60,
-    "id": 324
+    "id": 324,
+    "playerPool": "all-time"
   },
   {
     "name": "Doug West",
@@ -18847,7 +19171,8 @@
     "passVision": 67,
     "offensiveRebound": 46,
     "defensiveRebound": 48,
-    "id": 325
+    "id": 325,
+    "playerPool": "all-time"
   },
   {
     "name": "Christian Laettner",
@@ -18905,7 +19230,8 @@
     "passVision": 42,
     "offensiveRebound": 80,
     "defensiveRebound": 84,
-    "id": 326
+    "id": 326,
+    "playerPool": "all-time"
   },
   {
     "name": "Wally Szczerbiak",
@@ -18963,7 +19289,8 @@
     "passVision": 37,
     "offensiveRebound": 48,
     "defensiveRebound": 52,
-    "id": 327
+    "id": 327,
+    "playerPool": "all-time"
   },
   {
     "name": "Brandon Ingram",
@@ -19021,7 +19348,8 @@
     "passVision": 70,
     "offensiveRebound": 47,
     "defensiveRebound": 68,
-    "id": 328
+    "id": 328,
+    "playerPool": "all-time"
   },
   {
     "name": "Nick Anderson",
@@ -19079,7 +19407,8 @@
     "passVision": 71,
     "offensiveRebound": 44,
     "defensiveRebound": 60,
-    "id": 329
+    "id": 329,
+    "playerPool": "all-time"
   },
   {
     "name": "Alvan Adams",
@@ -19137,7 +19466,8 @@
     "passVision": 59,
     "offensiveRebound": 89,
     "defensiveRebound": 89,
-    "id": 330
+    "id": 330,
+    "playerPool": "all-time"
   },
   {
     "name": "Kevin Duckworth",
@@ -19195,7 +19525,8 @@
     "passVision": 30,
     "offensiveRebound": 89,
     "defensiveRebound": 86,
-    "id": 331
+    "id": 331,
+    "playerPool": "all-time"
   },
   {
     "name": "Jim Paxson",
@@ -19253,7 +19584,8 @@
     "passVision": 83,
     "offensiveRebound": 55,
     "defensiveRebound": 59,
-    "id": 332
+    "id": 332,
+    "playerPool": "all-time"
   },
   {
     "name": "Antonio Davis",
@@ -19311,7 +19643,8 @@
     "passVision": 32,
     "offensiveRebound": 88,
     "defensiveRebound": 87,
-    "id": 333
+    "id": 333,
+    "playerPool": "all-time"
   },
   {
     "name": "Morris Peterson",
@@ -19369,7 +19702,8 @@
     "passVision": 47,
     "offensiveRebound": 45,
     "defensiveRebound": 56,
-    "id": 334
+    "id": 334,
+    "playerPool": "all-time"
   },
   {
     "name": "Gerald Wallace",
@@ -19427,7 +19761,8 @@
     "passVision": 48,
     "offensiveRebound": 54,
     "defensiveRebound": 83,
-    "id": 335
+    "id": 335,
+    "playerPool": "all-time"
   },
   {
     "name": "Jim Chones",
@@ -19485,7 +19820,8 @@
     "passVision": 31,
     "offensiveRebound": 86,
     "defensiveRebound": 85,
-    "id": 336
+    "id": 336,
+    "playerPool": "all-time"
   },
   {
     "name": "Anderson Varejao",
@@ -19543,7 +19879,8 @@
     "passVision": 31,
     "offensiveRebound": 90,
     "defensiveRebound": 84,
-    "id": 337
+    "id": 337,
+    "playerPool": "all-time"
   },
   {
     "name": "Bingo Smith",
@@ -19601,7 +19938,8 @@
     "passVision": 60,
     "offensiveRebound": 46,
     "defensiveRebound": 51,
-    "id": 338
+    "id": 338,
+    "playerPool": "all-time"
   },
   {
     "name": "Brad Davis",
@@ -19659,7 +19997,8 @@
     "passVision": 78,
     "offensiveRebound": 31,
     "defensiveRebound": 38,
-    "id": 339
+    "id": 339,
+    "playerPool": "all-time"
   },
   {
     "name": "Swen Nater",
@@ -19717,7 +20056,8 @@
     "passVision": 33,
     "offensiveRebound": 93,
     "defensiveRebound": 93,
-    "id": 340
+    "id": 340,
+    "playerPool": "all-time"
   },
   {
     "name": "Bryant Reeves",
@@ -19775,7 +20115,8 @@
     "passVision": 68,
     "offensiveRebound": 70,
     "defensiveRebound": 78,
-    "id": 341
+    "id": 341,
+    "playerPool": "all-time"
   },
   {
     "name": "Jason Williams",
@@ -19833,7 +20174,8 @@
     "passVision": 88,
     "offensiveRebound": 27,
     "defensiveRebound": 45,
-    "id": 342
+    "id": 342,
+    "playerPool": "all-time"
   },
   {
     "name": "Hassan Whiteside",
@@ -19891,7 +20233,8 @@
     "passVision": 29,
     "offensiveRebound": 92,
     "defensiveRebound": 96,
-    "id": 343
+    "id": 343,
+    "playerPool": "all-time"
   },
   {
     "name": "Udonis Haslem",
@@ -19949,7 +20292,8 @@
     "passVision": 31,
     "offensiveRebound": 88,
     "defensiveRebound": 88,
-    "id": 344
+    "id": 344,
+    "playerPool": "all-time"
   },
   {
     "name": "Paul Pressey",
@@ -20007,7 +20351,8 @@
     "passVision": 72,
     "offensiveRebound": 64,
     "defensiveRebound": 65,
-    "id": 345
+    "id": 345,
+    "playerPool": "all-time"
   },
   {
     "name": "Isaiah Rider",
@@ -20065,7 +20410,8 @@
     "passVision": 60,
     "offensiveRebound": 46,
     "defensiveRebound": 51,
-    "id": 346
+    "id": 346,
+    "playerPool": "all-time"
   },
   {
     "name": "David Wesley",
@@ -20123,7 +20469,8 @@
     "passVision": 77,
     "offensiveRebound": 49,
     "defensiveRebound": 59,
-    "id": 347
+    "id": 347,
+    "playerPool": "all-time"
   },
   {
     "name": "Scott Skiles",
@@ -20181,7 +20528,8 @@
     "passVision": 93,
     "offensiveRebound": 35,
     "defensiveRebound": 47,
-    "id": 348
+    "id": 348,
+    "playerPool": "all-time"
   },
   {
     "name": "Dennis Scott",
@@ -20239,7 +20587,8 @@
     "passVision": 49,
     "offensiveRebound": 35,
     "defensiveRebound": 47,
-    "id": 349
+    "id": 349,
+    "playerPool": "all-time"
   },
   {
     "name": "Johnny Moore",
@@ -20297,7 +20646,8 @@
     "passVision": 96,
     "offensiveRebound": 38,
     "defensiveRebound": 55,
-    "id": 350
+    "id": 350,
+    "playerPool": "all-time"
   },
   {
     "name": "Andrea Bargnani",
@@ -20355,7 +20705,8 @@
     "passVision": 48,
     "offensiveRebound": 72,
     "defensiveRebound": 77,
-    "id": 351
+    "id": 351,
+    "playerPool": "all-time"
   },
   {
     "name": "Doug Christie",
@@ -20413,7 +20764,8 @@
     "passVision": 75,
     "offensiveRebound": 59,
     "defensiveRebound": 53,
-    "id": 352
+    "id": 352,
+    "playerPool": "all-time"
   },
   {
     "name": "Jeff Hornacek",
@@ -20471,7 +20823,8 @@
     "passVision": 79,
     "offensiveRebound": 55,
     "defensiveRebound": 59,
-    "id": 353
+    "id": 353,
+    "playerPool": "all-time"
   },
   {
     "name": "Stephen Jackson",
@@ -20529,7 +20882,8 @@
     "passVision": 75,
     "offensiveRebound": 48,
     "defensiveRebound": 65,
-    "id": 354
+    "id": 354,
+    "playerPool": "all-time"
   },
   {
     "name": "P.J. Brown",
@@ -20587,7 +20941,8 @@
     "passVision": 31,
     "offensiveRebound": 93,
     "defensiveRebound": 89,
-    "id": 355
+    "id": 355,
+    "playerPool": "all-time"
   },
   {
     "name": "Vernon Maxwell",
@@ -20645,7 +21000,8 @@
     "passVision": 85,
     "offensiveRebound": 54,
     "defensiveRebound": 57,
-    "id": 356
+    "id": 356,
+    "playerPool": "all-time"
   },
   {
     "name": "JJ Redick",
@@ -20703,7 +21059,8 @@
     "passVision": 70,
     "offensiveRebound": 43,
     "defensiveRebound": 44,
-    "id": 357
+    "id": 357,
+    "playerPool": "all-time"
   },
   {
     "name": "Rudy Gay",
@@ -20761,7 +21118,8 @@
     "passVision": 35,
     "offensiveRebound": 48,
     "defensiveRebound": 65,
-    "id": 358
+    "id": 358,
+    "playerPool": "all-time"
   },
   {
     "name": "Tyler Herro",
@@ -20819,7 +21177,8 @@
     "passVision": 69,
     "offensiveRebound": 31,
     "defensiveRebound": 68,
-    "id": 359
+    "id": 359,
+    "playerPool": "all-time"
   },
   {
     "name": "Andrew Wiggins",
@@ -20877,7 +21236,8 @@
     "passVision": 41,
     "offensiveRebound": 44,
     "defensiveRebound": 47,
-    "id": 360
+    "id": 360,
+    "playerPool": "all-time"
   },
   {
     "name": "Latrell Sprewell",
@@ -20935,7 +21295,8 @@
     "passVision": 61,
     "offensiveRebound": 36,
     "defensiveRebound": 47,
-    "id": 361
+    "id": 361,
+    "playerPool": "all-time"
   },
   {
     "name": "Tyson Chandler",
@@ -20993,7 +21354,8 @@
     "passVision": 31,
     "offensiveRebound": 93,
     "defensiveRebound": 95,
-    "id": 362
+    "id": 362,
+    "playerPool": "all-time"
   },
   {
     "name": "Jameer Nelson",
@@ -21051,7 +21413,8 @@
     "passVision": 73,
     "offensiveRebound": 35,
     "defensiveRebound": 51,
-    "id": 363
+    "id": 363,
+    "playerPool": "all-time"
   },
   {
     "name": "Darrell Armstrong",
@@ -21109,7 +21472,8 @@
     "passVision": 82,
     "offensiveRebound": 29,
     "defensiveRebound": 41,
-    "id": 364
+    "id": 364,
+    "playerPool": "all-time"
   },
   {
     "name": "Fred VanVleet",
@@ -21167,7 +21531,8 @@
     "passVision": 79,
     "offensiveRebound": 34,
     "defensiveRebound": 53,
-    "id": 365
+    "id": 365,
+    "playerPool": "all-time"
   },
   {
     "name": "Kirk Hinrich",
@@ -21225,7 +21590,8 @@
     "passVision": 90,
     "offensiveRebound": 32,
     "defensiveRebound": 50,
-    "id": 366
+    "id": 366,
+    "playerPool": "all-time"
   },
   {
     "name": "Shawn Bradley",
@@ -21283,7 +21649,8 @@
     "passVision": 29,
     "offensiveRebound": 88,
     "defensiveRebound": 89,
-    "id": 367
+    "id": 367,
+    "playerPool": "all-time"
   },
   {
     "name": "Lamar Odom",
@@ -21341,7 +21708,8 @@
     "passVision": 61,
     "offensiveRebound": 70,
     "defensiveRebound": 71,
-    "id": 368
+    "id": 368,
+    "playerPool": "all-time"
   },
   {
     "name": "Mike Miller",
@@ -21399,7 +21767,8 @@
     "passVision": 63,
     "offensiveRebound": 37,
     "defensiveRebound": 70,
-    "id": 369
+    "id": 369,
+    "playerPool": "all-time"
   },
   {
     "name": "Jonas Valanciunas",
@@ -21457,7 +21826,8 @@
     "passVision": 40,
     "offensiveRebound": 91,
     "defensiveRebound": 93,
-    "id": 370
+    "id": 370,
+    "playerPool": "all-time"
   },
   {
     "name": "Lonzo Ball",
@@ -21515,7 +21885,8 @@
     "passVision": 72,
     "offensiveRebound": 35,
     "defensiveRebound": 62,
-    "id": 371
+    "id": 371,
+    "playerPool": "all-time"
   },
   {
     "name": "Eric Gordon",
@@ -21573,6 +21944,7 @@
     "passVision": 73,
     "offensiveRebound": 28,
     "defensiveRebound": 42,
-    "id": 372
+    "id": 372,
+    "playerPool": "all-time"
   }
 ]
