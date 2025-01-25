@@ -1,18 +1,35 @@
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { router } from 'expo-router';
 
-import { useDraft } from '../../context/DraftContext';
+import { useDraft, useSettings } from '../../context/DraftContext';
 import { calculateTeamScore } from '../../utils/scoringUtils';
 import { getFeedbackMessage } from '../../utils/feedbackUtils';
 
 
 export default function EvaluationScreen() {
-    const { state } = useDraft();
+    const { state, dispatch } = useDraft();
     const [expandedTeamId, setExpandedTeamId] = useState(null);
 
     // Get user team
-    const userTeam = state.teams.find(team => team.isUser);
+    // const userTeam = state.teams.find(team => team.isUser);
+    
+    // Safety check - if no valid state, return to home
+    useEffect(() => {
+        console.log("Saftey check");
+        if (!state.draftComplete || !state.draftedPlayers?.length) {
+            console.log('Draft not complete or no teams - returning to home');
+            router.replace('/');
+            return;
+        }
+    }, [state.draftedPlayers, state.draftComplete]);
+
+    // Get user team with safety check
+    const userTeam = state.teams?.find(team => team.isUser);
+    if (!userTeam) {
+        return null;
+    }
+
     const teamScoreData = calculateTeamScore(userTeam.roster);
 
     // Get AI teams and their scores
@@ -41,6 +58,28 @@ export default function EvaluationScreen() {
             <Text style={styles.playerRating}>{player.overall_rating}</Text>
         </View>
     );
+
+    const handleReturnHome = () => {
+        console.log('Resetting draft state...');
+        dispatch({ type: 'RESET_DRAFT' });
+        // Remove players from state
+        const { availablePlayers, draftedPlayers, ...rest } = state;
+        const newState = {
+            ...rest,
+            availablePlayers: availablePlayers.length,
+            draftedPlayers: draftedPlayers.length
+        };
+        console.log('State after reset:', newState);
+        router.replace('/');
+    };
+
+    if (!state.draftedPlayers?.length || !state.draftComplete) {
+        return (
+            <View style={styles.container}>
+              <Text>Loading...</Text>
+            </View>
+          );
+    }
 
     return (
         <ScrollView style={styles.container}>
@@ -93,7 +132,7 @@ export default function EvaluationScreen() {
             {/* Return Button */}
             <TouchableOpacity
                 style={styles.returnButton}
-                onPress={() => router.push('/')}
+                onPress={handleReturnHome}
             >
                 <Text style={styles.returnButtonText}>Return to Home</Text>
             </TouchableOpacity>
@@ -207,6 +246,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         alignItems: 'center',
         marginTop: 8,
+        marginBottom: 24,
     },
     returnButtonText: {
         color: '#fff',

@@ -1,5 +1,5 @@
 // Context provider for managing draft state
-import { createContext, useContext, useReducer } from 'react';
+import { createContext, useContext, useReducer, useEffect } from 'react';
 import { nbaService } from '../services/nbaService';
 import { settingsService } from '../services/settingsService';
 
@@ -23,6 +23,11 @@ function draftReducer(state, action) {
     case 'INITIALIZE_DRAFT': {
       console.log("\n");
       console.log("INITIALIZE_DRAFT action received");
+      if (state.draftComplete) {
+        console.log("Clearing previous draft state before initialization");
+        state = draftReducer(state, { type: 'RESET_DRAFT' });
+      }
+      
       // Set up initial draft state with provided data
       const firstTeamId = action.draftOrder[0];
       const firstTeam = action.teams.find(t => t.id === firstTeamId);
@@ -30,7 +35,6 @@ function draftReducer(state, action) {
       // console.log("Players list:", initial_player_list);
       // console.log("Teams list:", action.teams);
       // console.log("Draft order:", action.draftOrder);
-      
       return {
         ...state,
         availablePlayers: action.players,
@@ -106,13 +110,14 @@ function draftReducer(state, action) {
       };
     }
 
-    case 'SET_PROCESSING_AI':
+    case 'SET_PROCESSING_AI': {
       return {
         ...state,
         processingAI: action.value
       };
+    }
     
-    case 'SET_USER_TURN':
+    case 'SET_USER_TURN': {
       // console.log("\n")
       // console.log("SET_USER_TURN action received");
       // Toggle user's turn
@@ -120,6 +125,23 @@ function draftReducer(state, action) {
         ...state,
         isUserTurn: action.value
       };
+    }
+    
+    case 'RESET_DRAFT': {
+      console.log("\nResetting draft");
+      // Clean reset to initial state
+      return {
+        availablePlayers: [],
+        teams: [],
+        currentPick: 1,
+        draftOrder: [],
+        isUserTurn: true,
+        draftComplete: false,
+        draftedPlayers: [],
+        processingAI: false,
+        settings: null
+      };
+    }
 
     default:
       return state;
@@ -132,6 +154,16 @@ const DraftContext = createContext();
 // Context provider component
 export function DraftProvider({ children }) {
   const [state, dispatch] = useReducer(draftReducer, initialState);
+
+  useEffect(() => {
+    const cleanup = () => {
+      if (state.draftComplete) {
+        dispatch({ type: 'RESET_DRAFT' });
+      }
+    };
+
+    return cleanup;
+  }, [state.draftComplete]);
 
   return (
     <DraftContext.Provider value={{ state, dispatch }}>

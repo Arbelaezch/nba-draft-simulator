@@ -77,22 +77,30 @@ const getOverallTierMessage = (score) => {
 };
 
 const getFeedbackMessage = (scoreData) => {
-    const weakness = getTeamWeakness(scoreData.breakdown);
-    const legendaryFeedback = getLegendaryTeammateFeedback(scoreData.legendaryResults.combinations);
-    const tierMessage = getOverallTierMessage(scoreData.score);
+    if (!scoreData) return 'Draft completed. Good job!';
 
-    // Combine feedback components
-    let feedback = tierMessage;
+    try {
+        const weakness = getTeamWeakness(scoreData.breakdown);
+        const legendaryFeedback = getLegendaryTeammateFeedback(scoreData.legendaryResults.combinations);
+        const tierMessage = getOverallTierMessage(scoreData.score);
 
-    // Add legendary combinations if they exist
-    if (legendaryFeedback) {
-        feedback += '\n\n' + legendaryFeedback;
+        // Combine feedback components
+        let feedback = tierMessage;
+
+        // Add legendary combinations if they exist
+        if (legendaryFeedback) {
+            feedback += '\n\n' + legendaryFeedback;
+        }
+
+        // Add improvement suggestion
+        feedback += `\n\nRoom for improvement: Your team's ${weakness.metric} (${Math.round(weakness.value)}/200) could use work. ${weakness.suggestion}`;
+
+        return feedback;
+    } catch (error) {
+        console.error('Error generating feedback:', error);
+
+        return 'Something went wrong. Please try again later.';
     }
-
-    // Add improvement suggestion
-    feedback += `\n\nRoom for improvement: Your team's ${weakness.metric} (${Math.round(weakness.value)}/200) could use work. ${weakness.suggestion}`;
-
-    return feedback;
 };
 
 export { getFeedbackMessage };

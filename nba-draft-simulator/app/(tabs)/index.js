@@ -2,13 +2,35 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Link } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { useEffect, useState } from 'react';
+import { router } from 'expo-router';
+
+import { useDraft } from '../../context/DraftContext';
+
+
+
 
 export default function LobbyScreen() {
+  const { state, dispatch } = useDraft();
+
   const buttons = [
     { href: '/draft', text: 'Start Draft', iconName: 'basketball-outline' },
     { href: '/advanced-setup', text: 'Advanced Setup', iconName: 'settings-outline' },
     { href: '/settings', text: 'Settings', iconName: 'cog-outline' }
   ];
+
+  useEffect(() => {
+    dispatch({ type: 'RESET_DRAFT' });
+    console.log("INDEX")
+    const { availablePlayers, draftedPlayers, ...rest } = state;
+    const newState = {
+      ...rest,
+      availablePlayers: availablePlayers.length,
+      draftedPlayers: draftedPlayers.length
+     };
+    console.log('State after reset:', newState);
+  }, []);
+  
 
   return (
     <View style={styles.container}>

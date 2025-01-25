@@ -22,9 +22,20 @@ export default function DraftScreen() {
   const [aiSelection, setAiSelection] = useState(null);
   const [showAiSelection, setShowAiSelection] = useState(false);
 
+  // const AI_SELECTION_TIMEOUT = 700; // For production
+  const AI_SELECTION_TIMEOUT = 100; // For testing
+
   // Initialize draft data when component mounts
   useEffect(() => {
     initializeDraft();
+    console.log("Draft (post init)");
+    const { availablePlayers, draftedPlayers, ...rest } = state;
+    const newState = {
+      ...rest,
+      availablePlayers: availablePlayers.length,
+      draftedPlayers: draftedPlayers.length
+     };
+    console.log('State after reset:', newState);
   }, []);
 
   // Hide AI selection overlay whenever it becomes user's turn
@@ -47,7 +58,8 @@ export default function DraftScreen() {
         // If no next team, draft is complete
         if (!nextTeam) {
           console.log("No next team - draft complete");
-          router.push('/evaluation');
+          // router.push('/evaluation');
+          router.replace('/evaluation');
           return;
         }
       
@@ -91,15 +103,15 @@ export default function DraftScreen() {
             player: aiPick,
             teamId: nextTeam.id
           });
-        }, 700);
-      }, 700);
+        }, AI_SELECTION_TIMEOUT);
+      }, AI_SELECTION_TIMEOUT);
 
       return () => clearTimeout(timer);
     }
     
     if (state.draftComplete) {
       console.log("No next team - draft complete");
-      router.push('/evaluation');
+      router.replace('/evaluation');
       return;
     }
   }, [state.processingAI, state.currentPick, state.isUserTurn]);
