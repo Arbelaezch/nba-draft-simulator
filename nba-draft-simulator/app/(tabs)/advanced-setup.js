@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
-import { SelectList } from 'react-native-dropdown-select-list';
+import { Dropdown } from 'react-native-element-dropdown';
 import { Button } from 'react-native-paper';
 import { router } from 'expo-router';
 import { useState } from 'react';
@@ -29,18 +29,33 @@ export default function AdvancedSetupScreen() {
   };
 
   const startDraft = () => {
+    console.log("draftSetup", draftSetup);
     router.push({
       pathname: '/draft',
       params: draftSetup
     });
   };
 
-  // Format team data for SelectList
+  // Format team data for Dropdown
   const teamData = NBA_TEAMS_DATA.map(team => ({
     key: team.name,
     value: team.name,
     label: team.name,
     logo: team.logo
+  }));
+
+  // Format AI teams count data
+  const aiTeamsData = [3, 5, 7, 11].map(num => ({ 
+    key: num.toString(),
+    value: num.toString(), 
+    label: num.toString() + ' Teams'
+  }));
+
+  // Format rounds data
+  const roundsData = [5, 7, 10, 12].map(num => ({ 
+    key: num.toString(),
+    value: num.toString(), 
+    label: num.toString() + ' Rounds'
   }));
 
   return (
@@ -49,83 +64,93 @@ export default function AdvancedSetupScreen() {
 
       <View style={styles.section}>
         <Text style={styles.label}>Number of AI Teams</Text>
-        <SelectList
-          setSelected={(value) => updateDraftSetup('aiTeamCount', parseInt(value))}
-          data={[3, 5, 7, 11].map(num => ({ 
-            value: num.toString(), 
-            label: num.toString() + ' Teams'
+        <Dropdown
+          data={[3, 5, 7, 11].map(num => ({
+            label: num.toString() + ' Teams',
+            value: num
           }))}
-          save="value"
-          defaultOption={{ 
-            value: draftSetup.aiTeamCount.toString(),
-            label: draftSetup.aiTeamCount.toString() + ' Teams'
-          }}
-          boxStyles={styles.dropdown}
+          value={draftSetup.aiTeamCount}
+          onChange={item => updateDraftSetup('aiTeamCount', item.value)}
+          labelField="label"
+          valueField="value"
+          style={styles.dropdown}
+          placeholder="Select Number of Teams"
         />
       </View>
 
       <View style={styles.section}>
         <Text style={styles.label}>Your Team</Text>
-        <SelectList
-          setSelected={(value) => updateDraftSetup('userTeam', value)}
+        <Dropdown
           data={teamData}
-          save="value"
-          defaultOption={teamData.find(team => team.value === draftSetup.userTeam)}
-          search={true}
-          boxStyles={styles.dropdown}
+          value={draftSetup.userTeam}
+          onChange={item => updateDraftSetup('userTeam', item.value)}
+          labelField="label"
+          valueField="value"
+          style={styles.dropdown}
+          search
+          searchPlaceholder="Search for a team..."
+          placeholder="Select Your Team"
         />
       </View>
 
       <View style={styles.section}>
         <Text style={styles.label}>Draft Type</Text>
-        <SelectList
-          setSelected={(value) => updateDraftSetup('draftType', value)}
-          data={settingsService.getDraftTypes()}
-          save="value"
-          defaultOption={settingsService.getDraftTypes()
-            .find(type => type.value === draftSetup.draftType)}
-          boxStyles={styles.dropdown}
+        <Dropdown
+          data={[
+            { label: 'Snake', value: 'snake' },
+            { label: 'Linear', value: 'linear' }
+          ]}
+          value={draftSetup.draftType}
+          onChange={item => updateDraftSetup('draftType', item.value)}
+          labelField="label"
+          valueField="value"
+          style={styles.dropdown}
+          placeholder="Select Draft Type"
         />
       </View>
 
       <View style={styles.section}>
         <Text style={styles.label}>Your Draft Position</Text>
-        <SelectList
-          setSelected={(value) => updateDraftSetup('userDraftPosition', value)}
-          data={settingsService.getDraftPositions()}
-          save="value"
-          defaultOption={settingsService.getDraftPositions()
-            .find(pos => pos.value === draftSetup.userDraftPosition)}
-          boxStyles={styles.dropdown}
+        <Dropdown
+          data={[
+            { label: 'First', value: 'first' },
+            { label: 'Random', value: 'random' },
+            { label: 'Last', value: 'last' }
+          ]}
+          value={draftSetup.userDraftPosition}
+          onChange={item => updateDraftSetup('userDraftPosition', item.value)}
+          labelField="label"
+          valueField="value"
+          style={styles.dropdown}
+          placeholder="Select Draft Position"
         />
       </View>
 
       <View style={styles.section}>
         <Text style={styles.label}>Number of Rounds</Text>
-        <SelectList
-          setSelected={(value) => updateDraftSetup('currentRounds', parseInt(value))}
-          data={[5, 7, 10, 12].map(num => ({ 
-            value: num.toString(), 
-            label: num.toString() + ' Rounds'
+        <Dropdown
+          data={[5, 7, 10, 12].map(num => ({
+            label: num.toString() + ' Rounds',
+            value: num
           }))}
-          save="value"
-          defaultOption={{ 
-            value: (draftSetup.currentRounds || settings.defaultRounds).toString(),
-            label: (draftSetup.currentRounds || settings.defaultRounds).toString() + ' Rounds'
-          }}
-          boxStyles={styles.dropdown}
+          value={draftSetup.currentRounds}
+          onChange={item => updateDraftSetup('currentRounds', item.value)}
+          labelField="label"
+          valueField="value"
+          style={styles.dropdown}
+          placeholder="Select Number of Rounds"
         />
       </View>
 
       <View style={styles.section}>
         <Text style={styles.label}>Player Pool</Text>
-        <SelectList
-          setSelected={(value) => updateDraftSetup('currentPlayerPool', value)}
-          data={settingsService.getPlayerPools()}
-          save="value"
-          defaultOption={settingsService.getPlayerPools()
-            .find(pool => pool.value === (draftSetup.currentPlayerPool || settings.defaultPlayerPool))}
-          boxStyles={styles.dropdown}
+        <Dropdown
+            data={settingsService.getPlayerPools()}
+            onChange={(item) => updateDraftSetup('currentPlayerPool', item.value)}
+            value={draftSetup.currentPlayerPool}
+            labelField="label"
+            valueField="value"
+            style={styles.dropdown}
         />
       </View>
 
@@ -160,30 +185,15 @@ const styles = StyleSheet.create({
       fontWeight: '500',
     },
     dropdown: {
+      height: 50,
       borderColor: '#ddd',
+      borderWidth: 1,
+      borderRadius: 8,
+      paddingHorizontal: 8,
       backgroundColor: '#fff',
     },
     button: {
       marginTop: 24,
       paddingVertical: 8,
-    },
-    dropdownItem: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      paddingVertical: 8,
-      paddingHorizontal: 12,
-    },
-    dropdownItemText: {
-      fontSize: 16,
-      marginLeft: 12,
-    },
-    selectedTeam: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      paddingVertical: 4,
-    },
-    selectedTeamText: {
-      fontSize: 16,
-      marginLeft: 12,
-    },
+    }
 });

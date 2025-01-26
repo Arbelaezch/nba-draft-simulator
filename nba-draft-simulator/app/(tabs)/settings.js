@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { useEffect, useState } from 'react';
-import { SelectList } from 'react-native-dropdown-select-list';
+import { Dropdown } from 'react-native-element-dropdown';
 
 import { useSettings } from '../../context/SettingsContext';
 import { settingsService } from '../../services/settingsService';
@@ -28,7 +28,6 @@ export default function SettingsScreen() {
 
   // Format team data with logos
   const teamData = NBA_TEAMS_DATA.map(team => ({
-    key: team.name,
     value: team.name,
     label: team.name,
     logo: team.logo,
@@ -36,14 +35,14 @@ export default function SettingsScreen() {
 
   // Format rounds data once
   const roundsData = [5, 7, 10, 12, 15].map(num => ({ 
-    key: num.toString(),
-    value: num.toString() + ' Rounds'
+    value: num.toString(),
+    label: num.toString() + ' Rounds'
   }));
 
   // Format pool data once
   const poolData = settingsService.getPlayerPools().map(pool => ({
-    key: pool.value,
-    value: pool.label || pool.value
+    value: pool.value,
+    label: pool.label || pool.value
   }));
 
   return (
@@ -52,52 +51,57 @@ export default function SettingsScreen() {
       
       <View style={styles.section}>
         <Text style={styles.label}>Favorite Team</Text>
-        <SelectList
-            setSelected={(value) => {
-                setSelectedTeam(value);
-                updateSettings('defaultTeam', value);
-            }}
-            data={teamData}
-            save="value"
-            defaultOption={teamData.find(team => 
-                team.value === (settings.userTeam || settings.defaultTeam)
-            )}
-            search={true}
-            boxStyles={styles.dropdown}
+        <Dropdown
+          data={teamData}
+          labelField="label"
+          valueField="value"
+          value={selectedTeam}
+          onChange={item => {
+            setSelectedTeam(item.value);
+            updateSettings('defaultTeam', item.value);
+          }}
+          search
+          searchPlaceholder="Search for a team..."
+          placeholder="Select a team"
+          style={styles.dropdown}
+          selectedTextStyle={styles.selectedTextStyle}
+          placeholderStyle={styles.placeholderStyle}
         />
       </View>
 
       <View style={styles.section}>
         <Text style={styles.label}>Default Player Pool</Text>
-        <SelectList
-          setSelected={(value) => {
-            setSelectedPool(value);
-            updateSettings('defaultPlayerPool', value);
-          }}
+        <Dropdown
           data={poolData}
-          defaultOption={poolData.find(item => item.key === selectedPool)}
-          boxStyles={styles.dropdown}
-          inputStyles={styles.input}
-          dropdownStyles={styles.dropdownList}
-          save="key"
+          labelField="label"
+          valueField="value"
           value={selectedPool}
+          onChange={item => {
+            setSelectedPool(item.value);
+            updateSettings('defaultPlayerPool', item.value);
+          }}
+          placeholder="Select player pool"
+          style={styles.dropdown}
+          selectedTextStyle={styles.selectedTextStyle}
+          placeholderStyle={styles.placeholderStyle}
         />
       </View>
 
       <View style={styles.section}>
         <Text style={styles.label}>Default Draft Rounds</Text>
-        <SelectList
-          setSelected={(value) => {
-            setSelectedRounds(value);
-            updateSettings('defaultRounds', parseInt(value));
-          }}
+        <Dropdown
           data={roundsData}
-          defaultOption={roundsData.find(item => item.key === selectedRounds)}
-          boxStyles={styles.dropdown}
-          inputStyles={styles.input}
-          dropdownStyles={styles.dropdownList}
-          save="key"
+          labelField="label"
+          valueField="value"
           value={selectedRounds}
+          onChange={item => {
+            setSelectedRounds(item.value);
+            updateSettings('defaultRounds', parseInt(item.value));
+          }}
+          placeholder="Select number of rounds"
+          style={styles.dropdown}
+          selectedTextStyle={styles.selectedTextStyle}
+          placeholderStyle={styles.placeholderStyle}
         />
       </View>
     </View>
@@ -124,18 +128,19 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   dropdown: {
+    height: 50,
     borderColor: '#ddd',
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 8,
     backgroundColor: '#fff',
   },
-  dropdownList: {
-    borderColor: '#ddd',
-    backgroundColor: '#fff',
-  },
-  input: {
+  selectedTextStyle: {
     color: '#000',
+    fontSize: 16,
   },
-  button: {
-    marginTop: 24,
-    paddingVertical: 8,
+  placeholderStyle: {
+    color: '#666',
+    fontSize: 16,
   },
 });
