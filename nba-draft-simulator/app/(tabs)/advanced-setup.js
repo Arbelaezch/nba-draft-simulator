@@ -15,7 +15,7 @@ export default function AdvancedSetupScreen() {
   const [draftSetup, setDraftSetup] = useState({
     aiTeamCount: 5,
     userTeam: settings.defaultTeam,
-    draftType: 'snake',
+    draftType: settings.defaultDraftType,
     userDraftPosition: 'first',
     currentRounds: settings.defaultRounds,
     currentPlayerPool: settings.defaultPlayerPool

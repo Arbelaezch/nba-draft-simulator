@@ -8,6 +8,7 @@ const initialSettings = {
   defaultTeam: 'Miami Heat',
   defaultPlayerPool: 'current',
   defaultRounds: 5,
+  defaultDraftType: 'snake',
   
   // Internal state
   isLoading: true,
@@ -29,7 +30,8 @@ function settingsReducer(state, action) {
         ...state,
         defaultTeam: action.settings.defaultTeam ?? state.defaultTeam,
         defaultPlayerPool: action.settings.defaultPlayerPool ?? state.defaultPlayerPool,
-        defaultRounds: action.settings.defaultRounds ?? state.defaultRounds
+        defaultRounds: action.settings.defaultRounds ?? state.defaultRounds,
+        defaultDraftType: action.settings.defaultDraftType ?? state.defaultDraftType
       };
 
 

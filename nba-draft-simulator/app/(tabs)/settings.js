@@ -11,12 +11,14 @@ export default function SettingsScreen() {
   const [selectedTeam, setSelectedTeam] = useState(settings.defaultTeam);
   const [selectedPool, setSelectedPool] = useState(settings.defaultPlayerPool);
   const [selectedRounds, setSelectedRounds] = useState(settings.defaultRounds.toString());
+  const [selectedDraftType, setSelectedDraftType] = useState(settings.defaultDraftType);
 
   // Initialize local state when settings change
   useEffect(() => {
     setSelectedTeam(settings.defaultTeam);
     setSelectedPool(settings.defaultPlayerPool);
     setSelectedRounds(settings.defaultRounds.toString());
+    setSelectedDraftType(settings.defaultDraftType);
   }, [settings]);
 
   const updateSettings = (key, value) => {
@@ -43,6 +45,12 @@ export default function SettingsScreen() {
   const poolData = settingsService.getPlayerPools().map(pool => ({
     value: pool.value,
     label: pool.label || pool.value
+  }));
+
+  // Format draft type data once
+  const draftTypeData = settingsService.getDraftTypes().map(type => ({
+    value: type.value,
+    label: type.label
   }));
 
   return (
@@ -99,6 +107,24 @@ export default function SettingsScreen() {
             updateSettings('defaultRounds', parseInt(item.value));
           }}
           placeholder="Select number of rounds"
+          style={styles.dropdown}
+          selectedTextStyle={styles.selectedTextStyle}
+          placeholderStyle={styles.placeholderStyle}
+        />
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.label}>Default Draft Type</Text>
+        <Dropdown
+          data={draftTypeData}
+          labelField="label"
+          valueField="value"
+          value={selectedDraftType}
+          onChange={item => {
+            setSelectedDraftType(item.value);
+            updateSettings('defaultDraftType', item.value);
+          }}
+          placeholder="Select draft type"
           style={styles.dropdown}
           selectedTextStyle={styles.selectedTextStyle}
           placeholderStyle={styles.placeholderStyle}

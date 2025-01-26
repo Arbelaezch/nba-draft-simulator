@@ -2,7 +2,7 @@ export const settingsService = {
     getDraftTypes() {
       return [
         { value: 'snake', label: 'Snake Draft' },
-        { value: 'fixed', label: 'Fixed Order' },
+        { value: 'linear', label: 'Linear Order' },
       ];
     },
   
@@ -35,7 +35,7 @@ export const settingsService = {
           }
           break;
           
-        case 'fixed':
+        case 'linear':
           for (let round = 0; round < settings.currentRounds; round++) {
             order.push(...[...Array(totalTeams)].map((_, index) => index + 1));
           }
