@@ -153,8 +153,8 @@ export const NBA_TEAMS_DATA = [
 
 export const teamsConfig = {
   // Get a random selection of AI teams
-  getRandomTeams: (count = 5) => {
-    const shuffled = [...NBA_TEAMS_DATA].sort(() => 0.5 - Math.random());
+  getRandomTeams: (count = 5, availableTeams = NBA_TEAMS_DATA) => {
+    const shuffled = [...availableTeams].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, count).map(team => team.name);
   },
 

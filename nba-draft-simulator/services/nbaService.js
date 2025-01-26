@@ -1,7 +1,7 @@
 // Player pool imports
 import currentPlayers from '../data/current-players-jan22-2025.json';
 import allTimePlayers from '../data/all-time-players-jan10-2025.json';
-import { teamsConfig } from '../data/teamsList';
+import { teamsConfig, NBA_TEAMS_DATA } from '../data/teamsList';
 
 export const nbaService = {
   getPlayers: (poolType = 'current') => {
@@ -99,11 +99,15 @@ export const nbaService = {
       .sort((a, b) => b.overall_rating - a.overall_rating);
   },
 
-  getTeams: (numberOfRounds = 5, aiTeamCount = 5) => {
-    const aiTeams = teamsConfig.getRandomTeams(aiTeamCount);
+  getTeams: (numberOfRounds = 5, aiTeamCount = 5, userTeam = "Your Team") => {
+    // Filter out the user's selected team from the pool of available teams
+    const availableTeams = NBA_TEAMS_DATA.filter(team => team.name !== userTeam);
+    
+    // Get random AI teams from the filtered pool
+    const aiTeams = teamsConfig.getRandomTeams(aiTeamCount, availableTeams);
     
     const teams = [
-      teamsConfig.createTeamObject("Your Team", 1, true, numberOfRounds),
+      teamsConfig.createTeamObject(userTeam, 1, true, numberOfRounds),
       ...aiTeams.map((teamName, index) => 
         teamsConfig.createTeamObject(teamName, index + 2, false, numberOfRounds)
       )

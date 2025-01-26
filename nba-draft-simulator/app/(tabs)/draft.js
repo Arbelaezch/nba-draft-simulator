@@ -136,7 +136,7 @@ export default function DraftScreen() {
       const players = await nbaService.getPlayers(draftSettings.currentPlayerPool);
       
       // Get teams with proper count and user team
-      const teams = nbaService.getTeams(draftSettings.currentRounds, draftSettings.aiTeamCount);
+      const teams = nbaService.getTeams(draftSettings.currentRounds, draftSettings.aiTeamCount, draftSettings.userTeam);
 
       // Update user team name if specified
       const userTeamIndex = teams.findIndex(t => t.isUser);
