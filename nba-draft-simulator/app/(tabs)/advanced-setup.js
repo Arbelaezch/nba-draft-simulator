@@ -45,7 +45,7 @@ export default function AdvancedSetupScreen() {
   }));
 
   // Format AI teams count data
-  const aiTeamsData = [3, 5, 7, 11].map(num => ({ 
+  const aiTeamsData = [3, 5, 7, 11, 20, 29].map(num => ({ 
     key: num.toString(),
     value: num.toString(), 
     label: num.toString() + ' Teams'
@@ -65,7 +65,7 @@ export default function AdvancedSetupScreen() {
       <View style={styles.section}>
         <Text style={styles.label}>Number of AI Teams</Text>
         <Dropdown
-          data={[3, 5, 7, 11].map(num => ({
+          data={[3, 5, 7, 11, 20, 29].map(num => ({
             label: num.toString() + ' Teams',
             value: num
           }))}

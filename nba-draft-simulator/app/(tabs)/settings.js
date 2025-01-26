@@ -36,7 +36,7 @@ export default function SettingsScreen() {
   }));
 
   // Format rounds data once
-  const roundsData = [5, 7, 10, 12, 15].map(num => ({ 
+  const roundsData = [5, 7, 10, 12].map(num => ({ 
     value: num.toString(),
     label: num.toString() + ' Rounds'
   }));

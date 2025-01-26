@@ -36,8 +36,8 @@ export default function DraftScreen() {
   const [selectedPosition, setSelectedPosition] = useState('All');
   const [isFocus, setIsFocus] = useState(false);
 
-  // const AI_SELECTION_TIMEOUT = 700; // For production
-  const AI_SELECTION_TIMEOUT = 100; // For testing
+  const AI_SELECTION_TIMEOUT = 400; // For production
+  // const AI_SELECTION_TIMEOUT = 100; // For testing
 
   // Filter players based on search query and position
   const filteredPlayers = state.availablePlayers.filter(player => {
@@ -146,7 +146,7 @@ export default function DraftScreen() {
       const draftSettings = {
         currentRounds: params.currentRounds || settings.defaultRounds,
         currentPlayerPool: params.currentPlayerPool || settings.defaultPlayerPool,
-        aiTeamCount: params.aiTeamCount || 5,
+        aiTeamCount: params.aiTeamCount || 9,
         userTeam: params.userTeam || settings.defaultTeam,
         draftType: params.draftType || 'snake',
         userDraftPosition: params.userDraftPosition || 'first'
