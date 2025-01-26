@@ -1,8 +1,9 @@
 // Main component for handling the draft interface and logic
-import { View, Text, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, FlatList, StyleSheet, ActivityIndicator, TextInput } from 'react-native';
 import { SvgCssUri } from 'react-native-svg/css';
 import { useEffect, useState } from 'react';
 import { router, useLocalSearchParams } from 'expo-router';
+import { Dropdown } from 'react-native-element-dropdown';
 
 import { useDraft } from '../../context/DraftContext';
 import { useSettings } from '../../context/SettingsContext';
@@ -11,6 +12,15 @@ import { settingsService } from '../../services/settingsService';
 import PlayerCard from '../../components/PlayerCard';
 import { NBA_TEAMS_DATA } from '../../data/teamsList';
 import AISelectionDisplay from '../../components/AISelectionDisplay';
+
+const positionData = [
+  { label: 'All Positions', value: 'All' },
+  { label: 'Point Guard', value: 'PG' },
+  { label: 'Shooting Guard', value: 'SG' },
+  { label: 'Small Forward', value: 'SF' },
+  { label: 'Power Forward', value: 'PF' },
+  { label: 'Center', value: 'C' },
+];
 
 
 export default function DraftScreen() {
@@ -22,9 +32,19 @@ export default function DraftScreen() {
   const { settings } = useSettings();
   const [aiSelection, setAiSelection] = useState(null);
   const [showAiSelection, setShowAiSelection] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedPosition, setSelectedPosition] = useState('All');
+  const [isFocus, setIsFocus] = useState(false);
 
   // const AI_SELECTION_TIMEOUT = 700; // For production
   const AI_SELECTION_TIMEOUT = 100; // For testing
+
+  // Filter players based on search query and position
+  const filteredPlayers = state.availablePlayers.filter(player => {
+    const matchesSearch = player.name.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesPosition = selectedPosition === 'All' || player.primaryPosition === selectedPosition;
+    return matchesSearch && matchesPosition;
+  });
 
   // Initialize draft data when component mounts
   useEffect(() => {
@@ -291,8 +311,35 @@ export default function DraftScreen() {
         </Text>
       </View>
 
+      <View style={styles.filterContainer}>
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search players..."
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+          placeholderTextColor="#666"
+        />
+        <Dropdown
+          style={[styles.dropdown, isFocus && { borderColor: '#007AFF' }]}
+          placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={styles.selectedTextStyle}
+          data={positionData}
+          maxHeight={300}
+          labelField="label"
+          valueField="value"
+          placeholder={!isFocus ? 'Select position' : '...'}
+          value={selectedPosition}
+          onFocus={() => setIsFocus(true)}
+          onBlur={() => setIsFocus(false)}
+          onChange={item => {
+            setSelectedPosition(item.value);
+            setIsFocus(false);
+          }}
+        />
+      </View>
+
       <FlatList
-        data={state.availablePlayers}
+        data={filteredPlayers}
         renderItem={({ item }) => (
           <PlayerCard
             player={item}
@@ -346,6 +393,40 @@ const styles = StyleSheet.create({
   pickNumber: {
     fontSize: 16,
     color: '#666',
+  },
+  filterContainer: {
+    flexDirection: 'row',
+    padding: 16,
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+    gap: 12,
+  },
+  searchInput: {
+    flex: 1,
+    height: 50,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    backgroundColor: '#fff',
+  },
+  dropdown: {
+    width: 150,
+    height: 50,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    backgroundColor: '#fff',
+  },
+  placeholderStyle: {
+    fontSize: 14,
+    color: '#666',
+  },
+  selectedTextStyle: {
+    fontSize: 14,
+    color: '#000',
   },
   playerList: {
     padding: 16,
