@@ -29,7 +29,7 @@ export default function AdvancedSetupScreen() {
   };
 
   const startDraft = () => {
-    console.log("draftSetup", draftSetup);
+    // console.log("draftSetup", draftSetup);
     router.push({
       pathname: '/draft',
       params: draftSetup

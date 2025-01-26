@@ -21,10 +21,9 @@ const initialState = {
 function draftReducer(state, action) {
   switch (action.type) {
     case 'INITIALIZE_DRAFT': {
-      console.log("\n");
-      console.log("INITIALIZE_DRAFT action received");
+      // console.log("\nINITIALIZE_DRAFT action received");
       if (state.draftComplete) {
-        console.log("Clearing previous draft state before initialization");
+        // console.log("Clearing previous draft state before initialization");
         state = draftReducer(state, { type: 'RESET_DRAFT' });
       }
       
@@ -53,13 +52,12 @@ function draftReducer(state, action) {
     }
       
     case 'MAKE_PICK': {
-      console.log("\n")
       // const testAction = { type: 'MAKE_PICK', player: { id: 1, name: action.player.name }, teamId: 1 };
-      console.log("current pick", state.currentPick);
-      console.log("MAKE_PICK action received");
-      console.log("teamId:", action.teamId);
-      console.log("team needs:", state.teams.find(t => t.id === action.teamId).needs);
-      console.log("player selected:", action.player.name);
+      // console.log("\ncurrent pick", state.currentPick);
+      // console.log("MAKE_PICK action received");
+      // console.log("teamId:", action.teamId);
+      // console.log("team needs:", state.teams.find(t => t.id === action.teamId).needs);
+      // console.log("player selected:", action.player.name);
       // console.log("Current state:", state);
 
       const updatedPlayers = state.availablePlayers.filter(p => p.id !== action.player.id);
@@ -87,7 +85,7 @@ function draftReducer(state, action) {
 
       // const updated_players_list = updatedPlayers.map(player => player.name);
       // console.log("Updated players:", updated_players_list);
-      console.log("nextTeamId:", nextTeamId);
+      // console.log("nextTeamId:", nextTeamId);
       // console.log("nextTeam:", nextTeam);
       // console.log("updatedTeams:", updatedTeams);
       // let drafted_players_list = state.draftedPlayers.map(player => player.name);
@@ -97,7 +95,7 @@ function draftReducer(state, action) {
       // console.log("isUserTurn:", nextTeam?.isUser ?? false);
 
       if (draftComplete) {
-        console.log("Draft is complete!");
+        // console.log("Draft is complete!");
       }
       
       return { 
@@ -129,7 +127,7 @@ function draftReducer(state, action) {
     }
     
     case 'RESET_DRAFT': {
-      console.log("\nResetting draft");
+      // console.log("\nResetting draft");
       // Clean reset to initial state
       return {
         availablePlayers: [],

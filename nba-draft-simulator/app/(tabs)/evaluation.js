@@ -16,9 +16,9 @@ export default function EvaluationScreen() {
     
     // Safety check - if no valid state, return to home
     useEffect(() => {
-        console.log("Saftey check");
+        // console.log("Saftey check");
         if (!state.draftComplete || !state.draftedPlayers?.length) {
-            console.log('Draft not complete or no teams - returning to home');
+            // console.log('Draft not complete or no teams - returning to home');
             router.replace('/');
             return;
         }
@@ -60,7 +60,7 @@ export default function EvaluationScreen() {
     );
 
     const handleReturnHome = () => {
-        console.log('Resetting draft state...');
+        // console.log('Resetting draft state...');
         dispatch({ type: 'RESET_DRAFT' });
         // Remove players from state
         const { availablePlayers, draftedPlayers, ...rest } = state;
@@ -69,7 +69,7 @@ export default function EvaluationScreen() {
             availablePlayers: availablePlayers.length,
             draftedPlayers: draftedPlayers.length
         };
-        console.log('State after reset:', newState);
+        // console.log('State after reset:', newState);
         router.replace('/');
     };
 

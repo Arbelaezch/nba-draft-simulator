@@ -49,14 +49,14 @@ export default function DraftScreen() {
   // Initialize draft data when component mounts
   useEffect(() => {
     initializeDraft();
-    console.log("Draft (post init)");
+  //   console.log("Draft (post init)");
     const { availablePlayers, draftedPlayers, ...rest } = state;
     const newState = {
       ...rest,
       availablePlayers: availablePlayers.length,
       draftedPlayers: draftedPlayers.length
      };
-    console.log('State after reset:', newState);
+  //   console.log('State after reset:', newState);
   }, []);
 
   // Hide AI selection overlay whenever it becomes user's turn
@@ -69,16 +69,15 @@ export default function DraftScreen() {
   useEffect(() => {
     if (state.processingAI && !state.isUserTurn && !state.draftComplete) {
       const timer = setTimeout(() => {
-        console.log("\n");
-        console.log("Process AI Picks called");
-        console.log("Current pick:", state.currentPick);
+        // console.log("\nProcess AI Picks called");
+        // console.log("Current pick:", state.currentPick);
         
         const nextTeamId = state.draftOrder[state.currentPick - 1];
         const nextTeam = state.teams.find(t => t.id === nextTeamId);
         
         // If no next team, draft is complete
         if (!nextTeam) {
-          console.log("No next team - draft complete");
+          // console.log("No next team - draft complete");
           // router.push('/evaluation');
           router.replace('/evaluation');
           return;
@@ -86,18 +85,18 @@ export default function DraftScreen() {
       
         // If next pick is user's turn, we're already done
         if (nextTeam.isUser) {
-          console.log("Next team is user - ending AI picks");
+          // console.log("Next team is user - ending AI picks");
           dispatch({ type: 'SET_PROCESSING_AI', value: false });
           setShowAiSelection(false);
           return;
         }
       
         // Make AI pick...
-        console.log("Making AI pick for team:", nextTeam.name);
+        // console.log("Making AI pick for team:", nextTeam.name);
         const aiPick = makeAIPick(state.availablePlayers, nextTeam);
         
         if (!aiPick) {
-          console.error('No available players for AI to pick');
+          // console.error('No available players for AI to pick');
           return;
         }
 
@@ -131,7 +130,7 @@ export default function DraftScreen() {
     }
     
     if (state.draftComplete) {
-      console.log("No next team - draft complete");
+      // console.log("No next team - draft complete");
       router.replace('/evaluation');
       return;
     }
@@ -191,12 +190,12 @@ export default function DraftScreen() {
 
   // AI logic for selecting players based on team needs
   const makeAIPick = (availablePlayers, team) => {
-    console.log('\nMaking AI pick for team:', team.name);
+    // console.log('\nMaking AI pick for team:', team.name);
     // console.log('Available players:', availablePlayers.length);
     
     // Calculate current team needs based on roster
     const needs = nbaService.calculateTeamNeeds(team.roster, state.settings.currentRounds);
-    console.log('Team needs:', needs);
+    // console.log('Team needs:', needs);
 
     // Create priority list based on needs
     const priorities = Object.entries(needs).map(([position, stats]) => ({
@@ -231,13 +230,13 @@ export default function DraftScreen() {
       return ratingDiff + randomFactor;
     })[0];
 
-    console.log('Selected player:', selectedPlayer.name);
+    // console.log('Selected player:', selectedPlayer.name);
     return selectedPlayer;
   };
 
   // Handle user selecting a player
   const handlePlayerSelect = (player) => {
-    console.log("\nhandlePlayerSelect called");
+    // console.log("\nhandlePlayerSelect called");
     if (!state.isUserTurn) return;
 
     setShowAiSelection(false);

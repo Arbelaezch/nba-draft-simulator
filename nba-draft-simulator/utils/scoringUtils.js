@@ -250,9 +250,9 @@ const calculatePositionBalance = (roster) => {
     const { assignments, positionPenalty, rolesFilled, assignmentsList } = assignPositionalRoles(roster);
 
     // Log the simplified assignments
-    console.log("Positional Roles:", assignmentsList);
-    console.log("Position Penalty:", positionPenalty);
-    console.log("Roles Filled:", rolesFilled);
+    // console.log("Positional Roles:", assignmentsList);
+    // console.log("Position Penalty:", positionPenalty);
+    // console.log("Roles Filled:", rolesFilled);
     
     // Base score starts at 200
     let score = 200;
@@ -488,9 +488,9 @@ const calculateTeamScore = (roster) => {
     // Calculate final score (0-200 scale)
     const finalScore = Math.round(coreScore + skillsScore + compositionScore);
 
-    console.log("Final Score (0-200):", finalScore);
-    console.log("Breakdown:", coreAttributes, fundamentalSkills, teamComposition);
-    console.log("\n");
+    // console.log("Final Score (0-200):", finalScore);
+    // console.log("Breakdown:", coreAttributes, fundamentalSkills, teamComposition);
+    // console.log("\n");
 
     const breakdown = {
         coreAttributes,

@@ -21,14 +21,14 @@ export default function LobbyScreen() {
 
   useEffect(() => {
     dispatch({ type: 'RESET_DRAFT' });
-    console.log("INDEX")
+    // console.log("INDEX")
     const { availablePlayers, draftedPlayers, ...rest } = state;
     const newState = {
       ...rest,
       availablePlayers: availablePlayers.length,
       draftedPlayers: draftedPlayers.length
      };
-    console.log('State after reset:', newState);
+    // console.log('State after reset:', newState);
   }, []);
   
 
