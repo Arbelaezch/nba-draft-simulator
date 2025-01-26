@@ -36,7 +36,7 @@ export default function LobbyScreen() {
     <View style={styles.container}>
       <View style={styles.contentContainer}>
         <View style={styles.headerContainer}>
-          <Ionicons name="basketball" size={40} color="#1e88e5" />
+          <Ionicons name="basketball" size={40} color="#f4811e" />
           <Text style={styles.title}>NBA Draft Simulator</Text>
           <Text style={styles.subtitle}>Build Your Dream Team</Text>
         </View>
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     gap: 20, // Vertical spacing between buttons
   },
   button: {
-    backgroundColor: '#1e88e5',
+    backgroundColor: '#f4811e',
     borderRadius: 12,
     elevation: 3,
     shadowColor: '#000',
