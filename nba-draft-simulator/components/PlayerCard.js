@@ -66,7 +66,7 @@ export default function PlayerCard({ player, onSelect, disabled }) {
             <Text style={styles.detailText}>3PT: {player.shooting.three_point}</Text>
             <Text style={styles.detailText}>Speed: {player.athleticism.speed}</Text>
             <Text style={styles.detailText}>
-              Defense: {Math.round((player.defense.interior + player.defense.perimeter) / 2)}
+              Rebounding: {Math.round((player.defense.defensive_rebound + player.defense.offensive_rebound) / 2)}
             </Text>
           </View>
         </View>
