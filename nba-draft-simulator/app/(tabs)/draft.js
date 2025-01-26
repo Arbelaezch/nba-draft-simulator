@@ -143,13 +143,10 @@ export default function DraftScreen() {
       if (userTeamIndex !== -1) {
         teams[userTeamIndex].name = draftSettings.userTeam;
       }
-      
-      // Generate snake draft order based on number of teams
-      // const draftOrder = generateSnakeDraftOrder(teams.length);
 
       // Generate draft order based on settings
       const draftOrder = settingsService.generateDraftOrder(draftSettings, teams);
-      
+
       // Initialize draft state
       dispatch({
         type: 'INITIALIZE_DRAFT',
@@ -158,30 +155,18 @@ export default function DraftScreen() {
         draftOrder,
         settings: draftSettings
       });
-      
+
+      // If user isn't first in draft order, start AI processing
+      const firstTeamId = draftOrder[0];
+      const firstTeam = teams.find(t => t.id === firstTeamId);
+      if (!firstTeam.isUser) {
+        dispatch({ type: 'SET_PROCESSING_AI', value: true });
+      }
+
       setIsLoading(false);
     } catch (error) {
       console.error('Error initializing draft:', error);
     }
-  };
-
-  // Generate snake draft order where order reverses each round
-  const generateSnakeDraftOrder = (numTeams) => {
-    const rounds = 5; // Number of draft rounds
-    const order = [];
-    
-    for (let round = 0; round < rounds; round++) {
-      // Create array of team numbers for this round
-      const roundTeams = [...Array(numTeams)].map((_, index) => index + 1);
-      // Reverse order for odd-numbered rounds (snake draft)
-      if (round % 2 === 1) {
-        roundTeams.reverse();
-      }
-      order.push(...roundTeams);
-    }
-    // console.log("order", order);
-    // [1, 2, 3, 4, 5, 6, 6, 5,.. 6]
-    return order;
   };
 
   // AI logic for selecting players based on team needs

@@ -114,8 +114,8 @@ export default function AdvancedSetupScreen() {
         <Dropdown
           data={[
             { label: 'First', value: 'first' },
-            { label: 'Random', value: 'random' },
-            { label: 'Last', value: 'last' }
+            { label: 'Last', value: 'last' },
+            { label: 'Random', value: 'random' }
           ]}
           value={draftSetup.userDraftPosition}
           onChange={item => updateDraftSetup('userDraftPosition', item.value)}

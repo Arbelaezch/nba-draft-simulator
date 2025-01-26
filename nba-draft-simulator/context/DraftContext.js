@@ -44,6 +44,7 @@ function draftReducer(state, action) {
         })),
         draftOrder: action.draftOrder,
         isUserTurn: firstTeam.isUser,
+        processingAI: !firstTeam.isUser,
         draftedPlayers: [],
         currentPick: 1,
         draftComplete: false,
