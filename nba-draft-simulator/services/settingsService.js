@@ -3,7 +3,6 @@ export const settingsService = {
       return [
         { value: 'snake', label: 'Snake Draft' },
         { value: 'fixed', label: 'Fixed Order' },
-        { value: 'random', label: 'Random Order' }
       ];
     },
   
@@ -11,7 +10,7 @@ export const settingsService = {
       return [
         { value: 'current', label: 'Current Players' },
         { value: 'allTime', label: 'All-Time Players' },
-        { value: 'combined', label: 'Combined Pool' }
+        // { value: 'combined', label: 'Combined Pool' }
       ];
     },
   

@@ -2,7 +2,7 @@
 import { View, Text, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
 import { SvgCssUri } from 'react-native-svg/css';
 import { useEffect, useState } from 'react';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 
 import { useDraft } from '../../context/DraftContext';
 import { useSettings } from '../../context/SettingsContext';
@@ -16,6 +16,7 @@ import AISelectionDisplay from '../../components/AISelectionDisplay';
 export default function DraftScreen() {
   // Access draft state and dispatch from context
   const { state, dispatch } = useDraft();
+  const params = useLocalSearchParams();
   // Loading state for initial data fetch
   const [isLoading, setIsLoading] = useState(true);
   const { settings } = useSettings();
@@ -123,12 +124,12 @@ export default function DraftScreen() {
     try {
       // Get draft settings (either from advanced setup or defaults)
       const draftSettings = {
-        currentRounds: settings.currentRounds || settings.defaultRounds,
-        currentPlayerPool: settings.currentPlayerPool || settings.defaultPlayerPool,
-        aiTeamCount: settings.aiTeamCount || 5,
-        userTeam: settings.userTeam || settings.defaultTeam,
-        draftType: settings.draftType || 'snake',
-        userDraftPosition: settings.userDraftPosition || 'first'
+        currentRounds: params.currentRounds || settings.defaultRounds,
+        currentPlayerPool: params.currentPlayerPool || settings.defaultPlayerPool,
+        aiTeamCount: params.aiTeamCount || 5,
+        userTeam: params.userTeam || settings.defaultTeam,
+        draftType: params.draftType || 'snake',
+        userDraftPosition: params.userDraftPosition || 'first'
       };
 
       // Get players based on selected pool

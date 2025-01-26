@@ -5,18 +5,9 @@ const SETTINGS_STORAGE_KEY = '@nba_draft_settings';
 
 const initialSettings = {
   // User preferences (saved)
-  defaultTeam: 'Boston Celtics',
+  defaultTeam: 'Miami Heat',
   defaultPlayerPool: 'current',
   defaultRounds: 5,
-  
-  // Advanced setup (temporary for current draft)
-  aiTeamCount: 5,
-  aiTeams: [],
-  userTeam: null,
-  draftType: 'snake',
-  userDraftPosition: 'first',
-  currentRounds: null,
-  currentPlayerPool: null,
   
   // Internal state
   isLoading: true,
@@ -40,31 +31,8 @@ function settingsReducer(state, action) {
         defaultPlayerPool: action.settings.defaultPlayerPool ?? state.defaultPlayerPool,
         defaultRounds: action.settings.defaultRounds ?? state.defaultRounds
       };
-      
-    case 'UPDATE_ADVANCED_SETUP':
-      return {
-        ...state,
-        aiTeamCount: action.settings.aiTeamCount ?? state.aiTeamCount,
-        aiTeams: action.settings.aiTeams ?? state.aiTeams,
-        userTeam: action.settings.userTeam ?? state.userTeam,
-        draftType: action.settings.draftType ?? state.draftType,
-        userDraftPosition: action.settings.userDraftPosition ?? state.userDraftPosition,
-        currentRounds: action.settings.currentRounds ?? state.currentRounds,
-        currentPlayerPool: action.settings.currentPlayerPool ?? state.currentPlayerPool
-      };
-      
-    case 'RESET_ADVANCED_SETUP':
-      return {
-        ...state,
-        aiTeamCount: 5,
-        aiTeams: [],
-        userTeam: state.defaultTeam,
-        draftType: 'snake',
-        userDraftPosition: 'first',
-        currentRounds: state.defaultRounds,
-        currentPlayerPool: state.defaultPlayerPool
-      };
-      
+
+
     default:
       return state;
   }
