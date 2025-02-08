@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TextInput } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import { Button } from 'react-native-paper';
 import { router } from 'expo-router';
@@ -90,6 +90,21 @@ export default function AdvancedSetupScreen() {
           search
           searchPlaceholder="Search for a team..."
           placeholder="Select Your Team"
+          searchContainerStyle={styles.searchContainer}
+          renderInputSearch={(onSearch) => (
+            <View style={styles.searchInputContainer}>
+              <TextInput
+                onChangeText={onSearch}
+                placeholder="Search for a team..."
+                style={styles.searchInput}
+                placeholderTextColor="#666666"
+                accessible={true}
+                accessibilityRole="search"
+                accessibilityLabel="Search for a team"
+                accessibilityHint={null}
+              />
+            </View>
+          )}
         />
       </View>
 
@@ -158,6 +173,11 @@ export default function AdvancedSetupScreen() {
         mode="contained" 
         onPress={startDraft}
         style={styles.button}
+        contentStyle={{ height: 50 }}
+        accessible={true}
+        accessibilityLabel="Start Draft"
+        accessibilityHint="Begin the draft with your selected settings"
+        accessibilityRole="button"
       >
         Start Draft
       </Button>
@@ -178,6 +198,7 @@ const styles = StyleSheet.create({
     },
     section: {
       marginBottom: 20,
+      zIndex: 1,
     },
     label: {
       fontSize: 16,
@@ -195,5 +216,22 @@ const styles = StyleSheet.create({
     button: {
       marginTop: 24,
       paddingVertical: 8,
-    }
+    },
+    searchContainer: {
+      padding: 8,
+      borderBottomWidth: 1,
+      borderBottomColor: '#ddd',
+    },
+    searchInputContainer: {
+      height: 48,
+      justifyContent: 'center',
+    },
+    searchInput: {
+      height: 48,
+      fontSize: 16,
+      paddingHorizontal: 8,
+    },
+    dropdownContainer: {
+      marginTop: 4,
+    },
 });
