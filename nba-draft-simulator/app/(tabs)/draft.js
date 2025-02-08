@@ -407,7 +407,7 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
-    height: 50,
+    height: 60,
     borderWidth: 1,
     borderColor: '#ddd',
     borderRadius: 8,
