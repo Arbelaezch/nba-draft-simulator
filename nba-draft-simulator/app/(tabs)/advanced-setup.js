@@ -10,6 +10,7 @@ import { NBA_TEAMS_DATA } from '../../data/teamsList';
 
 export default function AdvancedSetupScreen() {
   const { settings, dispatch } = useSettings();
+  const [isFocus, setIsFocus] = useState(false);
 
   // Local state for draft setup
   const [draftSetup, setDraftSetup] = useState({
@@ -44,20 +45,6 @@ export default function AdvancedSetupScreen() {
     logo: team.logo
   }));
 
-  // Format AI teams count data
-  const aiTeamsData = [3, 5, 7, 11, 20, 29].map(num => ({ 
-    key: num.toString(),
-    value: num.toString(), 
-    label: num.toString() + ' Teams'
-  }));
-
-  // Format rounds data
-  const roundsData = [5, 7, 10, 12].map(num => ({ 
-    key: num.toString(),
-    value: num.toString(), 
-    label: num.toString() + ' Rounds'
-  }));
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Advanced Draft Setup</Text>
@@ -73,10 +60,14 @@ export default function AdvancedSetupScreen() {
           onChange={item => updateDraftSetup('aiTeamCount', item.value)}
           labelField="label"
           valueField="value"
-          style={[styles.dropdown, styles.dropdownHeight]}
-          containerStyle={styles.dropdownContainer}
+          style={styles.dropdown}
+          placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={styles.selectedTextStyle}
+          containerStyle={styles.dropdownContainer}
+          itemStyle={styles.dropdownItem}
+          itemContainerStyle={styles.dropdownItemContainer}
           placeholder="Select Number of Teams"
+          maxHeight={300}
         />
       </View>
 
@@ -88,12 +79,16 @@ export default function AdvancedSetupScreen() {
           onChange={item => updateDraftSetup('userTeam', item.value)}
           labelField="label"
           valueField="value"
-          style={[styles.dropdown, styles.dropdownHeight]}
-          containerStyle={styles.dropdownContainer}
+          style={styles.dropdown}
+          placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={styles.selectedTextStyle}
+          containerStyle={styles.dropdownContainer}
+          itemStyle={styles.dropdownItem}
+          itemContainerStyle={styles.dropdownItemContainer}
           search
           searchPlaceholder="Search for a team..."
           placeholder="Select Your Team"
+          maxHeight={300}
           searchContainerStyle={styles.searchContainer}
           renderInputSearch={(onSearch) => (
             <View style={styles.searchInputContainer}>
@@ -123,10 +118,14 @@ export default function AdvancedSetupScreen() {
           onChange={item => updateDraftSetup('draftType', item.value)}
           labelField="label"
           valueField="value"
-          style={[styles.dropdown, styles.dropdownHeight]}
-          containerStyle={styles.dropdownContainer}
+          style={styles.dropdown}
+          placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={styles.selectedTextStyle}
+          containerStyle={styles.dropdownContainer}
+          itemStyle={styles.dropdownItem}
+          itemContainerStyle={styles.dropdownItemContainer}
           placeholder="Select Draft Type"
+          maxHeight={300}
         />
       </View>
 
@@ -142,10 +141,14 @@ export default function AdvancedSetupScreen() {
           onChange={item => updateDraftSetup('userDraftPosition', item.value)}
           labelField="label"
           valueField="value"
-          style={[styles.dropdown, styles.dropdownHeight]}
-          containerStyle={styles.dropdownContainer}
+          style={styles.dropdown}
+          placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={styles.selectedTextStyle}
+          containerStyle={styles.dropdownContainer}
+          itemStyle={styles.dropdownItem}
+          itemContainerStyle={styles.dropdownItemContainer}
           placeholder="Select Draft Position"
+          maxHeight={300}
         />
       </View>
 
@@ -160,24 +163,33 @@ export default function AdvancedSetupScreen() {
           onChange={item => updateDraftSetup('currentRounds', item.value)}
           labelField="label"
           valueField="value"
-          style={[styles.dropdown, styles.dropdownHeight]}
-          containerStyle={styles.dropdownContainer}
+          style={styles.dropdown}
+          placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={styles.selectedTextStyle}
+          containerStyle={styles.dropdownContainer}
+          itemStyle={styles.dropdownItem}
+          itemContainerStyle={styles.dropdownItemContainer}
           placeholder="Select Number of Rounds"
+          maxHeight={300}
         />
       </View>
 
       <View style={styles.section}>
         <Text style={styles.label}>Player Pool</Text>
         <Dropdown
-            data={settingsService.getPlayerPools()}
-            onChange={(item) => updateDraftSetup('currentPlayerPool', item.value)}
-            value={draftSetup.currentPlayerPool}
-            labelField="label"
-            valueField="value"
-            style={[styles.dropdown, styles.dropdownHeight]}
-            containerStyle={styles.dropdownContainer}
-            selectedTextStyle={styles.selectedTextStyle}
+          data={settingsService.getPlayerPools()}
+          onChange={(item) => updateDraftSetup('currentPlayerPool', item.value)}
+          value={draftSetup.currentPlayerPool}
+          labelField="label"
+          valueField="value"
+          style={styles.dropdown}
+          placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={styles.selectedTextStyle}
+          containerStyle={styles.dropdownContainer}
+          itemStyle={styles.dropdownItem}
+          itemContainerStyle={styles.dropdownItemContainer}
+          placeholder="Select Player Pool"
+          maxHeight={300}
         />
       </View>
 
@@ -198,59 +210,74 @@ export default function AdvancedSetupScreen() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      padding: 16,
-      backgroundColor: '#f5f5f5',
-    },
-    title: {
-      fontSize: 24,
-      fontWeight: 'bold',
-      marginBottom: 24,
-    },
-    section: {
-      marginBottom: 20,
-      zIndex: 1,
-    },
-    label: {
-      fontSize: 16,
-      marginBottom: 8,
-      fontWeight: '500',
-    },
-    dropdown: {
-      height: 60,
-      borderColor: '#ddd',
-      borderWidth: 1,
-      borderRadius: 8,
-      paddingHorizontal: 8,
-      backgroundColor: '#fff',
-    },
-    dropdownHeight: {
-      height: 60,
-    },
-    dropdownContainer: {
-      marginTop: 4,
-    },
-    selectedTextStyle: {
-      fontSize: 16,
-      paddingVertical: 12,
-    },
-    button: {
-      marginTop: 24,
-      paddingVertical: 8,
-    },
-    searchContainer: {
-      padding: 8,
-      borderBottomWidth: 1,
-      borderBottomColor: '#ddd',
-    },
-    searchInputContainer: {
-      height: 48,
-      justifyContent: 'center',
-    },
-    searchInput: {
-      height: 48,
-      fontSize: 16,
-      paddingHorizontal: 8,
-    },
+  container: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: '#f5f5f5',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 24,
+  },
+  section: {
+    marginBottom: 20,
+    zIndex: 1,
+  },
+  label: {
+    fontSize: 16,
+    marginBottom: 8,
+    fontWeight: '500',
+  },
+  dropdown: {
+    height: 60,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    backgroundColor: '#fff',
+    pointerEvents: 'auto',
+  },
+  dropdownContainer: {
+    marginTop: 4,
+  },
+  placeholderStyle: {
+    fontSize: 14,
+    color: '#666',
+    height: 90,
+    textAlignVertical: 'center',
+  },
+  selectedTextStyle: {
+    fontSize: 14,
+    color: '#000',
+    height: 90,
+    textAlignVertical: 'center',
+  },
+  dropdownItem: {
+    height: 48,
+    justifyContent: 'center',
+    textAlignVertical: 'center',
+  },
+  dropdownItemContainer: {
+    height: 70,
+    justifyContent: 'center',
+  },
+  button: {
+    marginTop: 10,
+    paddingVertical: 8,
+  },
+  searchContainer: {
+    padding: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
+  },
+  searchInputContainer: {
+    height: 60,
+    justifyContent: 'center',
+  },
+  searchInput: {
+    height: 60,
+    fontSize: 16,
+    paddingHorizontal: 8,
+  },
 });
