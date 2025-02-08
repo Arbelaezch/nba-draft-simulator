@@ -351,6 +351,7 @@ export default function DraftScreen() {
         )}
         keyExtractor={item => item.id.toString()}
         contentContainerStyle={styles.playerList}
+        label="Players"
       />
     </View>
   );
