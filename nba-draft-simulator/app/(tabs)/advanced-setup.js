@@ -73,7 +73,9 @@ export default function AdvancedSetupScreen() {
           onChange={item => updateDraftSetup('aiTeamCount', item.value)}
           labelField="label"
           valueField="value"
-          style={styles.dropdown}
+          style={[styles.dropdown, styles.dropdownHeight]}
+          containerStyle={styles.dropdownContainer}
+          selectedTextStyle={styles.selectedTextStyle}
           placeholder="Select Number of Teams"
         />
       </View>
@@ -86,7 +88,9 @@ export default function AdvancedSetupScreen() {
           onChange={item => updateDraftSetup('userTeam', item.value)}
           labelField="label"
           valueField="value"
-          style={styles.dropdown}
+          style={[styles.dropdown, styles.dropdownHeight]}
+          containerStyle={styles.dropdownContainer}
+          selectedTextStyle={styles.selectedTextStyle}
           search
           searchPlaceholder="Search for a team..."
           placeholder="Select Your Team"
@@ -119,7 +123,9 @@ export default function AdvancedSetupScreen() {
           onChange={item => updateDraftSetup('draftType', item.value)}
           labelField="label"
           valueField="value"
-          style={styles.dropdown}
+          style={[styles.dropdown, styles.dropdownHeight]}
+          containerStyle={styles.dropdownContainer}
+          selectedTextStyle={styles.selectedTextStyle}
           placeholder="Select Draft Type"
         />
       </View>
@@ -136,7 +142,9 @@ export default function AdvancedSetupScreen() {
           onChange={item => updateDraftSetup('userDraftPosition', item.value)}
           labelField="label"
           valueField="value"
-          style={styles.dropdown}
+          style={[styles.dropdown, styles.dropdownHeight]}
+          containerStyle={styles.dropdownContainer}
+          selectedTextStyle={styles.selectedTextStyle}
           placeholder="Select Draft Position"
         />
       </View>
@@ -152,7 +160,9 @@ export default function AdvancedSetupScreen() {
           onChange={item => updateDraftSetup('currentRounds', item.value)}
           labelField="label"
           valueField="value"
-          style={styles.dropdown}
+          style={[styles.dropdown, styles.dropdownHeight]}
+          containerStyle={styles.dropdownContainer}
+          selectedTextStyle={styles.selectedTextStyle}
           placeholder="Select Number of Rounds"
         />
       </View>
@@ -165,7 +175,9 @@ export default function AdvancedSetupScreen() {
             value={draftSetup.currentPlayerPool}
             labelField="label"
             valueField="value"
-            style={styles.dropdown}
+            style={[styles.dropdown, styles.dropdownHeight]}
+            containerStyle={styles.dropdownContainer}
+            selectedTextStyle={styles.selectedTextStyle}
         />
       </View>
 
@@ -213,6 +225,16 @@ const styles = StyleSheet.create({
       paddingHorizontal: 8,
       backgroundColor: '#fff',
     },
+    dropdownHeight: {
+      height: 50,
+    },
+    dropdownContainer: {
+      marginTop: 4,
+    },
+    selectedTextStyle: {
+      fontSize: 16,
+      paddingVertical: 12,
+    },
     button: {
       marginTop: 24,
       paddingVertical: 8,
@@ -230,8 +252,5 @@ const styles = StyleSheet.create({
       height: 48,
       fontSize: 16,
       paddingHorizontal: 8,
-    },
-    dropdownContainer: {
-      marginTop: 4,
     },
 });
