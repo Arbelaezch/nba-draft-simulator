@@ -1,12 +1,24 @@
 import { Stack } from 'expo-router';
 import { DraftProvider } from '../../context/DraftContext';
 import { SettingsProvider } from '../../context/SettingsContext';
+import { Platform } from 'react-native';
+
+// Platform-specific adjustments
+const defaultHeaderOptions = {
+  headerStyle: {
+    height: Platform.select({ ios: 96, android: 76 }),
+  },
+  headerTitleStyle: {
+    fontSize: Platform.select({ ios: 17, android: 20 }),
+    fontWeight: '600',
+  },
+};
 
 export default function RootLayout() {
   return (
     <SettingsProvider>
       <DraftProvider>
-        <Stack>
+        <Stack screenOptions={defaultHeaderOptions}>
           <Stack.Screen 
             name="index" 
             options={{ 
