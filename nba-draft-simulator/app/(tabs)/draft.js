@@ -322,12 +322,15 @@ export default function DraftScreen() {
           style={[styles.dropdown, isFocus && { borderColor: '#007AFF' }]}
           placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={styles.selectedTextStyle}
+          containerStyle={styles.dropdownContainer}
+          itemTextStyle={styles.dropdownItem}
+          itemContainerStyle={styles.dropdownItemContainer}
           data={positionData}
           maxHeight={300}
           labelField="label"
           valueField="value"
           placeholder={!isFocus ? 'Select position' : '...'}
-          value={selectedPosition}
+          // value={selectedPosition}
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
           onChange={item => {
@@ -412,20 +415,37 @@ const styles = StyleSheet.create({
   },
   dropdown: {
     width: 150,
-    height: 50,
+    height: 60,
     borderWidth: 1,
     borderColor: '#ddd',
     borderRadius: 8,
     paddingHorizontal: 12,
     backgroundColor: '#fff',
+    pointerEvents: 'auto',
+  },
+  dropdownContainer: {
+    marginTop: 4,
   },
   placeholderStyle: {
     fontSize: 14,
     color: '#666',
+    height: 90,
+    textAlignVertical: 'center',
   },
   selectedTextStyle: {
     fontSize: 14,
     color: '#000',
+    height: 90,
+    textAlignVertical: 'center',
+  },
+  dropdownItem: {
+    height: 48,
+    justifyContent: 'center',
+    textAlignVertical: 'center',
+  },
+  dropdownItemContainer: {
+    height: 70,
+    justifyContent: 'center',
   },
   playerList: {
     padding: 16,
