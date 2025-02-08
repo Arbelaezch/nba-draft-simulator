@@ -72,8 +72,12 @@ export default function SettingsScreen() {
           searchPlaceholder="Search for a team..."
           placeholder="Select a team"
           style={styles.dropdown}
-          selectedTextStyle={styles.selectedTextStyle}
           placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={styles.selectedTextStyle}
+          containerStyle={styles.dropdownContainer}
+          itemStyle={styles.dropdownItem}
+          itemContainerStyle={styles.dropdownItemContainer}
+          maxHeight={300}
         />
       </View>
 
@@ -90,8 +94,12 @@ export default function SettingsScreen() {
           }}
           placeholder="Select player pool"
           style={styles.dropdown}
-          selectedTextStyle={styles.selectedTextStyle}
           placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={styles.selectedTextStyle}
+          containerStyle={styles.dropdownContainer}
+          itemStyle={styles.dropdownItem}
+          itemContainerStyle={styles.dropdownItemContainer}
+          maxHeight={300}
         />
       </View>
 
@@ -108,8 +116,12 @@ export default function SettingsScreen() {
           }}
           placeholder="Select number of rounds"
           style={styles.dropdown}
-          selectedTextStyle={styles.selectedTextStyle}
           placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={styles.selectedTextStyle}
+          containerStyle={styles.dropdownContainer}
+          itemStyle={styles.dropdownItem}
+          itemContainerStyle={styles.dropdownItemContainer}
+          maxHeight={300}
         />
       </View>
 
@@ -126,8 +138,12 @@ export default function SettingsScreen() {
           }}
           placeholder="Select draft type"
           style={styles.dropdown}
-          selectedTextStyle={styles.selectedTextStyle}
           placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={styles.selectedTextStyle}
+          containerStyle={styles.dropdownContainer}
+          itemStyle={styles.dropdownItem}
+          itemContainerStyle={styles.dropdownItemContainer}
+          maxHeight={300}
         />
       </View>
     </View>
@@ -147,6 +163,7 @@ const styles = StyleSheet.create({
   },
   section: {
     marginBottom: 20,
+    zIndex: 1,
   },
   label: {
     fontSize: 16,
@@ -154,19 +171,36 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   dropdown: {
-    height: 50,
-    borderColor: '#ddd',
+    height: 60,
     borderWidth: 1,
+    borderColor: '#ddd',
     borderRadius: 8,
-    paddingHorizontal: 8,
+    paddingHorizontal: 12,
     backgroundColor: '#fff',
+    pointerEvents: 'auto',
   },
-  selectedTextStyle: {
-    color: '#000',
-    fontSize: 16,
+  dropdownContainer: {
+    marginTop: 4,
   },
   placeholderStyle: {
+    fontSize: 14,
     color: '#666',
-    fontSize: 16,
+    height: 90,
+    textAlignVertical: 'center',
+  },
+  selectedTextStyle: {
+    fontSize: 14,
+    color: '#000',
+    height: 90,
+    textAlignVertical: 'center',
+  },
+  dropdownItem: {
+    height: 48,
+    justifyContent: 'center',
+    textAlignVertical: 'center',
+  },
+  dropdownItemContainer: {
+    height: 70,
+    justifyContent: 'center',
   },
 });
