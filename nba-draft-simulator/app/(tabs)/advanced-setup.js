@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
       fontWeight: '500',
     },
     dropdown: {
-      height: 50,
+      height: 60,
       borderColor: '#ddd',
       borderWidth: 1,
       borderRadius: 8,
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
     },
     dropdownHeight: {
-      height: 50,
+      height: 60,
     },
     dropdownContainer: {
       marginTop: 4,
