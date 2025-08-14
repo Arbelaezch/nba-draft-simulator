@@ -1,6 +1,6 @@
 # NBA Draft Simulator
 
-A React Native mobile game that lets you compete against AI teams to draft your dream basketball squad. Test your team-building skills against sophisticated AI opponents and receive detailed feedback to improve your strategy.
+A React Native mobile game with over 1000 downloads that lets you compete against AI teams to draft your dream basketball squad. Test your team-building skills against sophisticated AI opponents and receive detailed feedback to improve your strategy.
 
 ## 🏀 Features
 
