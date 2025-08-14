@@ -33,6 +33,8 @@ Built with:
 - React Native
 - Expo
 - JavaScript
+- Beautiful Soup
+- Pandas
 
 ## 📝 Feedback & Support
 
