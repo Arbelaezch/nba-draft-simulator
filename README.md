@@ -14,7 +14,9 @@ A React Native mobile game that lets you compete against AI teams to draft your 
 
 ## 📱 Installation
 
-The app is currently pending approval on the Google Play Store. Once approved, you'll be able to download it directly from the Play Store.
+Download the NBA Draft Simulator directly from the Google Play Store:
+
+[![Get it on Google Play](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=com.arbelaezch.nbadraftsimulator&hl=en&pli=1)
 
 ## 🎮 How to Play
 
